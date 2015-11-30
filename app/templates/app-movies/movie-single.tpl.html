@@ -1,0 +1,21 @@
+<h3>Single movie</h3>
+
+<movie-item movie="vm.movie"></movie-item>
+
+<a class="attachImage" ng-click="vm.showMainForm()"><i class="fa fa-star"></i> Add Maintenance Issue</a>
+
+<form ng-show="vm.showMainFormNow" ng-submit="vm.addMain(main, vm.movie)">
+  <input ng-model="main.type">
+  <input ng-model="main.date" type="date">
+  <button>Add Maintenance</button>
+</form>
+
+<hr>
+
+<img ng-show="vm.movie.image" ng-src="{{ vm.movie.image }}">
+
+<hr>
+
+<a class="attachImage" ng-click="vm.showForm()"><i class="fa fa-cloud-upload"></i> Attach Image</a>
+
+<add-image ng-show="vm.showImageUpload" movie="vm.movie"></add-image>
