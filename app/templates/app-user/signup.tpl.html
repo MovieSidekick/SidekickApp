@@ -2,6 +2,7 @@
 
 <form ng-submit="vm.signUp(user)">
   <input ng-model="user.username" placeholder="Username">
+  <form type="email" ng-model="user.email" placeholder="Email">
   <input type="password" ng-model="user.password" placeholder="Password">
   <button>Signup</button>
 </form>
