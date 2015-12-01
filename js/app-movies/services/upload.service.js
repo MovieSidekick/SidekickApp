@@ -1,4 +1,4 @@
-let UploadService = function($http, FILESERVER) {
+let UploadService = function($http, SERVER) {
   
   this.upload = upload;
 
@@ -8,11 +8,11 @@ let UploadService = function($http, FILESERVER) {
     formData.append('upload', file);
     // formData.append('details', JSON.stringify({ name: 'Tim' }));
 
-    return $http.post(FILESERVER.URL, formData, FILESERVER.CONFIG);
+    return $http.post(SERVER.URL, formData, SERVER.CONFIG);
   }
 
 };
 
-UploadService.$inject = ['$http', 'FILESERVER'];
+UploadService.$inject = ['$http', 'SERVER'];
 
 export default UploadService;

@@ -1,4 +1,57 @@
-let UserService = function(PARSE, $http, $cookies, $state) {
+// let UserService = function($http, SERVER, $cookies, $state) {
+
+//   console.log(SERVER);
+
+//   this.checkAuth = function () {
+
+//     let token = $cookies.get('access_token');
+
+//     SERVER.CONFIG.headers['Access-Token'] = token;
+    
+//     if (token) {
+//       return $http.get(SERVER.URL + 'check', SERVER.CONFIG);
+//     } else {
+//       $state.go('root.login');
+//     }
+
+//   };
+
+//   this.sendLogin = function (userObj) {
+//     return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
+//   };
+
+//   this.loginSuccess = function (res) {
+
+//     $cookies.put('access_token', res.data.user.access_token);
+//     SERVER.CONFIG.headers['Access-Token'] = res.data.user.access_token;
+//     $state.go('/');
+
+//   };
+
+//   this.logout = function () {
+//     $cookies.remove('access_token');
+//     SERVER.CONFIG.headers['Access-Token'] = null;
+//     $state.go('root.login');
+//   };
+
+//   let Account = function(obj) {
+//     this.user_name = obj.user_name;
+//     this.email = obj.email;
+//     this.password = obj.password;
+//   };
+
+//   this.signUp = function (user) {
+//     let u = new Account(user);
+//     return $http.post(SERVER.URL + 'signup', u, SERVER.CONFIG);
+//   };
+
+// };
+
+// UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
+
+// export default UserService;
+
+let UserService = function($http, $cookies, $state) {
   
   this.signup    = signup;
   this.login     = login;
@@ -42,6 +95,6 @@ let UserService = function(PARSE, $http, $cookies, $state) {
 
 };
 
-UserService.$inject = ['PARSE', '$http', '$cookies', '$state'];
+UserService.$inject = ['$http', '$cookies', '$state'];
 
 export default UserService;
