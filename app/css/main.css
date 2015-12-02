@@ -8410,19 +8410,52 @@ th.hide-for-touch {
 body {
   background-color: #7F7F7F;
   background-image: -webkit-linear-gradient(left, #7F7F7F, #DBDBDB, #C4C4C4, #BABABA, grey);
-  background-image: linear-gradient(to right,#7F7F7F, #DBDBDB, #C4C4C4, #BABABA, grey);
+  background-image: linear-gradient(to right,#7F7F7F, #DBDBDB, #C4C4C4, #BABABA, grey); }
+
+form {
   font-family: "Source Code Pro"; }
 
-.top-bar:hover {
-  background-color: blue;
-  overflow: auto; }
+.toptitle {
+  font-size: 25pt;
+  font-family: "Fascinate", serif;
+  font-weight: thin; }
 
-li {
-  color: blue; }
+.toptitle i {
+  color: #DC143C; }
+
+.top-bar-section ul li > a {
+  font-family: "Slabo", serif;
+  font-size: 15pt; }
+
+.signup {
+  background-color: #DC143C;
+  border: 2px solid black;
+  border-radius: 50pt; }
+
+.usersignOne {
+  font-family: "Slabo", serif;
+  font-size: 2.5em; }
+
+.usersignTwo {
+  font-family: "Slabo", serif; }
+
+.usersignTwo a {
+  font-family: "Slabo", serif;
+  color: #DC143C; }
+
+.userlogOne {
+  font-family: "Slabo", serif;
+  font-size: 2.5em; }
+
+.login {
+  background-color: #DC143C;
+  border: 2px solid black;
+  border-radius: 50pt; }
 
 .container {
   width: 600px;
-  margin: 20px auto; }
+  margin: 20px auto;
+  font-family: "Slabo", serif; }
 
 .panel {
   cursor: pointer; }

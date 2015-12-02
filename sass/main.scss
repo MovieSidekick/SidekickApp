@@ -4,25 +4,75 @@
 @import "font-awesome";
 @import "bourbon";
 
+$accent-color1: #DC143C;
+$accent-color2: #8FBC8F;
+$accent-color3: black;
+$font-title: 'Play', sans-serif;
+$font-content: 'Slabo', serif;
+$font-fun: 'Source Code Pro';
+$font-movie: 'Fascinate', serif;
 
+//Universal
 body {
   @include linear-gradient(to right,#7F7F7F, #DBDBDB, #C4C4C4, #BABABA, grey );
-  font-family: 'Source Code Pro', ;
+}
 
+form {
+  font-family: $font-fun;
 }
-.top-bar:hover{
-  background-color: blue;
-    overflow: auto;
 
+//Layout
+.toptitle {
+  font-size: 25pt;
+  font-family: $font-movie;
+  font-weight: thin;
 }
-li {
-  color: blue;
+.toptitle i {
+  color: $accent-color1;
 }
+
+.top-bar-section ul li > a {
+  font-family: $font-content;
+  font-size: 15pt;
+}
+
+
+
+//Sign in
+.signup {
+  background-color: $accent-color1;
+  border: 2px solid $accent-color3;
+  border-radius: 50pt;
+}
+.usersignOne  {
+  font-family: $font-content;
+  font-size: 2.5em;
+}
+.usersignTwo  {
+  font-family: $font-content;
+}
+.usersignTwo a {
+  font-family: $font-content;
+  color: $accent-color1;
+}
+
+//Log in
+.userlogOne {
+  font-family: $font-content;
+  font-size: 2.5em;
+}
+.login {
+  background-color: $accent-color1;
+  border: 2px solid $accent-color3;
+  border-radius: 50pt;
+}
+
+
 
 .container {
   width: 600px;
   margin: 20px auto;
-
+  font-family: $font-content;
 }
 
 .panel {

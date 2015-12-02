@@ -1,8 +1,9 @@
-<h3>User Signup</h3>
+<h3 class="usersignOne">User Signup</h3>
+<h4 class="usersignTwo">Already signed up?  Please login <a href="#/login">here</a><br></h4>
 
 <form ng-submit="vm.signUp(user)">
- <input ng-model="user.user_name" placeholder="Username">
+ <input ng-model="user.user_name" placeholder="Username (Create your own)">
  <input type="email" ng-model="user.email" placeholder="Email">
  <input type="password" ng-model="user.password" placeholder="Password">
- <button>Signup</button>
+ <button class="signup">Signup</button>
 </form>
