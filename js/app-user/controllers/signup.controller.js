@@ -4,7 +4,6 @@ let SignupController = function($scope, UserService, $cookies, $state) {
 
   vm.signUp = signUp;
 
-
   $scope.signUp = function (obj){
     UserService.signUp(obj).then( (res) => {
       UserService.loginSuccess(res);
@@ -14,15 +13,6 @@ let SignupController = function($scope, UserService, $cookies, $state) {
   };
 
 };
-
-//   function signUp (user) {
-//     UserService.signup(user).then( (res) => {
-//       UserService.storeAuth(res.data);
-//     });
-//   }
-  
-
-// };
 
 SignupController.$inject = ['$scope','UserService', '$cookies', '$state'];
 

@@ -1,5 +1,5 @@
 export default {
-  URL: 'https://floating-mountain-2068.herokuapp.com/',
+  URL: 'https://floating-mountain-2068.herokuapp.com',
   CONFIG: {
     headers: {
       'Access-Token': '026dd9a8da91a044d46951c5df8ebeed',
@@ -7,3 +7,5 @@ export default {
     }
   }
 };
+
+// Access-Token: "df8b635dd6270bc34be168940a93dfc6
