@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h3 class="usersignOne">User Signup</h3>
 <h4 class="usersignTwo">Already signed up?  Please login <a href="#/login">here</a><br></h4>
 
@@ -6,4 +7,14 @@
  <input type="email" ng-model="user.email" placeholder="Email">
  <input type="password" ng-model="user.password" placeholder="Password">
  <button class="signup">Signup</button>
+=======
+<h3>User Signup</h3>
+<h4>Already signed up?  Please login <a href="#/login">here</a><br></h4>
+
+<form ng-submit="vm.signUp(user)">
+<input ng-model="user.user_name" placeholder="Username (Create your own)">
+<input type="email" ng-model="user.email" placeholder="Email">
+<input type="password" ng-model="user.password" placeholder="Password">
+<button>Signup</button>
+>>>>>>> 76dd3d44b9d3e5f8c8803613b7b4acec3c507ed1
 </form>

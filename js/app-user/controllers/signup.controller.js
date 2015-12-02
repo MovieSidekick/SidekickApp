@@ -1,16 +1,16 @@
 let SignupController = function(UserService) {
-  
-  let vm = this;
+ 
+ let vm = this;
 
-  vm.signUp   = signUp;
+ vm.signUp   = signUp;
 
 
-  function signUp (user) {
-    UserService.signup(user).then( (res) => {
-      UserService.storeAuth(res.data);
-    });
-  }
-  
+ function signUp (user) {
+   UserService.signup(user).then( (res) => {
+     UserService.storeAuth(res.data);
+   });
+ }
+ 
 
 };
 
