@@ -72,8 +72,8 @@ exports['default'] = {
   URL: 'https://floating-mountain-2068.herokuapp.com/',
   CONFIG: {
     headers: {
-      'Auth_token': '026dd9a8da91a044d46951c5df8ebeed',
-      'Content-Type': undefined
+      //     'auth_token': '026dd9a8da91a044d46951c5df8ebeed',
+      //    'Content-Type': undefined
     }
   }
 };
@@ -671,23 +671,23 @@ var UserService = function UserService($http, SERVER, $cookies, $state) {
 
   function checkAuth() {
     var t = $cookies.get('movie-tracker-auth');
-    if (t) {
-      setHeaders(t);
-    } else {
-      $state.go('root.login');
-    }
+    // if (t) {
+    //   setHeaders(t);
+    // } else {
+    //   $state.go('root.login');
+    // }
   }
 
   function setHeaders(token) {
-    SERVER.CONFIG.headers['X-Parse-Session-Token'] = token;
+    SERVER.CONFIG.headers['auth_token'] = token;
   }
 
   function signup(userObj) {
-    return $http.post(SERVER.URL, +'signup', userObj, SERVER.CONFIG);
+    return $http.post(SERVER.URL + 'signup', userObj, SERVER.CONFIG);
   }
 
   function login(userObj) {
-    return $http.get(SERVER.URL + 'login', userObj, SERVER.CONFIG);
+    return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
   }
 };
 

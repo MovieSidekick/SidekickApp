@@ -68,25 +68,26 @@ let UserService = function($http, SERVER, $cookies, $state) {
     $state.go('root.home');
   }
 
-  function checkAuth () {
+   function checkAuth () {
     let t = $cookies.get('movie-tracker-auth');
-    if (t) {
-      setHeaders(t);
-    } else {
-      $state.go('root.login');
-    }
-  }
+     // if (t) {
+     //   setHeaders(t);
+     // } else {
+     //   $state.go('root.login');
+     // }
+   }
 
   function setHeaders (token) {
-    SERVER.CONFIG.headers['X-Parse-Session-Token'] = token;
+    SERVER.CONFIG.headers['auth_token'] = token;
   }
 
   function signup (userObj) {
-    return $http.post(SERVER.URL, + 'signup', userObj, SERVER.CONFIG);
+    return $http.post(SERVER.URL + 'signup', userObj, SERVER.CONFIG);
+
   }
 
   function login (userObj) {
-    return $http.get(SERVER.URL + 'login', userObj, SERVER.CONFIG);
+    return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
   }
   
 
