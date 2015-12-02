@@ -8413,6 +8413,13 @@ body {
   background-image: linear-gradient(to right,#7F7F7F, #DBDBDB, #C4C4C4, #BABABA, grey);
   font-family: "Source Code Pro"; }
 
+.top-bar:hover {
+  background-color: blue;
+  overflow: auto; }
+
+li {
+  color: blue; }
+
 .container {
   width: 600px;
   margin: 20px auto; }

@@ -72,7 +72,7 @@ exports['default'] = {
   URL: 'https://floating-mountain-2068.herokuapp.com/',
   CONFIG: {
     headers: {
-      'Access-Token': 'e2f6a3294d967cf16d334e4cb31cfa4c',
+      'Auth_token': '026dd9a8da91a044d46951c5df8ebeed',
       'Content-Type': undefined
     }
   }
@@ -80,23 +80,6 @@ exports['default'] = {
 module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-exports['default'] = {
-  URL: 'https://api.parse.com/1/',
-  CONFIG: {
-    headers: {
-      'X-Parse-Application-Id': '7VV2NQ179sfUexuRvAqQsmU6eIx8pk4bgGept4ix',
-      'X-Parse-REST-API-Key': 'yFJ0gJ9T0YyM302lyzUNggK8Sjr7IRCBAA2HJj4A'
-    }
-  }
-};
-module.exports = exports['default'];
-
-},{}],4:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -117,17 +100,17 @@ var _run = require('./run');
 
 var _run2 = _interopRequireDefault(_run);
 
-var _constantsParseConstant = require('./constants/parse.constant');
-
-var _constantsParseConstant2 = _interopRequireDefault(_constantsParseConstant);
+// import PARSE from './constants/parse.constant';
 
 var _constantsFileserverConstant = require('./constants/fileserver.constant');
 
 var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverConstant);
 
-_angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('PARSE', _constantsParseConstant2['default']).constant('FILESERVER', _constantsFileserverConstant2['default']).run(_run2['default']);
+_angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default'])
+// .constant('PARSE', PARSE)
+.constant('SERVER', _constantsFileserverConstant2['default']).run(_run2['default']);
 
-},{"./config":1,"./constants/fileserver.constant":2,"./constants/parse.constant":3,"./run":5,"angular":26,"angular-cookies":23,"angular-ui-router":24}],5:[function(require,module,exports){
+},{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":25,"angular-cookies":22,"angular-ui-router":23}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -145,25 +128,25 @@ run.$inject = ['UserService', '$rootScope'];
 exports['default'] = run;
 module.exports = exports['default'];
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var HomeController = function HomeController(PARSE) {
+var HomeController = function HomeController(SERVER) {
 
   var vm = this;
 
   vm.title = 'Home Page';
 };
 
-HomeController.$inject = ['PARSE'];
+HomeController.$inject = ['SERVER'];
 
 exports['default'] = HomeController;
 module.exports = exports['default'];
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -178,7 +161,7 @@ var _controllersHomeController2 = _interopRequireDefault(_controllersHomeControl
 
 _angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']);
 
-},{"./controllers/home.controller":6,"angular":26}],8:[function(require,module,exports){
+},{"./controllers/home.controller":5,"angular":25}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -227,7 +210,7 @@ MovieSingleController.$inject = ['MovieService', '$stateParams', 'MainService'];
 exports['default'] = MovieSingleController;
 module.exports = exports['default'];
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -251,7 +234,7 @@ MoviesAddController.$inject = ['MovieService'];
 exports['default'] = MoviesAddController;
 module.exports = exports['default'];
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -282,7 +265,7 @@ MoviesController.$inject = ['MovieService'];
 exports['default'] = MoviesController;
 module.exports = exports['default'];
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -315,7 +298,7 @@ addImage.$inject = ['MovieService', 'UploadService'];
 exports['default'] = addImage;
 module.exports = exports['default'];
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -344,7 +327,7 @@ movieItem.$inject = ['$state', 'MovieService'];
 exports['default'] = movieItem;
 module.exports = exports['default'];
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -389,7 +372,7 @@ var _directivesAddImageDirective2 = _interopRequireDefault(_directivesAddImageDi
 
 _angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('MoviesAddController', _controllersMoviesAddController2['default']).controller('MovieSingleController', _controllersMovieSingleController2['default']).service('MovieService', _servicesMovieService2['default']).service('UploadService', _servicesUploadService2['default']).service('MainService', _servicesMaintenanceService2['default']).directive('movieItem', _directivesMovieDirective2['default']).directive('addImage', _directivesAddImageDirective2['default']);
 
-},{"../app-core/index":4,"./controllers/movie-single.controller":8,"./controllers/movies-add.controller":9,"./controllers/movies.controller":10,"./directives/addImage.directive":11,"./directives/movie.directive":12,"./services/maintenance.service":14,"./services/movie.service":15,"./services/upload.service":16,"angular":26}],14:[function(require,module,exports){
+},{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies-add.controller":8,"./controllers/movies.controller":9,"./directives/addImage.directive":10,"./directives/movie.directive":11,"./services/maintenance.service":13,"./services/movie.service":14,"./services/upload.service":15,"angular":25}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -418,7 +401,7 @@ MainService.$inject = ['PARSE', '$http'];
 exports['default'] = MainService;
 module.exports = exports['default'];
 
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -493,13 +476,13 @@ MovieService.$inject = ['$http', 'PARSE', '$cookies'];
 exports['default'] = MovieService;
 module.exports = exports['default'];
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UploadService = function UploadService($http, FILESERVER) {
+var UploadService = function UploadService($http, SERVER) {
 
   this.upload = upload;
 
@@ -509,16 +492,37 @@ var UploadService = function UploadService($http, FILESERVER) {
     formData.append('upload', file);
     // formData.append('details', JSON.stringify({ name: 'Tim' }));
 
-    return $http.post(FILESERVER.URL, formData, FILESERVER.CONFIG);
+    return $http.post(SERVER.URL, formData, SERVER.CONFIG);
   }
 };
 
-UploadService.$inject = ['$http', 'FILESERVER'];
+UploadService.$inject = ['$http', 'SERVER'];
 
 exports['default'] = UploadService;
+
+// Enable CORS on the Backend - the gem is called rack-cors
 module.exports = exports['default'];
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
+// let LoginController = function($scope, UserService, $cookies, $state) {
+
+//   let vm = this;
+
+//   this.login = login;
+
+//   $scope.login = function (user) {
+//     UserService.sendLogin(user).then( (res) => {
+//       UserService.loginSuccess(res);
+//       $state.go('/');
+//     });
+//   };
+
+// };
+
+// LoginController.$inject = ['$scope', 'UserService', '$cookies', '$state'];
+
+//export default LoginController;
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -542,7 +546,7 @@ LoginController.$inject = ['UserService'];
 exports['default'] = LoginController;
 module.exports = exports['default'];
 
-},{}],18:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -566,7 +570,7 @@ SignupController.$inject = ['UserService'];
 exports['default'] = SignupController;
 module.exports = exports['default'];
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -589,13 +593,66 @@ var _servicesUserService2 = _interopRequireDefault(_servicesUserService);
 
 _angular2['default'].module('app.user', ['app.core']).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('UserService', _servicesUserService2['default']);
 
-},{"./controllers/login.controller":17,"./controllers/signup.controller":18,"./services/user.service":20,"angular":26}],20:[function(require,module,exports){
+},{"./controllers/login.controller":16,"./controllers/signup.controller":17,"./services/user.service":19,"angular":25}],19:[function(require,module,exports){
+// let UserService = function($http, SERVER, $cookies, $state) {
+
+//   console.log(SERVER);
+
+//   this.checkAuth = function () {
+
+//     let token = $cookies.get('access_token');
+
+//     SERVER.CONFIG.headers['Access-Token'] = token;
+
+//     if (token) {
+//       return $http.get(SERVER.URL + 'check', SERVER.CONFIG);
+//     } else {
+//       $state.go('root.login');
+//     }
+
+//   };
+
+//   this.sendLogin = function (userObj) {
+//     return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
+//   };
+
+//   this.loginSuccess = function (res) {
+
+//     $cookies.put('access_token', res.data.user.access_token);
+//     SERVER.CONFIG.headers['Access-Token'] = res.data.user.access_token;
+//     $state.go('/');
+
+//   };
+
+//   this.logout = function () {
+//     $cookies.remove('access_token');
+//     SERVER.CONFIG.headers['Access-Token'] = null;
+//     $state.go('root.login');
+//   };
+
+//   let Account = function(obj) {
+//     this.user_name = obj.user_name;
+//     this.email = obj.email;
+//     this.password = obj.password;
+//   };
+
+//   this.signUp = function (user) {
+//     let u = new Account(user);
+//     return $http.post(SERVER.URL + 'signup', u, SERVER.CONFIG);
+//   };
+
+// };
+
+// UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
+
+// export default UserService;
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UserService = function UserService(PARSE, $http, $cookies, $state) {
+var UserService = function UserService($http, SERVER, $cookies, $state) {
 
   this.signup = signup;
   this.login = login;
@@ -622,27 +679,24 @@ var UserService = function UserService(PARSE, $http, $cookies, $state) {
   }
 
   function setHeaders(token) {
-    PARSE.CONFIG.headers['X-Parse-Session-Token'] = token;
+    SERVER.CONFIG.headers['X-Parse-Session-Token'] = token;
   }
 
   function signup(userObj) {
-    return $http.post(PARSE.URL + 'users', userObj, PARSE.CONFIG);
+    return $http.post(SERVER.URL, +'signup', userObj, SERVER.CONFIG);
   }
 
   function login(userObj) {
-    return $http.get(PARSE.URL + 'login', {
-      headers: PARSE.CONFIG.headers,
-      params: userObj
-    });
+    return $http.get(SERVER.URL + 'login', userObj, SERVER.CONFIG);
   }
 };
 
-UserService.$inject = ['PARSE', '$http', '$cookies', '$state'];
+UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
 
 exports['default'] = UserService;
 module.exports = exports['default'];
 
-},{}],21:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 // Import our core files
 'use strict';
 
@@ -664,7 +718,7 @@ require('./app-user/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.movies', 'app.user']);
 
-},{"./app-core/index":4,"./app-layout/index":7,"./app-movies/index":13,"./app-user/index":19,"angular":26}],22:[function(require,module,exports){
+},{"./app-core/index":3,"./app-layout/index":6,"./app-movies/index":12,"./app-user/index":18,"angular":25}],21:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -987,11 +1041,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],23:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":22}],24:[function(require,module,exports){
+},{"./angular-cookies":21}],23:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -5362,7 +5416,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34381,11 +34435,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],26:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":25}]},{},[21])
+},{"./angular":24}]},{},[20])
 
 
 //# sourceMappingURL=main.js.map
