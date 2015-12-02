@@ -552,20 +552,29 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SignupController = function SignupController(UserService) {
+var SignupController = function SignupController($scope, UserService, $cookies, $state) {
 
   var vm = this;
 
   vm.signUp = signUp;
 
-  function signUp(user) {
-    UserService.signup(user).then(function (res) {
-      UserService.storeAuth(res.data);
+  $scope.signUp = function (obj) {
+    UserService.signUp(obj).then(function (res) {
+      UserService.loginSuccess(res);
+      $state.go('root.login');
     });
-  }
+  };
 };
 
-SignupController.$inject = ['UserService'];
+//   function signUp (user) {
+//     UserService.signup(user).then( (res) => {
+//       UserService.storeAuth(res.data);
+//     });
+//   }
+
+// };
+
+SignupController.$inject = ['$scope', 'UserService', '$cookies', '$state'];
 
 exports['default'] = SignupController;
 module.exports = exports['default'];

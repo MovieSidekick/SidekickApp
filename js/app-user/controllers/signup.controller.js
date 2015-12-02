@@ -1,19 +1,29 @@
-let SignupController = function(UserService) {
+let SignupController = function($scope, UserService, $cookies, $state) {
   
   let vm = this;
 
-  vm.signUp   = signUp;
+  vm.signUp = signUp;
 
 
-  function signUp (user) {
-    UserService.signup(user).then( (res) => {
-      UserService.storeAuth(res.data);
+  $scope.signUp = function (obj){
+    UserService.signUp(obj).then( (res) => {
+      UserService.loginSuccess(res);
+      $state.go('root.login');
     });
-  }
-  
+
+  };
 
 };
 
-SignupController.$inject = ['UserService'];
+//   function signUp (user) {
+//     UserService.signup(user).then( (res) => {
+//       UserService.storeAuth(res.data);
+//     });
+//   }
+  
+
+// };
+
+SignupController.$inject = ['$scope','UserService', '$cookies', '$state'];
 
 export default SignupController;
