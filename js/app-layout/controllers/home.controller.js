@@ -3,7 +3,6 @@ let HomeController = function(SERVER) {
   let vm = this;
   
   vm.title = 'Home Page';
-  
 
 };
 
