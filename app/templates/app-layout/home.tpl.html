@@ -1,19 +1,9 @@
-
-
-
+<p>NAV = Logo | Home | My Movies/Reviews | My Profile</p>
 <h3>Welcome user.user_name </h3>
-
-<p>"vm.title"</p>
 
 <button ng-click="logmeout()">LogOut</button>
 
-<p>logo ... nav ... search ... home - my movies - 
-
-
-
-
-Top Ten - New Releases
-
-
-
-</p>
+<form ng-submit="search(query)" id="searchForm">
+  <input type="text" placeholder="Movie or Series Title" ng-model="query" required/>
+  <input type="button" value="Search" id="searchButton"/> 
+</form>

@@ -1,21 +1,35 @@
-<h3>Single movie</h3>
+<h3>{{ vm.movie.Title }}</h3>
 
 <movie-item movie="vm.movie"></movie-item>
 
-<a class="attachImage" ng-click="vm.showMainForm()"><i class="fa fa-star"></i> Add Maintenance Issue</a>
+<img ng-show="vm.movie.Poster" ng-src="{{ vm.movie.Poster }}">
+<ul class="movieDetails">
+  <li>{{ vm.movie.Year }}</li>
+  <li>{{ vm.movie.Rated }}</li>
+  <li>{{ vm.movie.Released }}</li>
+  <li>{{ vm.movie.Runtime }}</li>
+  <li>{{ vm.movie.Genre }}</li>
+  <li>{{ vm.movie.Director }}</li>
+  <li>{{ vm.movie.Writer }}</li>
+  <li>{{ vm.movie.Actors }}</li>
+  <li>{{ vm.movie.Plot }}</li>
+  <li>{{ vm.movie.Language }}</li>
+  <li>{{ vm.movie.Country }}</li>
+  <li>{{ vm.movie.Awards }}</li>
+  <li>{{ vm.movie.Metascore }}</li>
+  <li>{{ vm.movie.imdbRating }}</li>
+  <li>{{ vm.movie.imdbVotes }}</li>
+  <li>{{ vm.movie.imdb.ID }}</li>
+  <li>{{ vm.movie.Type }}</li>
+</ul>
 
-<form ng-show="vm.showMainFormNow" ng-submit="vm.addMain(main, vm.movie)">
-  <input ng-model="main.type">
-  <input ng-model="main.date" type="date">
-  <button>Add Maintenance</button>
+<ng-repeat
+
+<form class="reviewForm">
+  <label>Seen this movie?  Write your own review.<textarea maxlength="500">
+  </textarea></label>
 </form>
 
-<hr>
+<div class="movieReviews">ng-repeat="review in vm.reviews"</div>
 
-<img ng-show="vm.movie.image" ng-src="{{ vm.movie.image }}">
 
-<hr>
-
-<a class="attachImage" ng-click="vm.showForm()"><i class="fa fa-cloud-upload"></i> Attach Image</a>
-
-<add-image ng-show="vm.showImageUpload" movie="vm.movie"></add-image>
