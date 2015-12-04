@@ -8415,26 +8415,87 @@ body {
 form {
   font-family: "Source Code Pro"; }
 
+button {
+  background-color: #DC143C;
+  border: 2px solid black;
+  border-radius: 50pt; }
+
+h3, h4, p {
+  font-family: "Slabo", serif; }
+
+h3 {
+  font-size: 20pt; }
+
+h4 {
+  font-size: 15pt; }
+
+p {
+  font-size: 12pt; }
+
+hr {
+  border-top: solid 1pt #DC143C; }
+
+.top-bar .name h1 a {
+  color: #EEE8CD; }
+
 .toptitle {
   font-size: 25pt;
   font-family: "Fascinate", serif;
-  font-weight: thin; }
+  color: #EEE8CD; }
 
 .toptitle i {
   color: #DC143C; }
 
 .top-bar-section ul li > a {
   font-family: "Slabo", serif;
-  font-size: 15pt; }
+  font-size: 13pt;
+  color: #EEE8CD; }
 
-.signup {
-  background-color: #DC143C;
+.loginContainer {
+  float: right;
+  margin-right: 50pt;
+  margin-top: 15pt;
   border: 2px solid black;
-  border-radius: 50pt; }
+  border-radius: 50pt;
+  padding: 20pt;
+  background-color: #EEE8CD; }
+
+.masterContainer {
+  margin: 20px auto;
+  display: block; }
+
+.side-nav a {
+  font-family: "Slabo", serif;
+  color: black;
+  max-width: 90px; }
+
+.containerLeft {
+  max-width: 200px;
+  float: left;
+  font-family: "Slabo", serif;
+  margin-left: 20px; }
+
+.todo {
+  font-family: "Source Code Pro"; }
+
+.containerMiddle {
+  max-width: 600px;
+  float: left;
+  margin-left: 25px;
+  padding: 20pt;
+  margin-top: 0pt; }
+
+.signupContainer {
+  float: right;
+  margin-right: 50pt;
+  margin-top: 15pt;
+  border: 2px solid black;
+  border-radius: 50pt;
+  padding: 20pt;
+  background-color: #EEE8CD; }
 
 .usersignOne {
-  font-family: "Slabo", serif;
-  font-size: 2.5em; }
+  font-family: "Slabo", serif; }
 
 .usersignTwo {
   font-family: "Slabo", serif; }
@@ -8443,39 +8504,8 @@ form {
   font-family: "Slabo", serif;
   color: #DC143C; }
 
-.userlogOne {
-  font-family: "Slabo", serif;
-  font-size: 2.5em; }
-
-.login {
-  background-color: #DC143C;
-  border: 2px solid black;
-  border-radius: 50pt; }
-
-.container {
-  width: 600px;
-  margin: 20px auto;
-  font-family: "Slabo", serif; }
-
-.panel {
-  cursor: pointer; }
-
-.attachImage {
-  float: right;
-  font-size: 12px;
-  vertical-align: middle; }
-  .attachImage i {
-    padding-right: 5px;
-    font-size: 18px;
-    vertical-align: middle; }
-
-.uploadForm {
-  clear: both;
-  width: 275px;
-  margin-top: 10px;
-  float: right;
-  background-color: #333333;
-  color: white;
-  padding: 10px 10px 5px 10px; }
+.footer {
+  background-color: white;
+  max-height: 200px; }
 
 /*# sourceMappingURL=main.css.map */

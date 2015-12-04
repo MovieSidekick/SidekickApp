@@ -69,7 +69,7 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-  URL: 'https://floating-mountain-2068.herokuapp.com',
+  URL: 'https://floating-mountain-2068.herokuapp.com/',
   CONFIG: {
     headers: {
       //     'auth_token': '026dd9a8da91a044d46951c5df8ebeed',
@@ -141,6 +141,7 @@ var HomeController = function HomeController(SERVER) {
   var vm = this;
 
   vm.title = 'Home Page';
+  vm.name = 'user_name';
 };
 
 HomeController.$inject = ['SERVER'];
@@ -567,11 +568,7 @@ var SignupController = function SignupController(UserService) {
   }
 };
 
-<<<<<<< HEAD
 SignupController.$inject = ['UserService'];
-=======
-SignupController.$inject = ['$scope', 'UserService', '$cookies', '$state'];
->>>>>>> jef
 
 exports['default'] = SignupController;
 module.exports = exports['default'];
@@ -600,6 +597,59 @@ var _servicesUserService2 = _interopRequireDefault(_servicesUserService);
 _angular2['default'].module('app.user', ['app.core']).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('UserService', _servicesUserService2['default']);
 
 },{"./controllers/login.controller":16,"./controllers/signup.controller":17,"./services/user.service":19,"angular":25}],19:[function(require,module,exports){
+// let UserService = function($http, SERVER, $cookies, $state) {
+
+//   console.log(SERVER);
+
+//   this.checkAuth = function () {
+
+//     let token = $cookies.get('access_token');
+
+//     SERVER.CONFIG.headers['Access-Token'] = token;
+
+//     if (token) {
+//       return $http.get(SERVER.URL + 'check', SERVER.CONFIG);
+//     } else {
+//       $state.go('root.login');
+//     }
+
+//   };
+
+//   this.sendLogin = function (userObj) {
+//     return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
+//   };
+
+//   this.loginSuccess = function (res) {
+
+//     $cookies.put('access_token', res.data.user.access_token);
+//     SERVER.CONFIG.headers['Access-Token'] = res.data.user.access_token;
+//     $state.go('/');
+
+//   };
+
+//   this.logout = function () {
+//     $cookies.remove('access_token');
+//     SERVER.CONFIG.headers['Access-Token'] = null;
+//     $state.go('root.login');
+//   };
+
+//   let Account = function(obj) {
+//     this.user_name = obj.user_name;
+//     this.email = obj.email;
+//     this.password = obj.password;
+//   };
+
+//   this.signUp = function (user) {
+//     let u = new Account(user);
+//     return $http.post(SERVER.URL + 'signup', u, SERVER.CONFIG);
+//   };
+
+// };
+
+// UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
+
+// export default UserService;
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -607,94 +657,27 @@ Object.defineProperty(exports, '__esModule', {
 });
 var UserService = function UserService($http, SERVER, $cookies, $state) {
 
-  console.log(SERVER);
+  this.signup = signup;
+  this.login = login;
+  this.storeAuth = storeAuth;
+  this.checkAuth = checkAuth;
 
-  this.checkAuth = function () {
+  function storeAuth(user) {
+    $cookies.put('movie-tracker-auth', user.sessionToken);
+    $cookies.put('movie-tracker-user', user.objectId);
+    setHeaders(user.sessionToken);
+    // THIS REALLY NEEDS TO BE BETTER!!!
+    alert('you are logged in');
+    // SERIOUSLY
+    $state.go('root.home');
+  }
 
-    var token = $cookies.get('access_token');
-
-    SERVER.CONFIG.headers['Access-Token'] = token;
-
-    if (token) {
-      return $http.get(SERVER.URL + 'check', SERVER.CONFIG);
-    } else {
-      $state.go('root.login');
-    }
-  };
-
-  this.sendLogin = function (userObj) {
-    return $http.post(SERVER.URL + '/login', SERVER.CONFIG);
-  };
-
-  this.loginSuccess = function (res) {
-
-    $cookies.put('access_token', res.data.user.access_token);
-    SERVER.CONFIG.headers['Access-Token'] = res.data.user.access_token;
-    $state.go('/');
-  };
-
-  this.logout = function () {
-    $cookies.remove('access_token');
-    SERVER.CONFIG.headers['Access-Token'] = null;
-    $state.go('root.login');
-  };
-
-  var Account = function Account(obj) {
-    this.user_name = obj.user_name;
-    this.email = obj.email;
-    this.password = obj.password;
-  };
-
-  this.signUp = function (user) {
-    var u = new Account(user);
-    return $http.post(SERVER.URL + 'signup', u, SERVER.CONFIG);
-  };
-};
-
-UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
-
-exports['default'] = UserService;
-
-<<<<<<< HEAD
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var UserService = function UserService($http, SERVER, $cookies, $state) {
-=======
-// let UserService = function($http, $cookies, $state) {
-
-//   this.signup    = signup;
-//   this.login     = login;
-//   this.storeAuth = storeAuth;
-//   this.checkAuth = checkAuth;
-
-//   function storeAuth (user) {
-//     $cookies.put('movie-tracker-auth', user.sessionToken);
-//     $cookies.put('movie-tracker-user', user.objectId);
-//     setHeaders(user.sessionToken);
-//     // THIS REALLY NEEDS TO BE BETTER!!!
-//     alert('you are logged in');
-//     // SERIOUSLY
-//     $state.go('root.home');
-//   }
->>>>>>> jef
-
-//   function checkAuth () {
-//     let t = $cookies.get('movie-tracker-auth');
-//     if (t) {
-//       setHeaders(t);
-//     } else {
-//       $state.go('root.login');
-//     }
-//   }
-
-<<<<<<< HEAD
   function checkAuth() {
     var t = $cookies.get('movie-tracker-auth');
     // if (t) {
-    //   setHeaders(t);
+    //   setHeaders(t);
     // } else {
-    //   $state.go('root.login');
+    //   $state.go('root.login');
     // }
   }
 
@@ -712,28 +695,8 @@ var UserService = function UserService($http, SERVER, $cookies, $state) {
 };
 
 UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
-=======
-//   function setHeaders (token) {
-//     PARSE.CONFIG.headers['X-Parse-Session-Token'] = token;
-//   }
 
-//   function signup (userObj) {
-//     return $http.post(PARSE.URL + 'users', userObj, PARSE.CONFIG);
-//   }
-
-//   function login (userObj) {
-//     return $http.get(PARSE.URL + 'login', {
-//       headers: PARSE.CONFIG.headers,
-//       params: userObj
-//     });
-//   }
-
-// };
-
-// UserService.$inject = ['$http', '$cookies', '$state'];
->>>>>>> jef
-
-// export default UserService;
+exports['default'] = UserService;
 module.exports = exports['default'];
 
 },{}],20:[function(require,module,exports){
