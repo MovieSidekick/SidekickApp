@@ -25,18 +25,24 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'MoviesController as vm',
       templateUrl: 'templates/app-movies/movies.tpl.html'
     })
-    // Add Movie
-    .state('root.addMovie', {
-      url: '/movies/add',
-      controller: 'MoviesAddController as vm',
-      templateUrl: 'templates/app-movies/movies-add.tpl.html'
-    })
+    // // Add Movie
+    // .state('root.addMovie', {
+    //   url: '/movies/add',
+    //   controller: 'MoviesAddController as vm',
+    //   templateUrl: 'templates/app-movies/movies-add.tpl.html'
+    // })
     // Single Movie
     .state('root.singleMovie', {
       url: '/movies/:id',
       controller: 'MovieSingleController as vm',
       templateUrl: 'templates/app-movies/movie-single.tpl.html'
     })
+    //     // My Reviews
+    // .state('root.myReviews', {
+    //   url: '/movies/:id',
+    //   controller: 'MyReviewsController as vm',
+    //   templateUrl: 'templates/app-movies/movie-single.tpl.html'
+    // })
     // Signup
     .state('root.signup', {
       url: '/signup',
