@@ -3,6 +3,7 @@
 <movie-item movie="vm.movie"></movie-item>
 
 <img ng-show="vm.movie.Poster" ng-src="{{ vm.movie.Poster }}">
+
 <ul class="movieDetails">
   <li>{{ vm.movie.Year }}</li>
   <li>{{ vm.movie.Rated }}</li>
@@ -19,17 +20,18 @@
   <li>{{ vm.movie.Metascore }}</li>
   <li>{{ vm.movie.imdbRating }}</li>
   <li>{{ vm.movie.imdbVotes }}</li>
-  <li>{{ vm.movie.imdb.ID }}</li>
+  <li>{{ vm.movie.imdbID }}</li>
   <li>{{ vm.movie.Type }}</li>
 </ul>
 
-<ng-repeat
-
-<form class="reviewForm">
+<form ng-submit="vm.addReview(review)"" class="reviewForm">
   <label>Seen this movie?  Write your own review.<textarea maxlength="500">
   </textarea></label>
+  <input type="button" value="Save Review" id="saveReviewButton"/> 
 </form>
 
-<div class="movieReviews">ng-repeat="review in vm.reviews"</div>
-
-
+<div class="movieReviews" ng-repeat="review in vm.reviews">
+  <ul>
+    <li> {{ vm.movie.imdbID }} {{ vm.reviews.review }} </li>
+  </ul>
+</div>

@@ -5,14 +5,13 @@ import 'angular-cookies';
 
 import config from './config';
 import run from './run';
-// import PARSE from './constants/parse.constant';
+
 import SERVER from './constants/fileserver.constant';
 
 
 angular
   .module('app.core', ['ui.router', 'ngCookies'])
   .config(config)
-  // .constant('PARSE', PARSE)
   .constant('SERVER',SERVER)
   .run(run)
 ;

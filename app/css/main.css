@@ -8508,6 +8508,24 @@ hr {
   background-color: white;
   max-height: 200px; }
 
+.attachImage {
+  float: right;
+  font-size: 12px;
+  vertical-align: middle; }
+  .attachImage i {
+    padding-right: 5px;
+    font-size: 18px;
+    vertical-align: middle; }
+
+.uploadForm {
+  clear: both;
+  width: 275px;
+  margin-top: 10px;
+  float: right;
+  background-color: #333333;
+  color: white;
+  padding: 10px 10px 5px 10px; }
+
 #searchForm {
   width: 500px;
   margin: 50px auto;
