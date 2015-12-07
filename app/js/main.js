@@ -18,7 +18,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/',
 
     // Use Controller as Syntax
-    controller: 'HomeController as vm',
+    controller: 'SearchController as vm',
     templateUrl: 'templates/app-layout/home.tpl.html'
   })
 
@@ -134,18 +134,47 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var HomeController = function HomeController(SERVER) {
+var SearchController = function SearchController($http, SERVER, MovieService) {
 
+  // $scope alternative
   var vm = this;
+  var url = 'https://floating-mountain-2068.herokuapp.com/' + 'movies';
 
-  vm.title = 'Home Page';
+  vm.search = search;
 
-  vm.name = 'user_name';
+  vm.movies = [];
+  vm.clicked = clicked;
+
+  // function to activate MovieService to getAllMovies
+  activate();
+
+  //  function search (query) {
+  //   MovieService.getMovie().then( (res) => {
+  //      vm.title = res.data.results;
+  //    console.log(query)
+  //  });
+  // }
+
+  function getMovie(movieObj) {
+    return $http.get(url, { type: 'Title' });
+  };
+
+  // Get all the movies and return results
+  function activate() {
+    MovieService.getAllMovies().then(function (res) {
+      vm.movies = res.data.results;
+    });
+  }
+
+  // when click on movie in movies view, go to movie view
+  function clicked(movie) {
+    console.log('clicked', movie.Title);
+  }
 };
 
-HomeController.$inject = ['SERVER'];
+SearchController.$inject = ['$http', 'SERVER', 'MovieService'];
 
-exports['default'] = HomeController;
+exports['default'] = SearchController;
 module.exports = exports['default'];
 
 },{}],6:[function(require,module,exports){
@@ -157,13 +186,13 @@ var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
 
-var _controllersHomeController = require('./controllers/home.controller');
+var _controllersSearchController = require('./controllers/search.controller');
 
-var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
+var _controllersSearchController2 = _interopRequireDefault(_controllersSearchController);
 
-_angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']);
+_angular2['default'].module('app.layout', []).controller('SearchController', _controllersSearchController2['default']);
 
-},{"./controllers/home.controller":5,"angular":25}],7:[function(require,module,exports){
+},{"./controllers/search.controller":5,"angular":25}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -247,7 +276,7 @@ var MoviesController = function MoviesController(MovieService) {
   var vm = this;
 
   vm.movies = [];
-  vm.clicked = clicked;
+  vm.search = search;
 
   activate();
 
@@ -257,8 +286,11 @@ var MoviesController = function MoviesController(MovieService) {
     });
   }
 
-  function clicked(movie) {
-    console.log('clicked', movie.name);
+  function search(query) {
+    MovieService.getMovie(query).then(function (res) {
+      vm.movies = res.data.results;
+      console.log(query);
+    });
   }
 };
 
@@ -314,11 +346,11 @@ var movieItem = function movieItem($state, MovieService) {
     scope: {
       movie: '='
     },
-    template: '\n      <div class="panel" ng-click="vm.clicked(movie)">\n        <h5>{{ movie.color }} {{ movie.year }} {{ movie.make }} {{ movie.model }}</h5>\n      </div>\n    ',
+    template: '\n      <div class="panel" ng-click="vm.clicked(movie)">\n        <h5>{{ movie.title }} {{ movie.poster }} {{ movie.genre }} {{ movie.actor }}</h5>\n      </div>\n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
-        $state.go('root.singleMovie', { id: scope.movie.objectId });
+        $state.go('root.singleMovie', { id: scope.movie.title });
       });
     }
   };
@@ -380,10 +412,9 @@ _angular2['default'].module('app.movies', ['app.core']).controller('MoviesContro
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var MainService = function MainService(PARSE, $http) {
+var MainService = function MainService($http) {
 
-  var url = PARSE.URL + 'classes/maintenance';
-
+  var url = URL + 'movies/movie';
   this.attachMain = attachMain;
 
   function attachMain(mainObj, movie) {
@@ -394,11 +425,11 @@ var MainService = function MainService(PARSE, $http) {
       objectId: movie.objectId
     };
 
-    return $http.post(url, mainObj, PARSE.CONFIG);
+    return $http.post(url, mainObj);
   }
 };
 
-MainService.$inject = ['PARSE', '$http'];
+MainService.$inject = ['$http'];
 
 exports['default'] = MainService;
 module.exports = exports['default'];
@@ -409,44 +440,45 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var MovieService = function MovieService($http) {
+var MovieService = function MovieService($http, SERVER, $cookies) {
 
-  var url = URL + 'movies/movie';
+  var url = 'https://floating-mountain-2068.herokuapp.com/movies';
 
   this.getAllMovies = getAllMovies;
   this.getMovie = getMovie;
 
-  function Movie(movieObj) {
-    this.Poster = movieObj.Poster;
-    this.Title = movieObj.Title;
-    this.Rated = movieObj.Rated;
-    this.Year = movieObj.Year;
-    this.Released = movieObj.Released;
-    this.Runtime = movieObj.Runtime;
-    this.Director = movieObj.Director;
-    this.Writer = movieObj.Writer;
-    this.Actors = movieObj.Actors;
-    this.Plot = movieObj.Plot;
-    this.Language = movieObj.Language;
-    this.Country = movieObj.Country;
-    this.Awards = movieObj.Awards;
-    this.Metascore = movieObj.Metascore;
-    this.imdbRating = movieObj.imdbRating;
-    this.imdbVotes = movieObj.imdbVotes;
-    this.imdbID = movieObj.imdbID;
-    this.Type = movieObj.Type;
+  function Movie(movie) {
+    this.Poster = movie.Poster;
+    this.Title = movie.Title;
+    this.Rated = movie.Rated;
+    this.Year = movie.Year;
+    this.Released = movie.Released;
+    this.Runtime = movie.Runtime;
+    this.Director = movie.Director;
+    this.Writer = movie.Writer;
+    this.Actors = movie.Actors;
+    this.Plot = movie.Plot;
+    this.Language = movie.Language;
+    this.Country = movie.Country;
+    this.Awards = movie.Awards;
+    this.Metascore = movie.Metascore;
+    this.imdbRating = movie.imdbRating;
+    this.imdbVotes = movie.imdbVotes;
+    this.imdbID = movie.imdbID;
+    this.Type = movie.Type;
   }
 
   function getAllMovies() {
-    return $http.get(url, CONFIG);
+    return $http.get(url, SERVER);
   }
 
-  function getMovie(id) {
-    return $http.get(url + '/' + id, CONFIG);
+  function getMovie(ourTitle) {
+    return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
+    console.log(ourTitle);
   }
 };
 
-MovieService.$inject = ['$http', '$cookies'];
+MovieService.$inject = ['$http', 'SERVER', '$cookies'];
 
 exports['default'] = MovieService;
 module.exports = exports['default'];

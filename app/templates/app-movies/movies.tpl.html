@@ -16,14 +16,20 @@
     </ul>
   </section>
 </nav>
-<h3>Movie List</h3>
 
-<<<<<<< HEAD
-<div class="movieResults">ng-repeat="movie in vm.movies"</div>
-=======
+<form ng-submit="vm.search(query)" id="searchForm">
+ <input type="text" placeholder="Movie or Series Title" ng-model="query" type="title" required/>
+ <button id="searchButton">Search</button> 
+</form>
+
+<img ng-show="vm.movie.image" ng-src=" {{ vm.movie.image }}">
 <div class="movieResults">
   <ul>
-    <li>ng-repeat="movie in vm.movies"</li>
+    <li>ng-repeat="movie in vm.movies.title"</li>
   </ul>
 </div>
->>>>>>> 537a932ceaf27ae7fe97aecaeb18a9e147628c61
+<p>nn{{movie.title}}</p>
+<h3>Movie List</h3>
+
+<movie-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movie-item>
+<div class="panel"></div>

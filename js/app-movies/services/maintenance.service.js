@@ -1,7 +1,6 @@
-let MainService = function(PARSE, $http) {
+let MainService = function($http) {
 
-  let url = PARSE.URL + 'classes/maintenance';
-  
+  let url = URL + 'movies/movie';  
   this.attachMain = attachMain;
 
   function attachMain (mainObj, movie) {
@@ -12,11 +11,11 @@ let MainService = function(PARSE, $http) {
       objectId: movie.objectId
     };
 
-    return $http.post(url, mainObj, PARSE.CONFIG);
+    return $http.post(url, mainObj);
   }
 
 };
 
-MainService.$inject = ['PARSE', '$http'];
+MainService.$inject = ['$http'];
 
 export default MainService;

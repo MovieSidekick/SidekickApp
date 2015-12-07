@@ -3,7 +3,7 @@ let MoviesController = function(MovieService) {
   let vm = this;
 
   vm.movies = [];
-  vm.clicked = clicked;
+  vm.search=search;
 
   activate();
 
@@ -13,8 +13,11 @@ let MoviesController = function(MovieService) {
     });
   }
 
-  function clicked (movie) {
-    console.log('clicked', movie.name);
+    function search (query) {
+    MovieService.getMovie(query).then( (res) => {
+        vm.movies = res.data.results;
+      console.log(query)
+    })
   }
   
 };

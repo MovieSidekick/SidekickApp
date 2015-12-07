@@ -8,13 +8,13 @@ let movieItem = function($state, MovieService) {
     },
     template: `
       <div class="panel" ng-click="vm.clicked(movie)">
-        <h5>{{ movie.color }} {{ movie.year }} {{ movie.make }} {{ movie.model }}</h5>
+        <h5>{{ movie.title }} {{ movie.poster }} {{ movie.genre }} {{ movie.actor }}</h5>
       </div>
     `,
     controller: 'MoviesController as vm',
     link: function (scope, element, attrs) {
       element.on('click', function () {
-        $state.go('root.singleMovie', { id: scope.movie.objectId });
+        $state.go('root.singleMovie', { id: scope.movie.title });
       });
     }
   };
