@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
@@ -33,6 +34,12 @@
   <input type="text" placeholder="Movie or Series Title" ng-model="queryss" required/>
   <input type="button" value="Search" id="searchButton"/> 
 </form> -->
+=======
+<form ng-submit="search(query)" id="searchForm">
+  <input type="text" placeholder="Movie or Series Title" ng-model="query" required/>
+  <button id="searchButton">Search</button> 
+</form>
+>>>>>>> jef
 
 <ul>
   <li class="movieListing" ng-repeat="movie in movies">{{ vm.movie.Poster }} {{ vm.movie.Title }}</li>

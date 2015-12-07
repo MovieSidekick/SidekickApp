@@ -39,6 +39,10 @@ let SearchController = function($http, SERVER, MovieService) {
 
 };
 
+<<<<<<< HEAD
 SearchController.$inject = ['$http', 'SERVER', 'MovieService'];
+=======
+SearchController.$inject = ['MovieService'];
+>>>>>>> jef
 
 export default SearchController;
