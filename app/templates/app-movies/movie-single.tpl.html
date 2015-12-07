@@ -1,3 +1,21 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href class="toptitle"="#/">Movie <i class="fa fa-film"></i> Sidekick</a>
+      </h1>
+    </li>
+    
+  </ul>
+  <section class="top-bar-section">
+
+    <ul class="right">  
+      <li><a href="#/movies">My Movies/Reviews</a></li>
+      <li><a href="#/movies/:id">My Profile</a></li>    
+      <li><a href="#/login">Back to Login Page</a></li>
+      <li><a href="#/home">Home</a></li>
+    </ul>
+  </section>
+</nav>
 <h3>{{ vm.movie.Title }}</h3>
 
 <movie-item movie="vm.movie"></movie-item>
@@ -23,11 +41,14 @@
   <li>{{ vm.movie.Type }}</li>
 </ul>
 
-<ng-repeat
-
+<ng-repeat></ng-repeat>
+<p>Sample Movie</p>
+<p>Review</p>
 <form class="reviewForm">
-  <label>Seen this movie?  Write your own review.<textarea maxlength="500">
-  </textarea></label>
+  <label>Seen this movie?  Write your own review.
+    <textarea maxlength="500"></textarea>
+    <button class="something">Add Review</button>
+  </label>
 </form>
 
 <div class="movieReviews">ng-repeat="review in vm.reviews"</div>

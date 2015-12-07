@@ -147,6 +147,7 @@ var HomeController = function HomeController(SERVER) {
   var vm = this;
 
   vm.title = 'Home Page';
+
   vm.name = 'user_name';
 };
 
