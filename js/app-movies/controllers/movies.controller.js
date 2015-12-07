@@ -14,7 +14,7 @@ let MoviesController = function(MovieService) {
   }
 
   function clicked (movie) {
-    console.log('clicked', movie.name);
+    console.log('clicked', movie.Title);
   }
   
 };

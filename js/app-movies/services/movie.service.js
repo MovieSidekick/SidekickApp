@@ -1,6 +1,6 @@
-let MovieService = function($http) {
+let MovieService = function($http, SERVER) {
   
-  let url = URL + 'movies/movie';
+  let url = URL + 'movies/title';
 
   this.getAllMovies   = getAllMovies;
   this.getMovie       = getMovie;
@@ -36,6 +36,6 @@ let MovieService = function($http) {
 
 };
 
-MovieService.$inject = ['$http','$cookies'];
+MovieService.$inject = ['$http','SERVER'];
 
 export default MovieService;

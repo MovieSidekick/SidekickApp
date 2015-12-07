@@ -23,6 +23,6 @@ let SearchController = function(MovieService) {
 
 };
 
-SearchController.$inject = [$http];
+SearchController.$inject = ['MovieService'];
 
 export default SearchController;

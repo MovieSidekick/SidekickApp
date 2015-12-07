@@ -27,7 +27,7 @@
 <form ng-submit="vm.addReview(review)"" class="reviewForm">
   <label>Seen this movie?  Write your own review.<textarea maxlength="500">
   </textarea></label>
-  <input type="button" value="Save Review" id="saveReviewButton"/> 
+  <button id="saveReviewButton">Save</button>
 </form>
 
 <div class="movieReviews" ng-repeat="review in vm.reviews">
