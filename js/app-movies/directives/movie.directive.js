@@ -8,7 +8,11 @@ let movieItem = function($state, MovieService) {
     },
     template: `
       <div class="panel" ng-click="vm.clicked(movie)">
+<<<<<<< HEAD
         <h5>{{ movie.title }} {{ movie.poster }} {{ movie.genre }} {{ movie.actor }}</h5>
+=======
+        <h5>{{ movie.Poster }} {{ movie.Title }} {{ movie.year }}</h5>
+>>>>>>> jef
       </div>
     `,
     controller: 'MoviesController as vm',

@@ -1,17 +1,18 @@
 let MoviesController = function(MovieService) {
-  
-  let vm = this;
+ 
+ let vm = this;
 
-  vm.movies = [];
-  vm.search=search;
+ vm.movies = [];
+ vm.search=search;
 
-  activate();
+ activate();
 
-  function activate () {
-    MovieService.getAllMovies().then( (res) => {
-      vm.movies = res.data.results;
-    });
-  }
+ function activate () {
+   MovieService.getAllMovies().then( (res) => {
+     vm.movies = res.data.results;
+   });
+ }
+
 
     function search (query) {
     MovieService.getMovie(query).then( (res) => {
@@ -25,3 +26,10 @@ let MoviesController = function(MovieService) {
 MoviesController.$inject = ['MovieService'];
 
 export default MoviesController;
+   function search (query) {
+   MovieService.getMovie(query).then( (res) => {
+       vm.movies = res.data.results;
+     console.log(query)
+   })
+ }
+
