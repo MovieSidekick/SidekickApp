@@ -18,7 +18,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/',
 
     // Use Controller as Syntax
-    controller: 'SearchController as vm',
+    controller: 'HomeController as vm',
     templateUrl: 'templates/app-layout/home.tpl.html'
   })
 
@@ -134,47 +134,18 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SearchController = function SearchController($http, SERVER, MovieService) {
+var HomeController = function HomeController(SERVER) {
 
-  // $scope alternative
   var vm = this;
-  var url = 'https://floating-mountain-2068.herokuapp.com/' + 'movies';
 
-  vm.search = search;
+  vm.title = 'Home Page';
 
-  vm.movies = [];
-  vm.clicked = clicked;
-
-  // function to activate MovieService to getAllMovies
-  activate();
-
-  //  function search (query) {
-  //   MovieService.getMovie().then( (res) => {
-  //      vm.title = res.data.results;
-  //    console.log(query)
-  //  });
-  // }
-
-  function getMovie(movieObj) {
-    return $http.get(url, { type: 'Title' });
-  };
-
-  // Get all the movies and return results
-  function activate() {
-    MovieService.getAllMovies().then(function (res) {
-      vm.movies = res.data.results;
-    });
-  }
-
-  // when click on movie in movies view, go to movie view
-  function clicked(movie) {
-    console.log('clicked', movie.Title);
-  }
+  vm.name = 'user_name';
 };
 
-SearchController.$inject = ['$http', 'SERVER', 'MovieService'];
+HomeController.$inject = ['SERVER'];
 
-exports['default'] = SearchController;
+exports['default'] = HomeController;
 module.exports = exports['default'];
 
 },{}],6:[function(require,module,exports){
@@ -186,13 +157,13 @@ var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
 
-var _controllersSearchController = require('./controllers/search.controller');
+var _controllersHomeController = require('./controllers/home.controller');
 
-var _controllersSearchController2 = _interopRequireDefault(_controllersSearchController);
+var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-_angular2['default'].module('app.layout', []).controller('SearchController', _controllersSearchController2['default']);
+_angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']);
 
-},{"./controllers/search.controller":5,"angular":25}],7:[function(require,module,exports){
+},{"./controllers/home.controller":5,"angular":25}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -288,8 +259,8 @@ var MoviesController = function MoviesController(MovieService) {
 
   function search(query) {
     MovieService.getMovie(query).then(function (res) {
-      vm.movies = res.data.results;
-      console.log(query);
+      vm.movies = [res.data.movie];
+      console.log(res.data.movie);
     });
   }
 };
@@ -473,8 +444,10 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
   }
 
   function getMovie(ourTitle) {
-    return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
     console.log(ourTitle);
+    return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
+
+    //console.log(ourTitle);
   }
 };
 

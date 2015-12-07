@@ -1,8 +1,8 @@
 import angular from 'angular';
 
-import SearchController from './controllers/search.controller';
+import HomeController from './controllers/home.controller';
 
 angular
   .module('app.layout', [])
-  .controller('SearchController', SearchController)
+  .controller('HomeController', HomeController)
 ;

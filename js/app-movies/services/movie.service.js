@@ -28,11 +28,14 @@ let MovieService = function($http, SERVER, $cookies) {
 
   function getAllMovies () {
     return $http.get(url, SERVER);
+
   }
 
   function getMovie (ourTitle) {
-    return $http.post(url, { type: 'title', title: ourTitle}, SERVER);
     console.log(ourTitle);
+    return $http.post(url, { type: 'title', title: ourTitle}, SERVER)
+
+    //console.log(ourTitle);
   }
 
   

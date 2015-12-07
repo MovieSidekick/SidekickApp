@@ -12,12 +12,12 @@ let SearchController = function($http, SERVER, MovieService) {
 // function to activate MovieService to getAllMovies
   activate();
 
-  //  function search (query) {
-  //   MovieService.getMovie().then( (res) => {
-  //      vm.title = res.data.results;
-  //    console.log(query)
-  //  });
-  // }
+    function search (query) {
+     MovieService.getMovie().then( (res) => {
+        vm.title = res.data.results;
+      console.log(query)
+    });
+   }
 
   function getMovie (movieObj) {
     return $http.get(url, {type: 'Title'});

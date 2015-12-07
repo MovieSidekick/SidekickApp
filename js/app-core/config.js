@@ -14,7 +14,7 @@ let config = function($stateProvider, $urlRouterProvider) {
       url: '/',
 
       // Use Controller as Syntax
-      controller: 'SearchController as vm',
+      controller: 'HomeController as vm',
       templateUrl: 'templates/app-layout/home.tpl.html'
     })
 

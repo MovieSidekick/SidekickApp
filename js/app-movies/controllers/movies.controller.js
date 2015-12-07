@@ -15,8 +15,8 @@ let MoviesController = function(MovieService) {
 
     function search (query) {
     MovieService.getMovie(query).then( (res) => {
-        vm.movies = res.data.results;
-      console.log(query)
+        vm.movies = [res.data.movie];
+      console.log(res.data.movie);
     })
   }
   
