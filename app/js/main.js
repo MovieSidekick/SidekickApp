@@ -6,37 +6,36 @@ Object.defineProperty(exports, '__esModule', {
 });
 var config = function config($stateProvider, $urlRouterProvider) {
 
-  // If no route matches, go to home route
   $urlRouterProvider.otherwise('/');
 
-  // Set up some States
-  $stateProvider
-  // Main Root State
-  // It is an abstract state because we want a nice way to
-  // manage our layout that will be on all child states
-  .state('root', {
+  $stateProvider.state('root', {
     abstract: true,
     templateUrl: 'templates/app-layout/layout.tpl.html'
   })
+
   // Home State
   .state('root.home', {
     url: '/',
+
     // Use Controller as Syntax
     controller: 'HomeController as vm',
     templateUrl: 'templates/app-layout/home.tpl.html'
   })
+
   // My Movies
   .state('root.movies', {
     url: '/movies',
     controller: 'MoviesController as vm',
     templateUrl: 'templates/app-movies/movies.tpl.html'
   })
+
   // // Add Movie
   // .state('root.addMovie', {
   //   url: '/movies/add',
   //   controller: 'MoviesAddController as vm',
   //   templateUrl: 'templates/app-movies/movies-add.tpl.html'
   // })
+
   // Single Movie
   .state('root.singleMovie', {
     url: '/movies/:id',
@@ -49,12 +48,14 @@ var config = function config($stateProvider, $urlRouterProvider) {
   //   controller: 'MyReviewsController as vm',
   //   templateUrl: 'templates/app-movies/movie-single.tpl.html'
   // })
+
   // Signup
   .state('root.signup', {
     url: '/signup',
     controller: 'SignupController as vm',
     templateUrl: 'templates/app-user/signup.tpl.html'
   })
+
   // Login
   .state('root.login', {
     url: '/login',
@@ -77,14 +78,9 @@ Object.defineProperty(exports, '__esModule', {
 exports['default'] = {
   URL: 'https://floating-mountain-2068.herokuapp.com/',
   CONFIG: {
-    headers: {
-      //     'auth_token': '026dd9a8da91a044d46951c5df8ebeed',
-      //    'Content-Type': undefined
-    }
+    headers: {}
   }
 };
-
-// Access-Token: "df8b635dd6270bc34be168940a93dfc6
 module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
@@ -108,15 +104,11 @@ var _run = require('./run');
 
 var _run2 = _interopRequireDefault(_run);
 
-// import PARSE from './constants/parse.constant';
-
 var _constantsFileserverConstant = require('./constants/fileserver.constant');
 
 var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverConstant);
 
-_angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default'])
-// .constant('PARSE', PARSE)
-.constant('SERVER', _constantsFileserverConstant2['default']).run(_run2['default']);
+_angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('SERVER', _constantsFileserverConstant2['default']).run(_run2['default']);
 
 },{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":25,"angular-cookies":22,"angular-ui-router":23}],4:[function(require,module,exports){
 'use strict';
@@ -417,71 +409,44 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var MovieService = function MovieService($http, PARSE, $cookies) {
+var MovieService = function MovieService($http) {
 
-  var url = PARSE.URL + 'classes/movie';
+  var url = URL + 'movies/movie';
 
   this.getAllMovies = getAllMovies;
-  this.addMovie = addMovie;
-  this.destroy = destroy;
-  this.toggleFuzzy = toggleFuzzy;
   this.getMovie = getMovie;
-  this.addImage = addImage;
 
   function Movie(movieObj) {
-    this.make = movieObj.make;
-    this.model = movieObj.model;
-    this.year = Number(movieObj.year);
-    this.name = movieObj.name;
-    this.color = movieObj.color;
-    this.fuzzydice = true;
-  }
-
-  function toggleFuzzy(movieObj) {
-    movieObj.fuzzydice = movieObj.fuzzydice ? false : true;
-    return $http.put(url + '/' + movieObj.objectId, movieObj, PARSE.CONFIG);
+    this.Poster = movieObj.Poster;
+    this.Title = movieObj.Title;
+    this.Rated = movieObj.Rated;
+    this.Year = movieObj.Year;
+    this.Released = movieObj.Released;
+    this.Runtime = movieObj.Runtime;
+    this.Director = movieObj.Director;
+    this.Writer = movieObj.Writer;
+    this.Actors = movieObj.Actors;
+    this.Plot = movieObj.Plot;
+    this.Language = movieObj.Language;
+    this.Country = movieObj.Country;
+    this.Awards = movieObj.Awards;
+    this.Metascore = movieObj.Metascore;
+    this.imdbRating = movieObj.imdbRating;
+    this.imdbVotes = movieObj.imdbVotes;
+    this.imdbID = movieObj.imdbID;
+    this.Type = movieObj.Type;
   }
 
   function getAllMovies() {
-    return $http.get(url, PARSE.CONFIG);
+    return $http.get(url, CONFIG);
   }
 
   function getMovie(id) {
-    return $http.get(url + '/' + id, PARSE.CONFIG);
-  }
-
-  function addMovie(movieObj) {
-    var userId = $cookies.get('movie-tracker-user');
-    var c = new Movie(movieObj);
-
-    var ACLObj = {};
-    ACLObj[userId] = {
-      read: true,
-      write: true
-    };
-
-    c.ACL = ACLObj;
-
-    c.user = {
-      __type: 'Pointer',
-      className: '_User',
-      objectId: userId
-    };
-
-    return $http.post(url, c, PARSE.CONFIG);
-  }
-
-  function addImage(imageUrl, movie) {
-    movie.image = imageUrl;
-    return $http.put(url + '/' + movie.objectId, movie, PARSE.CONFIG);
-  }
-
-  function destroy(name) {
-    return console.log(name + ' has been destroyed');
+    return $http.get(url + '/' + id, CONFIG);
   }
 };
 
-MovieService.$inject = ['$http', 'PARSE', '$cookies'];
+MovieService.$inject = ['$http', '$cookies'];
 
 exports['default'] = MovieService;
 module.exports = exports['default'];

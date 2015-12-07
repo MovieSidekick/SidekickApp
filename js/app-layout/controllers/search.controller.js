@@ -1,20 +1,28 @@
-let SearchController = function($scope, $http) {
+let SearchController = function(MovieService) {
 
+// $scope alternative
   let vm = this;
-  
-  let url = '';
 
-// Search OMDB with encoded URI
-  $scope.search = (query) => { 
-    query = encodeURI(query);
+  vm.movies = [];
+  vm.clicked = clicked;
 
-    $http.get(url + '&q=' + query).then( (res) => {
-      $scope.movies = res.data;
+// function to activate MovieService to getAllMovies
+  activate();
+
+// Get all the movies and return results
+  function activate() {
+    MovieService.getAllMovies().then( (res) => {
+      vm.movies = res.data.results;
     });
-  };
+  }
+
+// when click on movie in movies view, go to movie view
+  function clicked (movie) {
+    console.log('clicked', movie.Title);
+  }
 
 };
 
-SearchController.$inject = [$scope, $http];
+SearchController.$inject = [$http];
 
 export default SearchController;

@@ -1,68 +1,41 @@
-let MovieService = function($http, PARSE, $cookies) {
+let MovieService = function($http) {
   
-  let url = PARSE.URL + 'classes/movie';
+  let url = URL + 'movies/movie';
 
   this.getAllMovies   = getAllMovies;
-  this.addMovie       = addMovie;
-  this.destroy      = destroy;
-  this.toggleFuzzy  = toggleFuzzy;
   this.getMovie       = getMovie;
-  this.addImage     = addImage;
 
   function Movie (movieObj) {
-    this.make = movieObj.make;
-    this.model = movieObj.model;
-    this.year = Number(movieObj.year);
-    this.name = movieObj.name;
-    this.color = movieObj.color;
-    this.fuzzydice = true;
-  }
-
-  function toggleFuzzy (movieObj) {
-    movieObj.fuzzydice = movieObj.fuzzydice ? false : true;
-    return $http.put(url + '/' + movieObj.objectId, movieObj, PARSE.CONFIG);
+    this.Poster = movieObj.Poster;
+    this.Title = movieObj.Title;
+    this.Rated = movieObj.Rated;
+    this.Year = movieObj.Year;
+    this.Released = movieObj.Released;
+    this.Runtime = movieObj.Runtime;
+    this.Director = movieObj.Director;
+    this.Writer = movieObj.Writer;
+    this.Actors = movieObj.Actors;
+    this.Plot = movieObj.Plot;
+    this.Language = movieObj.Language;
+    this.Country = movieObj.Country;
+    this.Awards = movieObj.Awards;
+    this.Metascore = movieObj.Metascore;
+    this.imdbRating = movieObj.imdbRating;
+    this.imdbVotes = movieObj.imdbVotes;
+    this.imdbID = movieObj.imdbID;
+    this.Type = movieObj.Type;
   }
 
   function getAllMovies () {
-    return $http.get(url, PARSE.CONFIG);
+    return $http.get(url, CONFIG);
   }
 
   function getMovie (id) {
-    return $http.get(url + '/' + id, PARSE.CONFIG);
-  }
-
-  function addMovie (movieObj) {
-    let userId = $cookies.get('movie-tracker-user');
-    let c = new Movie(movieObj);
-
-    let ACLObj = {};
-    ACLObj[userId] = {
-      read: true,
-      write: true
-    };
-
-    c.ACL = ACLObj;
-
-    c.user = {
-      __type: 'Pointer',
-      className: '_User',
-      objectId: userId
-    };
-
-    return $http.post(url, c, PARSE.CONFIG);
-  }
-
-  function addImage (imageUrl, movie) {
-    movie.image = imageUrl;
-    return $http.put(url + '/' + movie.objectId, movie, PARSE.CONFIG);
-  }
-
-  function destroy (name) {
-    return console.log(name + ' has been destroyed');
+    return $http.get(url + '/' + id, CONFIG);
   }
 
 };
 
-MovieService.$inject = ['$http', 'PARSE', '$cookies'];
+MovieService.$inject = ['$http','$cookies'];
 
 export default MovieService;
