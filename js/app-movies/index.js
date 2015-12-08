@@ -6,7 +6,9 @@ import MovieSingleController from './controllers/movie-single.controller';
 
 import MovieService from './services/movie.service';
 
+import moviesItem from './directives/movies.directive';
 import movieItem from './directives/movie.directive';
+
 
 angular
   .module('app.movies', ['app.core'])
@@ -14,3 +16,4 @@ angular
   .controller('MovieSingleController', MovieSingleController)
   .service('MovieService', MovieService)
   .directive('movieItem', movieItem)
+  .directive('moviesItem', moviesItem)

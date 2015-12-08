@@ -16,6 +16,9 @@
     </ul>
   </section>
 </nav>
+
+<movie-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movie-item>
+<div class="panelBig"></div>
 <h3>{{ vm.movie.Title }}</h3>
 
 <movie-item movie="vm.movie"></movie-item>

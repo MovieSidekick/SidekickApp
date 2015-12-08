@@ -22,8 +22,5 @@
  <button id="searchButton">Search</button> 
 </form>
 
-
-<h3>Movie List</h3>
-
-<movie-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movie-item>
+<movies-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movies-item>
 <div class="panel"></div>

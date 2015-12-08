@@ -1,4 +1,4 @@
-let movieItem = function($state, MovieService) {
+let moviesItem = function($state, MovieService) {
   
   return {
     restrict: 'E',
@@ -7,14 +7,14 @@ let movieItem = function($state, MovieService) {
       movie: '='
     },
     template: `
-      <div class="panelBig" ng-click="vm.clicked(movie)">
+      <div class="panel" ng-click="vm.clicked(movie)">
 
-        <h5>{{ movie.title }}  {{ movie.year }}</h5>
+        <h5>{{ movie.title }}  {{ movie.director }}</h5>
         <img src = "{{ movie.poster }}">
         <h5>Starring: {{ movie.actor }}</h5>
 
       </div>
-
+      
     `,
     controller: 'MoviesController as vm',
     link: function (scope, element, attrs) {
@@ -26,6 +26,6 @@ let movieItem = function($state, MovieService) {
 
 };
 
-movieItem.$inject = ['$state', 'MovieService'];
+moviesItem.$inject = ['$state', 'MovieService'];
 
-export default movieItem;
+export default moviesItem;

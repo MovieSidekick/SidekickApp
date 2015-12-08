@@ -5,9 +5,12 @@ let MovieSingleController = function(MovieService, $stateParams) {
 
   activate();
 
+  
+
   function activate () {
     MovieService.getMovie($stateParams.id).then( (res) => {
-      vm.movie = res.data;
+      vm.movies = [res.data.movie];
+      console.log(res.data.movie);
     });
   }
 

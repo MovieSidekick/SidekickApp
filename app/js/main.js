@@ -110,7 +110,7 @@ var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverC
 
 _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('SERVER', _constantsFileserverConstant2['default']).run(_run2['default']);
 
-},{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":21,"angular-cookies":18,"angular-ui-router":19}],4:[function(require,module,exports){
+},{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":22,"angular-cookies":19,"angular-ui-router":20}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -165,7 +165,7 @@ _angular2['default'].module('app.layout', []).controller('HomeController', _cont
 
 // .controller('SearchController', SearchController)
 
-},{"./controllers/home.controller":5,"angular":21}],7:[function(require,module,exports){
+},{"./controllers/home.controller":5,"angular":22}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -179,7 +179,8 @@ var MovieSingleController = function MovieSingleController(MovieService, $stateP
 
   function activate() {
     MovieService.getMovie($stateParams.id).then(function (res) {
-      vm.movie = res.data;
+      vm.movies = [res.data.movie];
+      console.log(res.data.movie);
     });
   }
 };
@@ -244,7 +245,7 @@ var movieItem = function movieItem($state, MovieService) {
     scope: {
       movie: '='
     },
-    template: '\n      <div class="panel" ng-click="vm.clicked(movie)">\n<<<<<<< HEAD\n        <h5>{{ movie.title }} {{ movie.poster }} {{ movie.genre }} {{ movie.actor }}</h5>\n=======\n        <h5>{{ movie.Poster }} {{ movie.Title }} {{ movie.year }}</h5>\n>>>>>>> jef\n      </div>\n    ',
+    template: '\n      <div class="panelBig" ng-click="vm.clicked(movie)">\n\n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n\n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
@@ -260,6 +261,35 @@ exports['default'] = movieItem;
 module.exports = exports['default'];
 
 },{}],10:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var moviesItem = function moviesItem($state, MovieService) {
+
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      movie: '='
+    },
+    template: '\n      <div class="panel" ng-click="vm.clicked(movie)">\n\n        <h5>{{ movie.title }}  {{ movie.director }}</h5>\n        <img src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
+    controller: 'MoviesController as vm',
+    link: function link(scope, element, attrs) {
+      element.on('click', function () {
+        $state.go('root.singleMovie', { id: scope.movie.title });
+      });
+    }
+  };
+};
+
+moviesItem.$inject = ['$state', 'MovieService'];
+
+exports['default'] = moviesItem;
+module.exports = exports['default'];
+
+},{}],11:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -282,13 +312,17 @@ var _servicesMovieService = require('./services/movie.service');
 
 var _servicesMovieService2 = _interopRequireDefault(_servicesMovieService);
 
+var _directivesMoviesDirective = require('./directives/movies.directive');
+
+var _directivesMoviesDirective2 = _interopRequireDefault(_directivesMoviesDirective);
+
 var _directivesMovieDirective = require('./directives/movie.directive');
 
 var _directivesMovieDirective2 = _interopRequireDefault(_directivesMovieDirective);
 
-_angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('MovieSingleController', _controllersMovieSingleController2['default']).service('MovieService', _servicesMovieService2['default']).directive('movieItem', _directivesMovieDirective2['default']);
+_angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('MovieSingleController', _controllersMovieSingleController2['default']).service('MovieService', _servicesMovieService2['default']).directive('movieItem', _directivesMovieDirective2['default']).directive('moviesItem', _directivesMoviesDirective2['default']);
 
-},{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies.controller":8,"./directives/movie.directive":9,"./services/movie.service":11,"angular":21}],11:[function(require,module,exports){
+},{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies.controller":8,"./directives/movie.directive":9,"./directives/movies.directive":10,"./services/movie.service":12,"angular":22}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -296,7 +330,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 var MovieService = function MovieService($http, SERVER, $cookies) {
 
-  var url = 'https://floating-mountain-2068.herokuapp.com/movies';
+  var url = 'https://floating-mountain-2068.herokuapp.com/movies/';
 
   this.getAllMovies = getAllMovies;
   this.getMovie = getMovie;
@@ -327,8 +361,8 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
   }
 
   function getMovie(ourTitle) {
-    return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
     console.log(ourTitle);
+    return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
   }
 };
 
@@ -337,7 +371,7 @@ MovieService.$inject = ['$http', 'SERVER', '$cookies'];
 exports['default'] = MovieService;
 module.exports = exports['default'];
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 // let LoginController = function($scope, UserService, $cookies, $state) {
 
 //   let vm = this;
@@ -380,7 +414,7 @@ LoginController.$inject = ['UserService'];
 exports['default'] = LoginController;
 module.exports = exports['default'];
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -404,7 +438,7 @@ SignupController.$inject = ['UserService'];
 exports['default'] = SignupController;
 module.exports = exports['default'];
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -427,7 +461,7 @@ var _servicesUserService2 = _interopRequireDefault(_servicesUserService);
 
 _angular2['default'].module('app.user', ['app.core']).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('UserService', _servicesUserService2['default']);
 
-},{"./controllers/login.controller":12,"./controllers/signup.controller":13,"./services/user.service":15,"angular":21}],15:[function(require,module,exports){
+},{"./controllers/login.controller":13,"./controllers/signup.controller":14,"./services/user.service":16,"angular":22}],16:[function(require,module,exports){
 // let UserService = function($http, SERVER, $cookies, $state) {
 
 //   console.log(SERVER);
@@ -530,7 +564,7 @@ UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
 exports['default'] = UserService;
 module.exports = exports['default'];
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 // Import our core files
 'use strict';
 
@@ -552,7 +586,7 @@ require('./app-user/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.movies', 'app.user']);
 
-},{"./app-core/index":3,"./app-layout/index":6,"./app-movies/index":10,"./app-user/index":14,"angular":21}],17:[function(require,module,exports){
+},{"./app-core/index":3,"./app-layout/index":6,"./app-movies/index":11,"./app-user/index":15,"angular":22}],18:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -875,11 +909,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":17}],19:[function(require,module,exports){
+},{"./angular-cookies":18}],20:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -5250,7 +5284,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34269,11 +34303,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":20}]},{},[16])
+},{"./angular":21}]},{},[17])
 
 
 //# sourceMappingURL=main.js.map

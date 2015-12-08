@@ -1,6 +1,6 @@
 let MovieService = function($http, SERVER, $cookies) {
   
- let url = 'https://floating-mountain-2068.herokuapp.com/movies';
+ let url = 'https://floating-mountain-2068.herokuapp.com/movies/';
 
  this.getAllMovies   = getAllMovies;
  this.getMovie       = getMovie;
@@ -31,8 +31,9 @@ let MovieService = function($http, SERVER, $cookies) {
  }
 
  function getMovie (ourTitle) {
+  console.log(ourTitle);
    return $http.post(url, { type: 'title', title: ourTitle}, SERVER);
-   console.log(ourTitle);
+   
  
 }
  
