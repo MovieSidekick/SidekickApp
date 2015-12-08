@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
@@ -19,27 +17,10 @@
   </section>
 </nav>
 
-<form ng-submit="vm.search(query)" id="searchForm">
- <input type="text" placeholder="Movie or Series Title" ng-model="query" required/>
- <button id="searchButton">Search</button> 
-</form>
-
-<ul>
- <li class="movieListing" ng-repeat="movie in movies">{{ vm.movie.Poster }} {{ vm.movie.Title }}</li>
-</ul>
-=======
-<p>NAV = Logo | Home | My Movies/Reviews | My Profile</p>
-
-<!-- <form ng-submit="search(query)" id="searchForm">
-  <input type="text" placeholder="Movie or Series Title" ng-model="queryss" required/>
-  <input type="button" value="Search" id="searchButton"/> 
-</form> -->
-=======
 <form ng-submit="search(query)" id="searchForm">
   <input type="text" placeholder="Movie or Series Title" ng-model="query" required/>
   <button id="searchButton">Search</button> 
 </form>
->>>>>>> jef
 
 <ul>
   <li class="movieListing" ng-repeat="movie in movies">{{ vm.movie.Poster }} {{ vm.movie.Title }}</li>
@@ -48,4 +29,3 @@
 <h3>Welcome user.user_name </h3>
 
 <button ng-click="logmeout()">LogOut</button>
->>>>>>> 537a932ceaf27ae7fe97aecaeb18a9e147628c61

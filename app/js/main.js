@@ -161,7 +161,9 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-_angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']).controller('SearchController', SearchController);
+_angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']);
+
+// .controller('SearchController', SearchController)
 
 },{"./controllers/home.controller":5,"angular":21}],7:[function(require,module,exports){
 'use strict';
@@ -169,7 +171,7 @@ _angular2['default'].module('app.layout', []).controller('HomeController', _cont
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var MovieSingleController = function MovieSingleController(MovieService) {
+var MovieSingleController = function MovieSingleController(MovieService, $stateParams) {
 
   var vm = this;
 
@@ -293,39 +295,42 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var url = 'https://floating-mountain-2068.herokuapp.com/movies';
+var MovieService = function MovieService($http, SERVER, $cookies) {
 
-undefined.getAllMovies = getAllMovies;
-undefined.getMovie = getMovie;
+  var url = 'https://floating-mountain-2068.herokuapp.com/movies';
 
-function Movie(movie) {
-  this.Poster = movie.Poster;
-  this.Title = movie.Title;
-  this.Rated = movie.Rated;
-  this.Year = movie.Year;
-  this.Released = movie.Released;
-  this.Runtime = movie.Runtime;
-  this.Director = movie.Director;
-  this.Writer = movie.Writer;
-  this.Actors = movie.Actors;
-  this.Plot = movie.Plot;
-  this.Language = movie.Language;
-  this.Country = movie.Country;
-  this.Awards = movie.Awards;
-  this.Metascore = movie.Metascore;
-  this.imdbRating = movie.imdbRating;
-  this.imdbVotes = movie.imdbVotes;
-  this.imdbID = movie.imdbID;
-  this.Type = movie.Type;
-}
+  this.getAllMovies = getAllMovies;
+  this.getMovie = getMovie;
 
-function getAllMovies() {
-  return $http.get(url, SERVER);
-}
+  function Movie(movie) {
+    this.Poster = movie.Poster;
+    this.Title = movie.Title;
+    this.Rated = movie.Rated;
+    this.Year = movie.Year;
+    this.Released = movie.Released;
+    this.Runtime = movie.Runtime;
+    this.Director = movie.Director;
+    this.Writer = movie.Writer;
+    this.Actors = movie.Actors;
+    this.Plot = movie.Plot;
+    this.Language = movie.Language;
+    this.Country = movie.Country;
+    this.Awards = movie.Awards;
+    this.Metascore = movie.Metascore;
+    this.imdbRating = movie.imdbRating;
+    this.imdbVotes = movie.imdbVotes;
+    this.imdbID = movie.imdbID;
+    this.Type = movie.Type;
+  }
 
-function getMovie(ourTitle) {
-  return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
-  console.log(ourTitle);
+  function getAllMovies() {
+    return $http.get(url, SERVER);
+  }
+
+  function getMovie(ourTitle) {
+    return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
+    console.log(ourTitle);
+  }
 };
 
 MovieService.$inject = ['$http', 'SERVER', '$cookies'];

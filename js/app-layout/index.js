@@ -8,5 +8,5 @@ angular
   .controller('HomeController', HomeController)
 
 
-  .controller('SearchController', SearchController)
+ // .controller('SearchController', SearchController)
 ;

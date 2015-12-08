@@ -1,4 +1,4 @@
-let MovieSingleController = function(MovieService) {
+let MovieSingleController = function(MovieService, $stateParams) {
   
   let vm = this;
 
