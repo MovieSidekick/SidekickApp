@@ -17,15 +17,13 @@
   </section>
 </nav>
 
+<div class="movieDetails">
 <movie-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movie-item>
-<div class="panelBig"></div>
-<h3>{{ vm.movie.Title }}</h3>
+</div>
 
-<movie-item movie="vm.movie"></movie-item>
+<!-- <div class="panelBig"></div> -->
 
-<img ng-show="vm.movie.Poster" ng-src="{{ vm.movie.Poster }}">
-
-<ul class="movieDetails">
+<!-- <ul class="movieDetails">
   <li>{{ vm.movie.Year }}</li>
   <li>{{ vm.movie.Rated }}</li>
   <li>{{ vm.movie.Released }}</li>
@@ -43,26 +41,43 @@
   <li>{{ vm.movie.imdbVotes }}</li>
   <li>{{ vm.movie.imdbID }}</li>
   <li>{{ vm.movie.Type }}</li>
-</ul>
+</ul> -->
 
 
-<ng-repeat></ng-repeat>
-<p>Sample Movie</p>
-<p>Review</p>
-<form class="reviewForm">
-  <label>Seen this movie?  Write your own review.
+<!-- <ng-repeat></ng-repeat>
+<p>Sample Movie</p> -->
+
+<div class="starRating">
+<h4>Rate a Movie</h4>
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+<div class="stars">
+  <form action>
+    <input class="star star-5" id="star-5" type="radio" name="star"/>
+    <label class="star star-5" for="star-5"></label>
+    <input class="star star-4" id="star-4" type="radio" name="star"/>
+    <label class="star star-4" for="star-4"></label>
+    <input class="star star-3" id="star-3" type="radio" name="star"/>
+    <label class="star star-3" for="star-3"></label>
+    <input class="star star-2" id="star-2" type="radio" name="star"/>
+    <label class="star star-2" for="star-2"></label>
+    <input class="star star-1" id="star-1" type="radio" name="star"/>
+    <label class="star star-1" for="star-1"></label>
+  </form>
+</div>
+</div>
+
+<div id="addReview">
+  <form ng-submit="vm.addReview(review)" class="reviewForm">
+    <h4>Write a Review</h4>
     <textarea maxlength="500"></textarea>
     <button class="something">Add Review</button>
-  </label>
+  </form>
+</div>
 
-<form ng-submit="vm.addReview(review)"" class="reviewForm">
-  <label>Seen this movie?  Write your own review.<textarea maxlength="500">
-  </textarea></label>
-  <button id="saveReviewButton">Save</button>
-</form>
-
-<div class="movieReviews" ng-repeat="review in vm.reviews">
+<!-- <div class="movieReviews" ng-repeat="review in vm.reviews">
   <ul>
     <li> {{ vm.movie.imdbID }} {{ vm.reviews.review }} </li>
   </ul>
-</div>
+</div> -->
