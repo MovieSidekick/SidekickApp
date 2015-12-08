@@ -1,8 +1,4 @@
-MoviesController.$inject = ['MovieService'];
 
-export default MoviesController;
-
-​[3:20] 
 let MovieService = function($http, SERVER, $cookies) {
  
  let url = 'https://floating-mountain-2068.herokuapp.com/movies';

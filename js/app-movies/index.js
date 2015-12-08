@@ -14,4 +14,3 @@ angular
   .controller('MovieSingleController', MovieSingleController)
   .service('MovieService', MovieService)
   .directive('movieItem', movieItem)
-;
