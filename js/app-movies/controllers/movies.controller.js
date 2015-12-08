@@ -13,6 +13,8 @@ let MoviesController = function(MovieService) {
    });
  }
 
+ 
+
 
     function search (query) {
     MovieService.getMovie(query).then( (res) => {

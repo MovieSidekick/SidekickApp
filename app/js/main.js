@@ -141,6 +141,7 @@ var HomeController = function HomeController(SERVER) {
   vm.title = 'Home Page';
 
   vm.name = 'user_name';
+  console.log(vm.name);
 };
 
 HomeController.$inject = ['SERVER'];
@@ -274,7 +275,7 @@ var moviesItem = function moviesItem($state, MovieService) {
     scope: {
       movie: '='
     },
-    template: '\n      <div class="panel" ng-click="vm.clicked(movie)">\n\n        <h5>{{ movie.title }}  {{ movie.director }}</h5>\n        <img src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
+    template: '\n      <div class="panel" ng-click="vm.clicked(movie)">\n\n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {

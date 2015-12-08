@@ -21,8 +21,10 @@
  let LoginController = function(UserService) {
   
    let vm = this;
-
-   this.login = login;
+   
+   
+  
+    this.login = login;
 
    function login (userObj) {
      UserService.login(userObj).then( (res) => {
