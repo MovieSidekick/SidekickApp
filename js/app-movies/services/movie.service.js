@@ -42,7 +42,7 @@ function addStarRating () {
 
  function getStarRating (starRating) {
   console.log(starRating);
-   return $http.post(url, { ? }, SERVER); 
+   return $http.post(url, {  }, SERVER); 
 }
 
 function addReview () {
@@ -52,7 +52,7 @@ function addReview () {
 
 function getReview (review) {
   console.log(review);
-   return $http.post(url, { imdbID???? }, SERVER); 
+   return $http.post(url, { imdbID }, SERVER); 
 }
  
 };

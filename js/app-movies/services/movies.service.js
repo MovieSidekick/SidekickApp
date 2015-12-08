@@ -37,8 +37,6 @@ let MovieService = function($http, SERVER, $cookies) {
     console.log(data);
   }
 
-  
-
 };
 
 MovieService.$inject = ['$http', 'SERVER','$cookies'];

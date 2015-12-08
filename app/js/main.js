@@ -370,9 +370,19 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
     return $http.post(url, { user: 'user_name', review: 'value' }, SERVER);
   }
 
+  function getStarRating(starRating) {
+    console.log(starRating);
+    return $http.post(url, {}, SERVER);
+  }
+
   function addReview() {
     var value = $('#reviewText').val();
     return $http.post(url, { user: 'user_name', review: 'value' }, SERVER);
+  }
+
+  function getReview(review) {
+    console.log(review);
+    return $http.post(url, { imdbID: imdbID }, SERVER);
   }
 };
 
