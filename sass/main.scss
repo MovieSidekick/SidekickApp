@@ -191,10 +191,10 @@ hr {
 #searchForm {
   width: 500px;
   margin: 50px auto;
-::-webkit-input-placeholder::before { font-family: fontAwesome; content:'\f002  '; color: #DC143C }
-::-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; color: #DC143C } /* firefox 19+ */
-:-ms-input-placeholder::before  { font-family: fontAwesome; content:'\f002  '; color: #DC143C } /* ie */
-input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; color: #DC143C }
+::-webkit-input-placeholder::before { font-family: fontAwesome; content:'\f002  '; color: #DC143C }
+::-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; color: #DC143C } /* firefox 19+ */
+:-ms-input-placeholder::before  { font-family: fontAwesome; content:'\f002  '; color: #DC143C } /* ie */
+input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; color: #DC143C }
 }
 
 .search {
@@ -229,6 +229,3 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  ';
 textarea {
   height: 150px;
 }
-
-
-
