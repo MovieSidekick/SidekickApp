@@ -292,7 +292,6 @@ _angular2['default'].module('app.movies', ['app.core']).controller('MoviesContro
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-
 var url = 'https://floating-mountain-2068.herokuapp.com/movies';
 
 undefined.getAllMovies = getAllMovies;

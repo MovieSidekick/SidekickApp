@@ -1,8 +1,3 @@
-
-
-  
-
- 
  let url = 'https://floating-mountain-2068.herokuapp.com/movies';
 
  this.getAllMovies   = getAllMovies;
