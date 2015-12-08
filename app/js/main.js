@@ -364,6 +364,16 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
     console.log(ourTitle);
     return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
   }
+
+  function addStarRating() {
+    var value = $('#reviewText').val();
+    return $http.post(url, { user: 'user_name', review: 'value' }, SERVER);
+  }
+
+  function addReview() {
+    var value = $('#reviewText').val();
+    return $http.post(url, { user: 'user_name', review: 'value' }, SERVER);
+  }
 };
 
 MovieService.$inject = ['$http', 'SERVER', '$cookies'];
