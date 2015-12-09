@@ -24,11 +24,11 @@
    
    
   
-    this.login = login;
+    vm.login = login;
 
-   function login (userObj) {
-     UserService.login(userObj).then( (res) => {
-       UserService.storeAuth(res.data);
+   function login (user) {
+     UserService.login(user).then( (res) => {
+       UserService.storeAuth(res.data.user);
      });
    }
 

@@ -4,6 +4,7 @@ let MovieService = function($http, SERVER, $cookies) {
 
   this.getAllMovies   = getAllMovies;
   this.getMovie       = getMovie;
+  this.getId = getId;
 
   function Movie (movie) {
     this.Poster = movie.Poster;
@@ -30,6 +31,10 @@ let MovieService = function($http, SERVER, $cookies) {
     return $http.get(url, SERVER);
     
   }
+  function getId (id) {
+ console.log(id);
+ return $http.post(url, SERVER, $cookies);
+}
 
   function getMovie (ourTitle) {
     return $http.post(url, { type: 'title', title: ourTitle}, SERVER)

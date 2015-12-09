@@ -1,9 +1,13 @@
 let MovieService = function($http, SERVER, $cookies) {
   
- let url = 'https://floating-mountain-2068.herokuapp.com/movies/';
+ let url = 'https://floating-mountain-2068.herokuapp.com/';
 
+ //this.getUser         = getUser;
  this.getAllMovies   = getAllMovies;
  this.getMovie       = getMovie;
+ //this.getId = getId;
+
+ 
 
  function Movie (movie) {
    this.Poster = movie.Poster;
@@ -27,12 +31,18 @@ let MovieService = function($http, SERVER, $cookies) {
  }
 
  function getAllMovies () {
-   return $http.get(url, SERVER);
+   return $http.get(url + 'movies', SERVER);
  }
+
+// function getUser (user) {
+//    return $cookies.get('movie-tracker-auth', $cookies, SERVER);
+//      console.log(user);
+//      }
+  
 
  function getMovie (ourTitle) {
   console.log(ourTitle);
-   return $http.post(url, { type: 'title', title: ourTitle}, SERVER);
+   return $http.post(url + 'movies', { type: 'title', title: ourTitle}, SERVER);
    
  
 }
