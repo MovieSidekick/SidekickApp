@@ -1,0 +1,36 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href class="toptitle"="#/">Profile<i class="fa fa-film"></i> Sidekick</a>
+      </h1>
+    </li>
+    
+  </ul>
+  <section class="top-bar-section">
+
+    <ul class="right">  
+      <li><a href="#/movies">My Movies/Reviews</a></li>
+      <li><a href="#/profile">My Profile(needs to be fixed)</a></li>    
+      <li><a href="#/login">Back to Login Page</a></li>
+      <li><a href="#/home">Home</a></li>
+    </ul>
+  </section>
+</nav>
+
+<div class="profile">
+<div class="profileDetails">
+<user-item id="user-{{ $index }}" ng-repeat="p in vm.users" movie="p"></user-item>
+</div>
+
+<div id="profilePic">
+  <img src="https://static.tagboard.com/public/img/profile_placeholder.jpg" />
+</div>
+<div class="profileDetails">
+  <ul id#="profileList">
+    <li id="profileName"><label>User Name:</label> John Doe</li>
+    <li id="profileEmail"><label>Email:</label> jdoe@movielover.com</li>
+  </ul>
+</div>
+</div>
+
+<review-item id="review-{{ $index }}" ng-repeat="r in vm.reviews" review="r"></review-item>

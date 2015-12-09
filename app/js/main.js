@@ -49,6 +49,14 @@ var config = function config($stateProvider, $urlRouterProvider) {
   //   templateUrl: 'templates/app-movies/movie-single.tpl.html'
   // })
 
+  // User Profile
+  .state('root.profile', {
+    // url: '/user/:id',
+    url: '/profile',
+    controller: 'ProfileController as vm',
+    templateUrl: 'templates/app-user/profile.tpl.html'
+  })
+
   // Signup
   .state('root.signup', {
     url: '/signup',
@@ -110,7 +118,7 @@ var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverC
 
 _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('SERVER', _constantsFileserverConstant2['default']).run(_run2['default']);
 
-},{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":22,"angular-cookies":19,"angular-ui-router":20}],4:[function(require,module,exports){
+},{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":25,"angular-cookies":22,"angular-ui-router":23}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -166,7 +174,7 @@ _angular2['default'].module('app.layout', []).controller('HomeController', _cont
 
 // .controller('SearchController', SearchController)
 
-},{"./controllers/home.controller":5,"angular":22}],7:[function(require,module,exports){
+},{"./controllers/home.controller":5,"angular":25}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -332,7 +340,7 @@ var _directivesMovieDirective2 = _interopRequireDefault(_directivesMovieDirectiv
 
 _angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('MovieSingleController', _controllersMovieSingleController2['default']).service('MovieService', _servicesMovieService2['default']).directive('movieItem', _directivesMovieDirective2['default']).directive('moviesItem', _directivesMoviesDirective2['default']);
 
-},{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies.controller":8,"./directives/movie.directive":9,"./directives/movies.directive":10,"./services/movie.service":12,"angular":22}],12:[function(require,module,exports){
+},{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies.controller":8,"./directives/movie.directive":9,"./directives/movies.directive":10,"./services/movie.service":12,"angular":25}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -381,6 +389,26 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
     console.log(ourTitle);
     return $http.post(url + 'movies', { type: 'title', title: ourTitle }, SERVER);
   }
+
+  function addStarRating() {
+    var value = $('#reviewText').val();
+    return $http.post(url, { user: 'user_name', review: 'value' }, SERVER);
+  }
+
+  function getStarRating(starRating) {
+    console.log(starRating);
+    return $http.post(url, {}, SERVER);
+  }
+
+  function addReview() {
+    var value = $('#reviewText').val();
+    return $http.post(url, { user: 'user_name', review: 'value' }, SERVER);
+  }
+
+  function getReview(review) {
+    console.log(review);
+    return $http.post(url, { imdbID: imdbID }, SERVER);
+  }
 };
 
 MovieService.$inject = ['$http', 'SERVER', '$cookies'];
@@ -389,25 +417,6 @@ exports['default'] = MovieService;
 module.exports = exports['default'];
 
 },{}],13:[function(require,module,exports){
-// let LoginController = function($scope, UserService, $cookies, $state) {
-
-//   let vm = this;
-
-//   this.login = login;
-
-//   $scope.login = function (user) {
-//     UserService.sendLogin(user).then( (res) => {
-//       UserService.loginSuccess(res);
-//       $state.go('/');
-//     });
-//   };
-
-// };
-
-// LoginController.$inject = ['$scope', 'UserService', '$cookies', '$state'];
-
-//export default LoginController;
-
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -437,6 +446,31 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var ProfileController = function ProfileController(ProfileService, UserService, $stateParams) {
+
+  var vm = this;
+
+  activate();
+
+  function activate() {
+    ProfileService.getUser($stateParams.id).then(function (res) {
+      vm.user = [res.data.user];
+      console.log(res.data.user);
+    });
+  }
+};
+
+ProfileController.$inject = ['ProfileService', 'UserService', '$stateParams'];
+
+exports['default'] = ProfileController;
+module.exports = exports['default'];
+
+},{}],15:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 var SignupController = function SignupController(UserService) {
 
   var vm = this;
@@ -455,7 +489,36 @@ SignupController.$inject = ['UserService'];
 exports['default'] = SignupController;
 module.exports = exports['default'];
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var profileItem = function profileItem($state, ProfileService) {
+
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      user: '='
+    },
+    template: '\n      <div class="panelBig" ng-click="vm.clicked(user)">\n        <div class = "panelLeft"> \n          <h5>{{ user.user_name }}</h5></li>\n          <img src = "{{ user.pic }}">\n        </div>\n        <div class="panelRight">\n          <ul>\n          <li><span class="bold">User Name:  </span>{{ user_name }}</li><hr>\n          <li><span class="bold">User Email:  </span>{{ email }}</li>\n          \n          \n          </ul>\n          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>\n        </div>\n\n      </div>\n\n    ',
+    controller: 'ProfileController as vm',
+    link: function link(scope, element, attrs) {
+      element.on('click', function () {
+        $state.go('root.profile', { id: scope.user.user_name });
+      });
+    }
+  };
+};
+
+profileItem.$inject = ['$state', 'ProfileService'];
+
+exports['default'] = profileItem;
+module.exports = exports['default'];
+
+},{}],17:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -472,66 +535,60 @@ var _controllersSignupController = require('./controllers/signup.controller');
 
 var _controllersSignupController2 = _interopRequireDefault(_controllersSignupController);
 
+var _controllersProfileController = require('./controllers/profile.controller');
+
+var _controllersProfileController2 = _interopRequireDefault(_controllersProfileController);
+
+var _directivesProfileDirective = require('./directives/profile.directive');
+
+var _directivesProfileDirective2 = _interopRequireDefault(_directivesProfileDirective);
+
 var _servicesUserService = require('./services/user.service');
 
 var _servicesUserService2 = _interopRequireDefault(_servicesUserService);
 
-_angular2['default'].module('app.user', ['app.core']).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('UserService', _servicesUserService2['default']);
+var _servicesProfileService = require('./services/profile.service');
 
-},{"./controllers/login.controller":13,"./controllers/signup.controller":14,"./services/user.service":16,"angular":22}],16:[function(require,module,exports){
-// let UserService = function($http, SERVER, $cookies, $state) {
+var _servicesProfileService2 = _interopRequireDefault(_servicesProfileService);
 
-//   console.log(SERVER);
+_angular2['default'].module('app.user', ['app.core']).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).controller('ProfileController', _controllersProfileController2['default']).directive('profileItem', _directivesProfileDirective2['default']).service('UserService', _servicesUserService2['default']).service('ProfileService', _servicesProfileService2['default']);
 
-//   this.checkAuth = function () {
+},{"./controllers/login.controller":13,"./controllers/profile.controller":14,"./controllers/signup.controller":15,"./directives/profile.directive":16,"./services/profile.service":18,"./services/user.service":19,"angular":25}],18:[function(require,module,exports){
+'use strict';
 
-//     let token = $cookies.get('access_token');
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var ProfileService = function ProfileService($http, SERVER, $cookies) {
 
-//     SERVER.CONFIG.headers['Access-Token'] = token;
+  var url = 'https://floating-mountain-2068.herokuapp.com/users/';
 
-//     if (token) {
-//       return $http.get(SERVER.URL + 'check', SERVER.CONFIG);
-//     } else {
-//       $state.go('root.login');
-//     }
+  this.getAllUsers = getAllUsers;
+  this.getUser = getUser;
 
-//   };
+  function User(userObj) {
+    this.user_name = user.user_name;
+    this.pic = user.pic;
+    this.email = user.email;
+    this.review = user.review;
+  }
 
-//   this.sendLogin = function (userObj) {
-//     return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
-//   };
+  function getAllUsers() {
+    return $http.get(url, SERVER);
+  }
 
-//   this.loginSuccess = function (res) {
+  function getUser(userObj) {
+    console.log(userObj);
+    return $http.get(url, { user_name: user.user_name, pic: user.pic, email: user.email }, SERVER);
+  }
+};
 
-//     $cookies.put('access_token', res.data.user.access_token);
-//     SERVER.CONFIG.headers['Access-Token'] = res.data.user.access_token;
-//     $state.go('/');
+ProfileService.$inject = ['$http', 'SERVER', '$cookies'];
 
-//   };
+exports['default'] = ProfileService;
+module.exports = exports['default'];
 
-//   this.logout = function () {
-//     $cookies.remove('access_token');
-//     SERVER.CONFIG.headers['Access-Token'] = null;
-//     $state.go('root.login');
-//   };
-
-//   let Account = function(obj) {
-//     this.user_name = obj.user_name;
-//     this.email = obj.email;
-//     this.password = obj.password;
-//   };
-
-//   this.signUp = function (user) {
-//     let u = new Account(user);
-//     return $http.post(SERVER.URL + 'signup', u, SERVER.CONFIG);
-//   };
-
-// };
-
-// UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
-
-// export default UserService;
-
+},{}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -583,7 +640,7 @@ UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
 exports['default'] = UserService;
 module.exports = exports['default'];
 
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 // Import our core files
 'use strict';
 
@@ -605,7 +662,7 @@ require('./app-user/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.movies', 'app.user']);
 
-},{"./app-core/index":3,"./app-layout/index":6,"./app-movies/index":11,"./app-user/index":15,"angular":22}],18:[function(require,module,exports){
+},{"./app-core/index":3,"./app-layout/index":6,"./app-movies/index":11,"./app-user/index":17,"angular":25}],21:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -928,11 +985,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],19:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":18}],20:[function(require,module,exports){
+},{"./angular-cookies":21}],23:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -5303,7 +5360,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],21:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34322,11 +34379,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],22:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":21}]},{},[17])
+},{"./angular":24}]},{},[20])
 
 
 //# sourceMappingURL=main.js.map

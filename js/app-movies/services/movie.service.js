@@ -33,18 +33,30 @@ let MovieService = function($http, SERVER, $cookies) {
  function getAllMovies () {
    return $http.get(url + 'movies', SERVER);
  }
-
-// function getUser (user) {
-//    return $cookies.get('movie-tracker-auth', $cookies, SERVER);
-//      console.log(user);
-//      }
   
-
- function getMovie (ourTitle) {
+function getMovie (ourTitle) {
   console.log(ourTitle);
-   return $http.post(url + 'movies', { type: 'title', title: ourTitle}, SERVER);
-   
- 
+  return $http.post(url + 'movies', { type: 'title', title: ourTitle}, SERVER);
+   }
+
+function addStarRating () {
+   var value = $('#reviewText').val();
+   return $http.post(url, { user: 'user_name', review: 'value'}, SERVER);
+}
+
+ function getStarRating (starRating) {
+  console.log(starRating);
+   return $http.post(url, {  }, SERVER); 
+}
+
+function addReview () {
+   var value = $('#reviewText').val();
+   return $http.post(url, { user: 'user_name', review: 'value'}, SERVER);
+}
+
+function getReview (review) {
+  console.log(review);
+   return $http.post(url, { imdbID }, SERVER); 
 }
  
 };
