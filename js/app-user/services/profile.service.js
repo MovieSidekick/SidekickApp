@@ -2,23 +2,23 @@ let ProfileService = function($http, SERVER, $cookies) {
   
  let url = 'https://floating-mountain-2068.herokuapp.com/users/';
 
- this.getAllProfiles   = getAllProfiles;
- this.getProfile       = getProfile;
+ this.getAllUsers   = getAllUsers;
+ this.getUser       = getUser;
 
- function Profile (user) {
+ function User (userObj) {
    this.user_name = user.user_name;
    this.pic = user.pic;
    this.email = user.email;
    this.review = user.review;
  }
 
- function getAllProfiles () {
+ function getAllUsers () {
    return $http.get(url, SERVER);
  }
 
- function getProfile (user) {
-  console.log(user);
-   return $http.post(url, { user_name: '', pic: '', email: '', review: ''}, SERVER); 
+ function getUser (userObj) {
+  console.log(userObj);
+   return $http.get(url, { user_name: user.user_name, pic: user.pic, email: user.email}, SERVER); 
 }
  
 };
