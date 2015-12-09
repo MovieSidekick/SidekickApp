@@ -230,6 +230,7 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
   cursor: pointer;
   width: 500px;
   margin: 50px auto;
+  background-color: blue;
 }
 
 .movieDetails {
@@ -297,4 +298,27 @@ label.star:hover { transform: rotate(-15deg) scale(1.3); }
 label.star:before {
   content: '\f006';
   font-family: FontAwesome;
+}
+
+.profile {
+  margin-top: 30px;
+}
+
+#profilePic {
+  margin-left: 300px;
+  border: 1px solid black;
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+  float: left;
+}
+
+.profileDetails {
+  list-style: none;
+  float: left;
+  margin-left: 30px;
+}
+
+li {
+  list-style: none;
 }

@@ -5,6 +5,7 @@ let HomeController = function(SERVER) {
   vm.title = 'Home Page';
 
   vm.name = 'user_name';
+  console.log(vm.name);
   
 
 };

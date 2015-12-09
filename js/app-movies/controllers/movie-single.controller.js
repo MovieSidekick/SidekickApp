@@ -2,10 +2,7 @@ let MovieSingleController = function(MovieService, $stateParams) {
   
   let vm = this;
 
-
   activate();
-
-  
 
   function activate () {
     MovieService.getMovie($stateParams.id).then( (res) => {

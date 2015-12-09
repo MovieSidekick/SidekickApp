@@ -45,6 +45,14 @@ let config = function($stateProvider, $urlRouterProvider) {
     //   templateUrl: 'templates/app-movies/movie-single.tpl.html'
     // })
 
+    // User Profile
+    .state('root.profile', {
+      // url: '/user/:id',
+      url: '/profile',
+      controller: 'ProfileController as vm',
+      templateUrl: 'templates/app-user/profile.tpl.html'
+    })
+
     // Signup
     .state('root.signup', {
       url: '/signup',
