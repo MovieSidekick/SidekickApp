@@ -8421,7 +8421,7 @@ button {
   border-radius: 50pt; }
 
 h3, h4, p {
-  font-family: "Slabo", serif; }
+  font-family: "Source Code Pro"; }
 
 h3 {
   font-size: 20pt; }
@@ -8452,13 +8452,18 @@ hr {
   color: #EEE8CD; }
 
 .loginContainer {
+  width: 350px;
   float: right;
   margin-right: 50pt;
   margin-top: 15pt;
   border: 2px solid black;
   border-radius: 50pt;
   padding: 20pt;
-  background-color: #EEE8CD; }
+  background-color: #EEE8CD;
+  font-family: "Slabo", serif; }
+
+.loginContainer h3 {
+  font-family: "Slabo", serif; }
 
 .masterContainer {
   margin: 20px auto;
@@ -8483,7 +8488,8 @@ hr {
   float: left;
   margin-left: 25px;
   padding: 20pt;
-  margin-top: 0pt; }
+  margin-top: 0pt;
+  font-family: "Slabo", serif; }
 
 .signupContainer {
   float: right;
@@ -8571,28 +8577,81 @@ hr {
 .form-inline {
   display: block; }
 
-.panel {
+.panelSmall {
   cursor: pointer;
-  width: 500px;
-  margin: 50px auto;
-  background-color: blue; }
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.panelSmall img {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto; }
+
+.panelBig {
+  display: inline-block;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.panelLeft {
+  float: left;
+  margin-left: 15pt; }
+
+.panelLeft h5 {
+  text-align: center;
+  font-family: "Source Code Pro";
+  font-weight: 900;
+  font-size: 24pt;
+  color: black; }
+
+.panelRight {
+  float: right;
+  max-width: 470px;
+  font-family: "Source Code Pro";
+  margin-top: 40pt; }
+
+.panelRight li {
+  list-style: none; }
+
+.panelRight p {
+  font-size: 20pt;
+  color: #DC143C;
+  text-align: center; }
+
+.bold {
+  font-weight: 900; }
 
 .movieDetails {
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 500px; }
+  float: left; }
 
 #addReview {
   margin-left: auto;
   margin-right: auto;
-  max-width: 500px; }
+  max-width: 450px; }
 
 .reviewForm {
   max-width: 500px; }
 
 textarea {
   height: 150px; }
+
+.ratingContainer {
+  float: left;
+  margin-top: 70px;
+  margin-left: 25px;
+  border: 2px solid black;
+  border-radius: 20pt;
+  padding: 10pt;
+  font-family: "Slabo", serif;
+  background-color: #EEE8CD; }
+
+.ratingContainer h4 {
+  text-align: center;
+  font-family: "Slabo", serif; }
 
 .starRating {
   margin-left: auto;

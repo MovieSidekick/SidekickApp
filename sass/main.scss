@@ -22,15 +22,13 @@ form {
   font-family: $font-fun;
 }
 
-
-
 button {
   background-color: $accent-color1;
   border: 2px solid $accent-color3;
   border-radius: 50pt;
 }
 h3, h4, p{
-  font-family: $font-content;
+  font-family: $font-fun;
 }
 h3 {
   font-size: 20pt;
@@ -64,6 +62,7 @@ hr {
   color: $accent-color2;
 }
 .loginContainer {
+  width: 350px;
   float: right;
   margin-right: 50pt;
   margin-top: 15pt;
@@ -71,7 +70,11 @@ hr {
   border-radius: 50pt;
   padding: 20pt;
   background-color: $accent-color2;
+  font-family: $font-content;
   //display: inline;
+}
+.loginContainer h3{
+  font-family: $font-content;
 }
 
 
@@ -106,6 +109,7 @@ hr {
   margin-left: 25px;
   padding: 20pt;
   margin-top: 0pt;
+  font-family: $font-content;
 }
 .signupContainer {
   float: right;
@@ -226,25 +230,67 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
 .form-inline {
   display: block;
 }
-.panel {
+.panelSmall {
   cursor: pointer;
-  width: 500px;
-  margin: 50px auto;
-  background-color: blue;
+  width: 800px;
+  
+  margin-left: auto;
+  margin-right: auto;
 }
+.panelSmall img{
+  cursor: pointer;
+  
+  
+  margin-left: auto;
+  margin-right: auto;
+}
+.panelBig {
+  display: inline-block;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 
+}
+.panelLeft {
+  float: left;
+  margin-left: 15pt;
+}
+.panelLeft h5{
+  text-align: center;
+  font-family: $font-fun;
+  font-weight: 900;
+  font-size: 24pt;
+  color: $accent-color3;
+}
+.panelRight {
+  float: right;
+  max-width: 470px;
+  font-family: $font-fun;
+  margin-top: 40pt;
+}
+.panelRight li{
+  list-style: none;
+}
+.panelRight p{
+  font-size: 20pt;
+  color: $accent-color1;
+  text-align: center;
+}
+.bold {
+  font-weight: 900;
+}
 .movieDetails {
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 500px;
+  float: left;
  }
 
 //Review form DIV
 #addReview {
   margin-left: auto;
   margin-right: auto;
-  max-width: 500px;
+  max-width: 450px;
 }
 
 //Review form
@@ -256,11 +302,26 @@ textarea {
 }
 
  // Start Rating CSS
+.ratingContainer {
+  float: left;
+  margin-top: 70px;
+  margin-left: 25px;
+  border: 2px solid $accent-color3;
+  border-radius: 20pt;
+  padding: 10pt;
+  font-family: $font-content;
+  background-color: $accent-color2;
 
+}
+.ratingContainer h4 {
+  text-align: center;
+  font-family: $font-content;
+}
  .starRating {
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
+
  }
 
  .stars {

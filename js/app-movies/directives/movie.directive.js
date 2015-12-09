@@ -8,10 +8,28 @@ let movieItem = function($state, MovieService) {
     },
     template: `
       <div class="panelBig" ng-click="vm.clicked(movie)">
-
-        <h5>{{ movie.title }}  {{ movie.year }}</h5>
-        <img src = "{{ movie.poster }}">
-        <h5>Starring: {{ movie.actor }}</h5>
+        <div class = "panelLeft"> 
+          <h5>{{ movie.title }}</h5></li>
+          <img src = "{{ movie.poster }}">
+        </div>
+        <div class="panelRight">
+          <ul>
+          <li><span class="bold">Summary:  </span>{{ movie.plot }}</li><hr>
+          <li><span class="bold">Starring:  </span>{{ movie.actor }}</li>
+          <li><span class="bold">Released:  </span>{{ movie.year }}</li>
+         
+           <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>
+           <li><span class="bold">Director:  </span>{{ movie.director }}</li>
+           <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>
+           
+           
+           
+           
+           <li><span class="bold">Awards:  </span>{{ movie.awards }}</li>
+          
+          </ul>
+          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>
+        </div>
 
       </div>
 

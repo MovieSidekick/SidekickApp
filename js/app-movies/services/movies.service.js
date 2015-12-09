@@ -28,6 +28,7 @@ let MovieService = function($http, SERVER, $cookies) {
 
   function getAllMovies () {
     return $http.get(url, SERVER);
+    
   }
 
   function getMovie (ourTitle) {
