@@ -118,7 +118,7 @@ var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverC
 
 _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('SERVER', _constantsFileserverConstant2['default']).run(_run2['default']);
 
-},{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":25,"angular-cookies":22,"angular-ui-router":23}],4:[function(require,module,exports){
+},{"./config":1,"./constants/fileserver.constant":2,"./run":4,"angular":28,"angular-cookies":25,"angular-ui-router":26}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -174,7 +174,7 @@ _angular2['default'].module('app.layout', []).controller('HomeController', _cont
 
 // .controller('SearchController', SearchController)
 
-},{"./controllers/home.controller":5,"angular":25}],7:[function(require,module,exports){
+},{"./controllers/home.controller":5,"angular":28}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -255,6 +255,41 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var ReviewController = function ReviewController(ReviewService, $stateParams) {
+
+  var vm = this;
+
+  activate();
+
+  function addReview(body) {
+    ReviewService.addReview(review).then(function (res) {
+      ReviewService.storeAuth(res.data);
+    });
+  }
+
+  function activate() {
+    ReviewService.getReview($stateParams.id).then(function (res) {
+      vm.reviews = [res.data.review];
+      console.log(res.data.review);
+    });
+  }
+};
+
+ReviewController.$inject = ['ReviewService', '$stateParams'];
+
+exports['default'] = ReviewController;
+
+// The routes for reviews are up on the heroku server.  The path is /reviews with the post method to create a
+// ew review with the parameter body to be filled in for text field.  Also the show method can be accessed by
+// reviews/:id giving it the id of the review you are looking for.  Also the index method is /reviews.
+module.exports = exports['default'];
+
+},{}],10:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 var movieItem = function movieItem($state, MovieService) {
 
   return {
@@ -278,7 +313,7 @@ movieItem.$inject = ['$state', 'MovieService'];
 exports['default'] = movieItem;
 module.exports = exports['default'];
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -307,7 +342,36 @@ moviesItem.$inject = ['$state', 'MovieService'];
 exports['default'] = moviesItem;
 module.exports = exports['default'];
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var reviewItem = function reviewItem($state, reviewService) {
+
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      review: '='
+    },
+    template: '\n      <div class="panelBig" ng-click="vm.clicked(review)">\n        <div class = "panelLeft"> \n          <h5>{{ movie.title }}</h5></li>\n          <img src = "{{ movie.poster }}">\n        </div>\n        <div class="panelRight">\n          <ul>\n          <li><span class="bold">Reviewer:  </span>{{ users.user_name }}</li><hr>\n          <li><span class="bold">Review:  </span>{{ reviews.review }}</li>\n          <li><span class="bold">IMDB ID:  </span>{{ movie.imdbID }}</li>\n          </ul>\n          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>\n        </div>\n\n      </div>\n\n    ',
+    controller: 'ReviewController as vm',
+    link: function link(scope, element, attrs) {
+      element.on('click', function () {
+        $state.go('root.singleReview', { id: scope.movie.title });
+      });
+    }
+  };
+};
+
+reviewItem.$inject = ['$state', 'reviewService'];
+
+exports['default'] = reviewItem;
+module.exports = exports['default'];
+
+},{}],13:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -326,9 +390,17 @@ var _controllersMovieSingleController = require('./controllers/movie-single.cont
 
 var _controllersMovieSingleController2 = _interopRequireDefault(_controllersMovieSingleController);
 
+var _controllersReviewController = require('./controllers/review.controller');
+
+var _controllersReviewController2 = _interopRequireDefault(_controllersReviewController);
+
 var _servicesMovieService = require('./services/movie.service');
 
 var _servicesMovieService2 = _interopRequireDefault(_servicesMovieService);
+
+var _servicesReviewService = require('./services/review.service');
+
+var _servicesReviewService2 = _interopRequireDefault(_servicesReviewService);
 
 var _directivesMoviesDirective = require('./directives/movies.directive');
 
@@ -338,9 +410,13 @@ var _directivesMovieDirective = require('./directives/movie.directive');
 
 var _directivesMovieDirective2 = _interopRequireDefault(_directivesMovieDirective);
 
-_angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('MovieSingleController', _controllersMovieSingleController2['default']).service('MovieService', _servicesMovieService2['default']).directive('movieItem', _directivesMovieDirective2['default']).directive('moviesItem', _directivesMoviesDirective2['default']);
+var _directivesReviewDirective = require('./directives/review.directive');
 
-},{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies.controller":8,"./directives/movie.directive":9,"./directives/movies.directive":10,"./services/movie.service":12,"angular":25}],12:[function(require,module,exports){
+var _directivesReviewDirective2 = _interopRequireDefault(_directivesReviewDirective);
+
+_angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('ReviewController', _controllersReviewController2['default']).service('MovieService', _servicesMovieService2['default']).service('FeviewService', _servicesReviewService2['default']).directive('movieItem', _directivesMovieDirective2['default']).directive('moviesItem', _directivesMoviesDirective2['default']).directive('reviewItem', _directivesReviewDirective2['default']);
+
+},{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies.controller":8,"./controllers/review.controller":9,"./directives/movie.directive":10,"./directives/movies.directive":11,"./directives/review.directive":12,"./services/movie.service":14,"./services/review.service":15,"angular":28}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -411,7 +487,58 @@ MovieService.$inject = ['$http', 'SERVER', '$cookies'];
 exports['default'] = MovieService;
 module.exports = exports['default'];
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var ReviewService = function ReviewService($http, SERVER, $cookies) {
+
+  var url = 'https://floating-mountain-2068.herokuapp.com/reviews/';
+
+  this.getAllReviews = getAllReviews;
+  this.getReview = getReview;
+
+  function Review(review) {
+    this.Poster = movie.Poster;
+    this.Title = movie.Title;
+    this.imdbID = movie.imdbID;
+    this.user_name = users.user_name;
+    this.review = reviews.review;
+  }
+
+  function getAllReviews() {
+    return $http.get(url, SERVER);
+  }
+
+  function addReview(body) {
+    var value = $('#reviewText').val();
+    return $http.post(url, { imdbID: 'value' }, SERVER);
+  }
+
+  function getReview(review) {
+    console.log(review);
+    return $http.post(url, { imdbID: 'value', user: 'user_name', review: 'value' }, SERVER);
+  }
+
+  // function addStarRating () {
+  //    var value = $('#reviewText').val();
+  //    return $http.post(url, { user: 'user_name', review: 'value'}, SERVER);
+  // }
+
+  //  function getStarRating (starRating) {
+  //   console.log(starRating);
+  //    return $http.post(url, {  }, SERVER);
+  // }
+};
+
+ReviewService.$inject = ['$http', 'SERVER', '$cookies'];
+
+exports['default'] = ReviewService;
+module.exports = exports['default'];
+
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -435,7 +562,7 @@ LoginController.$inject = ['UserService'];
 exports['default'] = LoginController;
 module.exports = exports['default'];
 
-},{}],14:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -461,7 +588,7 @@ ProfileController.$inject = ['ProfileService', 'UserService', '$stateParams'];
 exports['default'] = ProfileController;
 module.exports = exports['default'];
 
-},{}],15:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -485,7 +612,7 @@ SignupController.$inject = ['UserService'];
 exports['default'] = SignupController;
 module.exports = exports['default'];
 
-},{}],16:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -514,7 +641,7 @@ profileItem.$inject = ['$state', 'ProfileService'];
 exports['default'] = profileItem;
 module.exports = exports['default'];
 
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -549,7 +676,7 @@ var _servicesProfileService2 = _interopRequireDefault(_servicesProfileService);
 
 _angular2['default'].module('app.user', ['app.core']).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).controller('ProfileController', _controllersProfileController2['default']).directive('profileItem', _directivesProfileDirective2['default']).service('UserService', _servicesUserService2['default']).service('ProfileService', _servicesProfileService2['default']);
 
-},{"./controllers/login.controller":13,"./controllers/profile.controller":14,"./controllers/signup.controller":15,"./directives/profile.directive":16,"./services/profile.service":18,"./services/user.service":19,"angular":25}],18:[function(require,module,exports){
+},{"./controllers/login.controller":16,"./controllers/profile.controller":17,"./controllers/signup.controller":18,"./directives/profile.directive":19,"./services/profile.service":21,"./services/user.service":22,"angular":28}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -584,7 +711,7 @@ ProfileService.$inject = ['$http', 'SERVER', '$cookies'];
 exports['default'] = ProfileService;
 module.exports = exports['default'];
 
-},{}],19:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -636,7 +763,7 @@ UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
 exports['default'] = UserService;
 module.exports = exports['default'];
 
-},{}],20:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // Import our core files
 'use strict';
 
@@ -658,7 +785,7 @@ require('./app-user/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.movies', 'app.user']);
 
-},{"./app-core/index":3,"./app-layout/index":6,"./app-movies/index":11,"./app-user/index":17,"angular":25}],21:[function(require,module,exports){
+},{"./app-core/index":3,"./app-layout/index":6,"./app-movies/index":13,"./app-user/index":20,"angular":28}],24:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -981,11 +1108,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],22:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":21}],23:[function(require,module,exports){
+},{"./angular-cookies":24}],26:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -5356,7 +5483,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],24:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34375,11 +34502,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],25:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":24}]},{},[20])
+},{"./angular":27}]},{},[23])
 
 
 //# sourceMappingURL=main.js.map
