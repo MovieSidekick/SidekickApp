@@ -252,7 +252,7 @@ var ReviewController = function ReviewController(ReviewService, $stateParams) {
 
   activate();
 
-  function addReview(review) {
+  function addReview(body) {
     ReviewService.addReview(review).then(function (res) {
       ReviewService.storeAuth(res.data);
     });
