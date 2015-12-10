@@ -16,9 +16,10 @@ import reviewItem from './directives/review.directive';
 angular
   .module('app.movies', ['app.core'])
   .controller('MoviesController', MoviesController)
+  .controller('MovieSingleController', MovieSingleController)
   .controller('ReviewController', ReviewController)
   .service('MovieService', MovieService)
-  .service('FeviewService', ReviewService)
+  .service('ReviewService', ReviewService)
   .directive('movieItem', movieItem)
   .directive('moviesItem', moviesItem)
   .directive('reviewItem', reviewItem)
