@@ -10,13 +10,11 @@ let reviewItem = function($state, reviewService) {
       <div class="panelBig" ng-click="vm.clicked(review)">
         <div class = "panelLeft"> 
           <h5>{{ movie.title }}</h5></li>
-          <img src = "{{ movie.poster }}">
         </div>
         <div class="panelRight">
           <ul>
-          <li><span class="bold">Reviewer:  </span>{{ users.user_name }}</li><hr>
-          <li><span class="bold">Review:  </span>{{ reviews.review }}</li>
-          <li><span class="bold">IMDB ID:  </span>{{ movie.imdbID }}</li>
+          <li><span class="bold">Reviewer:  </span>{{ users.user_id }}</li><hr>
+          <li><span class="bold">Review:  </span>{{ reviews.body}}</li>
           </ul>
           <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>
         </div>
@@ -27,13 +25,13 @@ let reviewItem = function($state, reviewService) {
     controller: 'ReviewController as vm',
     link: function (scope, element, attrs) {
       element.on('click', function () {
-        $state.go('root.singleReview', { id: scope.movie.title });
+        $state.go('root.singlemovie', { id: scope.movie.movie_id });
       });
     }
   };
 
 };
 
-reviewItem.$inject = ['$state', 'reviewService'];
+reviewItem.$inject = ['$state', 'ReviewService'];
 
 export default reviewItem;

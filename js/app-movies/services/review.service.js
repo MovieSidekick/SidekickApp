@@ -1,31 +1,38 @@
+import _ from 'underscore';
+
 let ReviewService = function($http, SERVER, $cookies) {
   
- let url = 'https://floating-mountain-2068.herokuapp.com/reviews/';
+ let url = 'https://floating-mountain-2068.herokuapp.com/';
 
  this.getAllReviews   = getAllReviews;
  this.getReview       = getReview;
 
+ // {"review":[{"body":"This movie made me laugh, cry, and feel every emotion.","movie_id":1,"user_id":13}]}
+
  function Review (review) {
-   this.Poster = movie.Poster;
-   this.Title = movie.Title;
-   this.imdbID = movie.imdbID;
-   this.user_name = users.user_name;
-   this.review = reviews.review;
+   this.body = review.body;
  }
+
+ //  let movie_id = _.filter(movie, function() {
+ //   console.log(movie.id, 'movie.id');
+ //   return movie.id;
+ // });
 
  function getAllReviews () {
    return $http.get(url, SERVER);
  }
 
-function addReview (body) {
+function addReview () {
    var value = $('#reviewText').val();
-   return $http.post(url, { imdbID: 'value', }, SERVER);
+   return $http.post(url + 'movies/' + 'movie.id' + '/reviews', SERVER); 
 }
 
 function getReview (review) {
-  console.log(review);
-   return $http.post(url, { imdbID: 'value', user: 'user_name', review: 'value' }, SERVER); 
+  console.log('review:', review);
+  return $http.post(url + 'movies/' + 'movie_id' + '/reviews', SERVER); 
 }
+
+getReview();
 
 // function addStarRating () {
 //    var value = $('#reviewText').val();

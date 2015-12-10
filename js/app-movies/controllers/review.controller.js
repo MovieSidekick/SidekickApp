@@ -4,18 +4,18 @@ let ReviewController = function(ReviewService, $stateParams) {
 
   activate();
 
-  function addReview (body) {
-   ReviewService.addReview(review).then( (res) => {
-     ReviewService.storeAuth(res.data);
-   });
- }
-
-  function activate () {
+    function activate () {
     ReviewService.getReview($stateParams.id).then( (res) => {
       vm.reviews = [res.data.review];
       console.log(res.data.review);
     });
   }
+
+  function addReview () {
+   ReviewService.addReview(review).then( (res) => {
+     ReviewService.storeAuth(res.data);
+   });
+ }
 
 };
 

@@ -54,6 +54,10 @@ function addReview () {
    return $http.post(url, { user: 'user_name', review: 'value'}, SERVER);
 }
 
+ function getAllReviews () {
+   return $http.get(url + 'reviews', SERVER);
+ }
+
 function getReview (review) {
   console.log(review);
    return $http.post(url, { imdbID }, SERVER); 
