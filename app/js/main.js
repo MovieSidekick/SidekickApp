@@ -205,9 +205,12 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var MoviesController = function MoviesController(MovieService) {
+var MoviesController = function MoviesController(MovieService, $cookies) {
 
   var vm = this;
+  var user = $cookies.get('movie-tracker-name');
+  vm.user = user;
+  console.log(user);
 
   vm.movies = [];
   vm.search = search;
@@ -219,6 +222,12 @@ var MoviesController = function MoviesController(MovieService) {
       vm.movies = res.data.results;
     });
   }
+  // function get (user) {
+  //    MovieService.getUser(user).then( (res) => {
+  //      vm.user = res.data.user;
+  //      console.log(res.data.user);
+  //    });
+  //  }
 
   function search(query) {
     MovieService.getMovie(query).then(function (res) {
@@ -228,7 +237,7 @@ var MoviesController = function MoviesController(MovieService) {
   }
 };
 
-MoviesController.$inject = ['MovieService'];
+MoviesController.$inject = ['MovieService', '$cookies'];
 
 exports['default'] = MoviesController;
 
@@ -318,7 +327,7 @@ var moviesItem = function moviesItem($state, MovieService) {
     scope: {
       movie: '='
     },
-    template: '\n      <div class="panelSmall" ng-click="vm.clicked(movie)">\n\n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
+    template: '\n      <div class="panelSmall" ng-click="vm.clicked(movie)">\n      \n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
@@ -415,10 +424,12 @@ Object.defineProperty(exports, '__esModule', {
 });
 var MovieService = function MovieService($http, SERVER, $cookies) {
 
-  var url = 'https://floating-mountain-2068.herokuapp.com/movies/';
+  var url = 'https://floating-mountain-2068.herokuapp.com/';
 
+  //this.getUser         = getUser;
   this.getAllMovies = getAllMovies;
   this.getMovie = getMovie;
+  //this.getId = getId;
 
   function Movie(movie) {
     this.Poster = movie.Poster;
@@ -442,12 +453,12 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
   }
 
   function getAllMovies() {
-    return $http.get(url, SERVER);
+    return $http.get(url + 'movies', SERVER);
   }
 
   function getMovie(ourTitle) {
     console.log(ourTitle);
-    return $http.post(url, { type: 'title', title: ourTitle }, SERVER);
+    return $http.post(url + 'movies', { type: 'title', title: ourTitle }, SERVER);
   }
 
   function addStarRating() {
@@ -537,11 +548,11 @@ var LoginController = function LoginController(UserService) {
 
   var vm = this;
 
-  this.login = login;
+  vm.login = login;
 
-  function login(userObj) {
-    UserService.login(userObj).then(function (res) {
-      UserService.storeAuth(res.data);
+  function login(user) {
+    UserService.login(user).then(function (res) {
+      UserService.storeAuth(res.data.user);
     });
   }
 };
@@ -590,7 +601,7 @@ var SignupController = function SignupController(UserService) {
 
   function signUp(user) {
     UserService.signup(user).then(function (res) {
-      UserService.storeAuth(res.data);
+      UserService.storeAuth(res.data.user);
     });
   }
 };
@@ -703,45 +714,47 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+   value: true
 });
 var UserService = function UserService($http, SERVER, $cookies, $state) {
 
-  this.signup = signup;
-  this.login = login;
-  this.storeAuth = storeAuth;
-  this.checkAuth = checkAuth;
+   this.signup = signup;
+   this.login = login;
+   this.storeAuth = storeAuth;
+   this.checkAuth = checkAuth;
 
-  function storeAuth(user) {
-    $cookies.put('movie-tracker-auth', user.sessionToken);
-    $cookies.put('movie-tracker-user', user.objectId);
-    setHeaders(user.sessionToken);
-    // THIS REALLY NEEDS TO BE BETTER!!!
-    alert('you are logged in');
-    // SERIOUSLY
-    $state.go('root.home');
-  }
+   function storeAuth(user) {
+      $cookies.put('movie-tracker-auth', user.auth_token);
+      $cookies.put('movie-tracker-user', user.id);
+      $cookies.put('movie-tracker-name', user.user_name);
+      setHeaders(user.auth_Token);
+      // THIS REALLY NEEDS TO BE BETTER!!!
+      alert('you are logged in');
+      // SERIOUSLY
+      $state.go('root.movies');
+   }
 
-  function checkAuth() {
-    var t = $cookies.get('movie-tracker-auth');
-    // if (t) {
-    //   setHeaders(t);
-    // } else {
-    //   $state.go('root.login');
-    // }
-  }
+   function checkAuth() {
+      var t = $cookies.get('movie-tracker-auth');
+      if (t) {
+         setHeaders(t);
+      } else {
+         $state.go('root.login');
+      }
+   }
 
-  function setHeaders(token) {
-    SERVER.CONFIG.headers['auth_token'] = token;
-  }
+   function setHeaders(token) {
+      SERVER.CONFIG.headers['auth_token'] = token;
+   }
 
-  function signup(userObj) {
-    return $http.post(SERVER.URL + 'signup', userObj, SERVER.CONFIG);
-  }
+   function signup(user) {
+      return $http.post(SERVER.URL + 'signup', user, SERVER.CONFIG);
+   }
 
-  function login(userObj) {
-    return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
-  }
+   function login(user) {
+      return $http.post(SERVER.URL + 'login', user, SERVER.CONFIG);
+      console.log(user);
+   }
 };
 
 UserService.$inject = ['$http', 'SERVER', '$cookies', '$state'];

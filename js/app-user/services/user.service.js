@@ -6,35 +6,36 @@ let UserService = function($http, SERVER, $cookies, $state) {
  this.checkAuth = checkAuth;
 
  function storeAuth (user) {
-   $cookies.put('movie-tracker-auth', user.sessionToken);
-   $cookies.put('movie-tracker-user', user.objectId);
-   setHeaders(user.sessionToken);
+   $cookies.put('movie-tracker-auth', user.auth_token);
+   $cookies.put('movie-tracker-user', user.id);
+   $cookies.put('movie-tracker-name', user.user_name);
+   setHeaders(user.auth_Token);
    // THIS REALLY NEEDS TO BE BETTER!!!
    alert('you are logged in');
    // SERIOUSLY
-   $state.go('root.home');
+   $state.go('root.movies');
  }
 
   function checkAuth () {
    let t = $cookies.get('movie-tracker-auth');
-    // if (t) {
-    //   setHeaders(t);
-    // } else {
-    //   $state.go('root.login');
-    // }
+     if (t) {
+       setHeaders(t);
+     } else {
+       $state.go('root.login');
+     }
   }
 
  function setHeaders (token) {
    SERVER.CONFIG.headers['auth_token'] = token;
  }
 
- function signup (userObj) {
-   return $http.post(SERVER.URL + 'signup', userObj, SERVER.CONFIG);
-
+ function signup (user) {
+   return $http.post(SERVER.URL + 'signup', user, SERVER.CONFIG);
  }
 
- function login (userObj) {
-   return $http.post(SERVER.URL + 'login', userObj, SERVER.CONFIG);
+ function login (user) {
+   return $http.post(SERVER.URL + 'login', user, SERVER.CONFIG);
+console.log(user);
  }
  
 

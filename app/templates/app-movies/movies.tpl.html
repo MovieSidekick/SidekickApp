@@ -13,11 +13,13 @@
       <li><a href="#/profile">My Profile</a></li>    
       <li><a href="#/login">Back to Login Page</a></li>
       <li><a href="#/home">Home</a></li>
+
     </ul>
   </section>
 </nav>
 
 <form ng-submit="vm.search(query)" id="searchForm">
+<p>Welcome {{vm.user}}!  You are now logged in.</p>
  <input type="text" placeholder="Movie or Series Title" ng-model="query" type="title" required/>
  <button id="searchButton">Search</button> 
 </form>

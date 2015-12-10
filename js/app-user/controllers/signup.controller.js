@@ -7,7 +7,7 @@ let SignupController = function(UserService) {
 
  function signUp (user) {
    UserService.signup(user).then( (res) => {
-     UserService.storeAuth(res.data);
+     UserService.storeAuth(res.data.user);
    });
  }
  
