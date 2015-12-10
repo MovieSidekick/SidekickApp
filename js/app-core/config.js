@@ -1,6 +1,6 @@
 let config = function($stateProvider, $urlRouterProvider) {
   
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/signup');
 
   $stateProvider
     

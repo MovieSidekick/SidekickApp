@@ -1,5 +1,6 @@
 let ProfileController = function(ProfileService, UserService, $stateParams) {
-  
+  let user = $cookies.get('movie-tracker-name');
+  vm.user =user;
   let vm = this;
 
   activate();

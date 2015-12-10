@@ -11,7 +11,7 @@ let UserService = function($http, SERVER, $cookies, $state) {
    $cookies.put('movie-tracker-name', user.user_name);
    setHeaders(user.auth_Token);
    // THIS REALLY NEEDS TO BE BETTER!!!
-   alert('you are logged in');
+   //alert('you are logged in');
    // SERIOUSLY
    $state.go('root.movies');
  }

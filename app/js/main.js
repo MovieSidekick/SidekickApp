@@ -6,7 +6,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 var config = function config($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/signup');
 
   $stateProvider.state('root', {
     abstract: true,
@@ -380,11 +380,6 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
     return $http.get(url + 'movies', SERVER);
   }
 
-  // function getUser (user) {
-  //    return $cookies.get('movie-tracker-auth', $cookies, SERVER);
-  //      console.log(user);
-  //      }
-
   function getMovie(ourTitle) {
     console.log(ourTitle);
     return $http.post(url + 'movies', { type: 'title', title: ourTitle }, SERVER);
@@ -447,7 +442,8 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 var ProfileController = function ProfileController(ProfileService, UserService, $stateParams) {
-
+  var user = $cookies.get('movie-tracker-name');
+  vm.user = user;
   var vm = this;
 
   activate();
@@ -607,7 +603,7 @@ var UserService = function UserService($http, SERVER, $cookies, $state) {
       $cookies.put('movie-tracker-name', user.user_name);
       setHeaders(user.auth_Token);
       // THIS REALLY NEEDS TO BE BETTER!!!
-      alert('you are logged in');
+      //alert('you are logged in');
       // SERIOUSLY
       $state.go('root.movies');
    }
