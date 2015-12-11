@@ -1,7 +1,11 @@
-let ProfileController = function(ProfileService, UserService, $stateParams) {
-  let user = $cookies.get('movie-tracker-name');
-  vm.user =user;
+let ProfileController = function(ProfileService, MovieService, UserService, $stateParams, $cookies) {
+  
   let vm = this;
+  let user = $cookies.get('movie-tracker-name');
+  let email = $cookies.get('movie-tracker-email');
+  vm.user =user;
+  vm.email = email;
+  console.log(user);
 
   activate();
 
@@ -14,6 +18,6 @@ let ProfileController = function(ProfileService, UserService, $stateParams) {
 
 };
 
-ProfileController.$inject = ['ProfileService', 'UserService', '$stateParams'];
+ProfileController.$inject = ['ProfileService', 'MovieService', 'UserService', '$stateParams', '$cookies'];
 
  export default ProfileController;
