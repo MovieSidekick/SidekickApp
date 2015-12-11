@@ -9,8 +9,8 @@ let movieItem = function($state, MovieService) {
     template: `
       <div class="panelBig" ng-click="vm.clicked(movie)">
         <div class = "panelLeft"> 
-          <h5>{{ movie.title }}</h5></li>
-          <img src = "{{ movie.poster }}">
+          <h5>{{ movie.title }}</h5>
+          <img ng-src = "{{ movie.poster }}">
         </div>
         <div class="panelRight">
           <ul>
