@@ -246,7 +246,7 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
 }
 .panelBig {
   display: inline-block;
-  width: 800px;
+  width: 820px;
   margin-left: auto;
   margin-right: auto;
 
@@ -311,6 +311,7 @@ textarea {
   padding: 10pt;
   font-family: $font-content;
   background-color: $accent-color2;
+ // width: 300px;
 
 }
 .ratingContainer h4 {
