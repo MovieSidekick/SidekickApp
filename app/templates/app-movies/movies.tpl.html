@@ -19,7 +19,7 @@
 </nav>
 
 <form ng-submit="vm.search(query)" id="searchForm">
-<p>Welcome {{vm.user}}!  You are now logged in.</p>
+<p>Welcome {{vm.user}} {{vm.email}}!  You are now logged in.</p>
  <input type="text" placeholder="Movie or Series Title" ng-model="query" type="title" required/>
  <button id="searchButton">Search</button> 
 </form>

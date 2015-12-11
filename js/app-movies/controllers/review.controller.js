@@ -1,4 +1,4 @@
-let ReviewController = function(ReviewService, $stateParams) {
+let ReviewController = function(ReviewService, $stateParams, $cookies) {
   
   let vm = this;
 
@@ -19,7 +19,7 @@ let ReviewController = function(ReviewService, $stateParams) {
 
 };
 
-ReviewController.$inject = ['ReviewService', '$stateParams'];
+ReviewController.$inject = ['ReviewService', '$stateParams', '$cookies'];
 
 export default ReviewController;
 

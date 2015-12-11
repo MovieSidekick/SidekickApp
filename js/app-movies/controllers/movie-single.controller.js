@@ -1,6 +1,9 @@
-let MovieSingleController = function(MovieService, $stateParams) {
+let MovieSingleController = function(MovieService, $stateParams, $cookies) {
   
   let vm = this;
+  let user = $cookies.get('movie-tracker-name');
+  vm.user =user;
+  console.log(user);
 
   activate();
 
@@ -13,6 +16,6 @@ let MovieSingleController = function(MovieService, $stateParams) {
 
 };
 
-MovieSingleController.$inject = ['MovieService', '$stateParams'];
+MovieSingleController.$inject = ['MovieService', '$stateParams', '$cookies'];
 
 export default MovieSingleController;
