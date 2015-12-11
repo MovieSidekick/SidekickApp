@@ -10,7 +10,7 @@ let movieItem = function($state, MovieService) {
       <div class="panelBig" ng-click="vm.clicked(movie)">
         <div class = "panelLeft"> 
           <h5>{{ movie.title }}</h5>
-          <img src = "{{ movie.poster }}">
+          <img ng-src = "{{ movie.poster }}">
         </div>
         <div class="panelRight">
           <ul>

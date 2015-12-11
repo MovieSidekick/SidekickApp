@@ -298,7 +298,7 @@ var movieItem = function movieItem($state, MovieService) {
     scope: {
       movie: '='
     },
-    template: '\n      <div class="panelBig" ng-click="vm.clicked(movie)">\n        <div class = "panelLeft"> \n          <h5>{{ movie.title }}</h5>\n          <img src = "{{ movie.poster }}">\n        </div>\n        <div class="panelRight">\n          <ul>\n          <li><span class="bold">Summary:  </span>{{ movie.plot }}</li><hr>\n          <li><span class="bold">Starring:  </span>{{ movie.actor }}</li>\n          <li><span class="bold">Released:  </span>{{ movie.year }}</li>\n         \n           <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>\n           <li><span class="bold">Director:  </span>{{ movie.director }}</li>\n           <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>\n           \n           \n           \n           \n           <li><span class="bold">Awards:  </span>{{ movie.awards }}</li>\n          \n          </ul>\n          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>\n        </div>\n\n      </div>\n\n    ',
+    template: '\n      <div class="panelBig" ng-click="vm.clicked(movie)">\n        <div class = "panelLeft"> \n          <h5>{{ movie.title }}</h5>\n          <img ng-src = "{{ movie.poster }}">\n        </div>\n        <div class="panelRight">\n          <ul>\n          <li><span class="bold">Summary:  </span>{{ movie.plot }}</li><hr>\n          <li><span class="bold">Starring:  </span>{{ movie.actor }}</li>\n          <li><span class="bold">Released:  </span>{{ movie.year }}</li>\n         \n           <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>\n           <li><span class="bold">Director:  </span>{{ movie.director }}</li>\n           <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>\n           \n           \n           \n           \n           <li><span class="bold">Awards:  </span>{{ movie.awards }}</li>\n          \n          </ul>\n          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>\n        </div>\n\n      </div>\n\n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
@@ -327,7 +327,7 @@ var moviesItem = function moviesItem($state, MovieService) {
     scope: {
       movie: '='
     },
-    template: '\n      <div class="panelSmall" ng-click="vm.clicked(movie)">\n      \n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
+    template: '\n      <div class="panelSmall" ng-click="vm.clicked(movie)">\n      \n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img ng-src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
