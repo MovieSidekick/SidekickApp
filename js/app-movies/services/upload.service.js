@@ -1,20 +1,20 @@
-let UploadService = function($http, SERVER) {
+// let UploadService = function($http, SERVER) {
   
-  this.upload = upload;
+//   this.upload = upload;
 
-  function upload (file) {
+//   function upload (textarea) {
 
-    let formData = new FormData();
-    formData.append('upload', file);
-    // formData.append('details', JSON.stringify({ name: 'Tim' }));
+//     let formData = new FormData();
+//     formData.append('upload', textarea);
+//     // formData.append('details', JSON.stringify({ name: 'Tim' }));
 
-    return $http.post(SERVER.URL, formData, SERVER.CONFIG);
-  }
+//     return $http.post(SERVER.URL, formData, SERVER.CONFIG);
+//   }
 
-};
+// };
 
-UploadService.$inject = ['$http', 'SERVER'];
+// UploadService.$inject = ['$http', 'SERVER'];
 
-export default UploadService;
+// export default UploadService;
 
 // Enable CORS on the Backend - the gem is called rack-cors

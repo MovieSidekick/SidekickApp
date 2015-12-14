@@ -12,10 +12,10 @@ let ReviewController = function(ReviewService, $stateParams, $cookies) {
   }
 
   function addReview () {
-   ReviewService.addReview(review).then( (res) => {
-     ReviewService.storeAuth(res.data);
-   });
- }
+   ReviewService.addReview(review).then( (res) => {
+     ReviewService.storeAuth(res.data);
+   });
+ }
 
 };
 

@@ -35,7 +35,11 @@ getReview();
 
 function addReview () {
    var value = $('#reviewText').val();
+<<<<<<< HEAD
+   return $http.post(url + '/reviews', SERVER); 
+=======
    return $http.post(url + 'movies/' + '{ id: ourID}' + '/reviews', SERVER); 
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
 }
 
 function addStarRating () {

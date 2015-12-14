@@ -8596,7 +8596,11 @@ hr {
 
 .panelLeft {
   float: left;
-  margin-left: 15pt; }
+  margin-left: 15pt;
+  max-width: 250pt; }
+  .panelLeft .panelLeft img {
+    margin-left: auto;
+    margin-right: auto; }
 
 .panelLeft h5 {
   text-align: center;
@@ -8607,7 +8611,7 @@ hr {
 
 .panelRight {
   float: right;
-  max-width: 470px;
+  max-width: 450px;
   font-family: "Source Code Pro";
   margin-top: 40pt; }
 

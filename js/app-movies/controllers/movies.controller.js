@@ -44,4 +44,3 @@ export default MoviesController;
      console.log(query)
    })
  }
-

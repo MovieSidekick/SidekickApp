@@ -38,6 +38,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'MovieSingleController as vm',
       templateUrl: 'templates/app-movies/movie-single.tpl.html'
     })
+     .state('root.review', {
+      url: '/movies/:id/reviews',
+      controller: 'MovieSingleController as vm',
+      templateUrl: 'templates/app-movies/movie-single.tpl.html'
+    })
     //     // My Reviews
     // .state('root.myReviews', {
     //   url: '/movies/:id',
@@ -59,6 +64,8 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'SignupController as vm',
       templateUrl: 'templates/app-user/signup.tpl.html'
     })
+    // Review
+
     
     // Login
     .state('root.login', {
