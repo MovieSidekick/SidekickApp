@@ -57,8 +57,10 @@ let MovieService = function($http, SERVER, $cookies) {
  //   this.Type = movie.Type;
  // }
 
- function getAllMovies () {
+ function getAllMovies (ourMovies) {
+  console.log(ourMovies);
    return $http.get(url + 'movies', SERVER);
+   
  }
   
 function getMovie (ourTitle) {
@@ -72,10 +74,9 @@ function attachReview (ourReview) {
   console.log(ourReview);
   console.log(movie.id);
   return $http.post(url + 'reviews', {body: ourReview, movie_id: movie.id}, SERVER );
+}
 
-   
 
-  }
 
 function getID (ourID) {
   console.log(ourID);

@@ -13,6 +13,7 @@ import ReviewService from './services/maintenance.service';
 import moviesItem from './directives/movies.directive';
 import movieItem from './directives/movie.directive';
 import reviewItem from './directives/review.directive';
+import allmoviesItem from './directives/allmovies.directive';
 
 
 angular
@@ -26,3 +27,8 @@ angular
   .directive('movieItem', movieItem)
   .directive('moviesItem', moviesItem)
   .directive('reviewItem', reviewItem)
+  .directive('allmoviesItem', allmoviesItem)
+
+
+
+

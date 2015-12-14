@@ -9,20 +9,11 @@ let ReviewService = function(MovieService, $http, SERVER, $cookies) {
 
   this.getMovie = getMovie;
   this.attachReview = attachReview;
-  //this.id = (res.data.movie.id);
-  //console.log(id);
-  //this.checkAuth = checkAuth;
 
-  this.storeid = storeid;
- //this.checkid = checkid;
 
- function storeid (movie) {
-   $cookies.put('movie-id', movie.id);
-   console.log(movie);
-   //setHeaders(user.auth_Token);
-   
-   //$state.go('root.movies');
- }
+ 
+
+ 
 
 function getMovie (ourTitle) {
   console.log(ourTitle);

@@ -4,16 +4,18 @@ let MoviesController = function(MovieService, $cookies) {
  let user = $cookies.get('movie-tracker-name');
  vm.user =user;
  console.log(user);
- 
+ vm.allmovies = [];
  vm.movies = [];
  vm.search=search;
+
  
  
  activate();
 
     function activate () {
       MovieService.getAllMovies().then( (res) => {
-        vm.movies = res.data.results;
+        vm.allmovies = (res.data.movie);
+        console.log(res.data.movie);
       });
     }
   // function get (user) {
