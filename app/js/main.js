@@ -185,6 +185,7 @@ _angular2['default'].module('app.layout', []).controller('HomeController', _cont
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+<<<<<<< HEAD
 var MovieSingleController = function MovieSingleController(MovieService, ReviewService, $stateParams, $cookies) {
 
   var vm = this;
@@ -198,6 +199,14 @@ var MovieSingleController = function MovieSingleController(MovieService, ReviewS
 
   vm.showReviewForm = showReviewForm;
   vm.addReview = addReview;
+=======
+var MovieSingleController = function MovieSingleController(MovieService, $stateParams, $cookies) {
+
+  var vm = this;
+  var user = $cookies.get('movie-tracker-name');
+  vm.user = user;
+  console.log(user);
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
 
   activate();
 
@@ -240,7 +249,11 @@ var MovieSingleController = function MovieSingleController(MovieService, ReviewS
   }
 };
 
+<<<<<<< HEAD
 MovieSingleController.$inject = ['MovieService', 'ReviewService', '$stateParams', '$cookies'];
+=======
+MovieSingleController.$inject = ['MovieService', '$stateParams', '$cookies'];
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
 
 exports['default'] = MovieSingleController;
 module.exports = exports['default'];
@@ -462,7 +475,11 @@ var _directivesReviewDirective = require('./directives/review.directive');
 
 var _directivesReviewDirective2 = _interopRequireDefault(_directivesReviewDirective);
 
+<<<<<<< HEAD
 _angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('MovieSingleController', _controllersMovieSingleController2['default']).controller('ReviewController', _controllersReviewController2['default']).service('MovieService', _servicesMovieService2['default']).service('ReviewService', _servicesMaintenanceService2['default']).directive('movieItem', _directivesMovieDirective2['default']).directive('moviesItem', _directivesMoviesDirective2['default']).directive('reviewItem', _directivesReviewDirective2['default']);
+=======
+_angular2['default'].module('app.movies', ['app.core']).controller('MoviesController', _controllersMoviesController2['default']).controller('MovieSingleController', _controllersMovieSingleController2['default']).controller('ReviewController', _controllersReviewController2['default']).service('MovieService', _servicesMovieService2['default']).service('ReviewService', _servicesReviewService2['default']).directive('movieItem', _directivesMovieDirective2['default']).directive('moviesItem', _directivesMoviesDirective2['default']).directive('reviewItem', _directivesReviewDirective2['default']);
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
 
 },{"../app-core/index":3,"./controllers/movie-single.controller":7,"./controllers/movies.controller":8,"./controllers/review.controller":9,"./directives/movie.directive":10,"./directives/movies.directive":11,"./directives/review.directive":12,"./services/maintenance.service":14,"./services/movie.service":15,"angular":28}],14:[function(require,module,exports){
 'use strict';
@@ -534,6 +551,7 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
   this.getID = getID;
   //this.getId = getId;
 
+<<<<<<< HEAD
   function Movie(movie) {
     this.id = movie.id;
 
@@ -556,6 +574,28 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
     this.imdbID = movie.imdbID;
     this.Type = movie.Type;
   }
+=======
+  // function Movie (movie) {
+  //   this.Poster = movie.Poster;
+  //   this.Title = movie.Title;
+  //   this.Rated = movie.Rated;
+  //   this.Year = movie.Year;
+  //   this.Released = movie.Released;
+  //   this.Runtime = movie.Runtime;
+  //   this.Director = movie.Director;
+  //   this.Writer = movie.Writer;
+  //   this.Actors = movie.Actors;
+  //   this.Plot = movie.Plot;
+  //   this.Language = movie.Language;
+  //   this.Country = movie.Country;
+  //   this.Awards = movie.Awards;
+  //   this.Metascore = movie.Metascore;
+  //   this.imdbRating = movie.imdbRating;
+  //   this.imdbVotes = movie.imdbVotes;
+  //   this.imdbID = movie.imdbID;
+  //   this.Type = movie.Type;
+  // }
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
 
   function getAllMovies() {
     return $http.get(url + 'movies', SERVER);
@@ -566,6 +606,7 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
     return $http.post(url + 'movies', { type: 'title', title: ourTitle }, SERVER);
   }
 
+<<<<<<< HEAD
   this.attachReview = attachReview;
 
   function attachReview(ourReview) {
@@ -574,6 +615,8 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
     return $http.post(url + 'reviews', { body: ourReview, movie_id: movie.id }, SERVER);
   }
 
+=======
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
   function getID(ourID) {
     console.log(ourID);
     return $http.post(url + 'movies', { id: ourID }, SERVER);
@@ -609,7 +652,77 @@ MovieService.$inject = ['$http', 'SERVER', '$cookies'];
 exports['default'] = MovieService;
 module.exports = exports['default'];
 
+<<<<<<< HEAD
 },{}],16:[function(require,module,exports){
+=======
+},{}],15:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _underscore = require('underscore');
+
+var _underscore2 = _interopRequireDefault(_underscore);
+
+var ReviewService = function ReviewService($http, SERVER, $cookies) {
+
+  var url = 'https://floating-mountain-2068.herokuapp.com/';
+  var review = [];
+
+  this.getAllReviews = getAllReviews;
+  this.getReview = getReview;
+  // this.getID = getID;
+
+  // {"review":[{"body":"This movie made me laugh, cry, and feel every emotion.","movie_id":1,"user_id":13}]}
+
+  function Review(review) {
+    this.body = review.body;
+  }
+
+  //  // let movie_id = _.filter(movie, function() {
+  //  //  console.log(movie.id, 'movie.id');
+  //  //  return movie.id;
+  // });
+
+  function getReview(review) {
+    $http.defaults.headers.common = { 'auth_token': $cookies.get('access_token') };
+    console.log(review);
+    return $http.post(url + 'movies/' + '1' + '/reviews', SERVER);
+  };
+
+  getReview();
+
+  function getAllReviews() {
+    return $http.get(url, SERVER);
+  }
+
+  function addReview() {
+    var value = $('#reviewText').val();
+    return $http.post(url + 'movies/' + '{ id: ourID}' + '/reviews', SERVER);
+  }
+
+  function addStarRating() {
+    var value = $('#reviewText').val();
+    return $http.post(url, { user: 'user_name', review: 'value' }, SERVER);
+  }
+
+  function getStarRating(starRating) {
+    console.log(starRating);
+    return $http.post(url, {}, SERVER);
+  }
+};
+
+ReviewService.$inject = ['$http', 'SERVER', '$cookies'];
+
+exports['default'] = ReviewService;
+module.exports = exports['default'];
+
+},{"underscore":29}],16:[function(require,module,exports){
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -639,10 +752,14 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ProfileController = function ProfileController(ProfileService, UserService, $stateParams) {
-  var user = $cookies.get('movie-tracker-name');
-  vm.user = user;
+var ProfileController = function ProfileController(ProfileService, MovieService, UserService, $stateParams, $cookies) {
+
   var vm = this;
+  var user = $cookies.get('movie-tracker-name');
+  var email = $cookies.get('movie-tracker-email');
+  vm.user = user;
+  vm.email = email;
+  console.log(user);
 
   activate();
 
@@ -654,7 +771,7 @@ var ProfileController = function ProfileController(ProfileService, UserService, 
   }
 };
 
-ProfileController.$inject = ['ProfileService', 'UserService', '$stateParams'];
+ProfileController.$inject = ['ProfileService', 'MovieService', 'UserService', '$stateParams', '$cookies'];
 
 exports['default'] = ProfileController;
 module.exports = exports['default'];
@@ -753,31 +870,31 @@ _angular2['default'].module('app.user', ['app.core']).controller('SignupControll
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ProfileService = function ProfileService($http, SERVER, $cookies) {
+var ProfileService = function ProfileService($http, SERVER, $cookies, $state) {
 
-  var url = 'https://floating-mountain-2068.herokuapp.com/users/';
+  var url = 'https://floating-mountain-2068.herokuapp.com/';
 
-  this.getAllUsers = getAllUsers;
+  // this.getAllUsers   = getAllUsers;
   this.getUser = getUser;
 
-  function User(userObj) {
-    this.user_name = user.user_name;
+  function User(user) {
+    this.user = user.user;
     this.pic = user.pic;
     this.email = user.email;
     this.review = user.review;
   }
 
-  function getAllUsers() {
-    return $http.get(url, SERVER);
-  }
+  // function getAllUsers () {
+  //   return $http.post(url, SERVER.CONFIG);
+  // }
 
-  function getUser(userObj) {
-    console.log(userObj);
-    return $http.get(url, { user_name: user.user_name, pic: user.pic, email: user.email }, SERVER);
+  function getUser(email) {
+    console.log();
+    return $http.post(url, email, SERVER.CONFIG);
   }
 };
 
-ProfileService.$inject = ['$http', 'SERVER', '$cookies'];
+ProfileService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
 
 exports['default'] = ProfileService;
 module.exports = exports['default'];
@@ -800,7 +917,11 @@ var UserService = function UserService($http, SERVER, $cookies, $state) {
       $cookies.put('movie-tracker-user', user.id);
       $cookies.put('movie-tracker-name', user.user_name);
       $cookies.put('movie-tracker-email', user.email);
+<<<<<<< HEAD
       //$cookies.put('movie-review', user.body );
+=======
+      $cookies.put('movie-review', user.review);
+>>>>>>> 94196f13c488797f0bc2d82d7cab360e64e67e21
       setHeaders(user.auth_Token);
       // THIS REALLY NEEDS TO BE BETTER!!!
       //alert('you are logged in');

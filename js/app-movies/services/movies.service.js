@@ -7,7 +7,7 @@ let MovieService = function($http, SERVER, $cookies) {
   this.getId = getId;
 
   function Movie (movie) {
-    // this.Poster = movie.Poster;
+    this.Poster = movie.Poster;
     this.Title = movie.Title;
     this.Rated = movie.Rated;
     this.Year = movie.Year;

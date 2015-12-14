@@ -1,3 +1,4 @@
+
 let MovieSingleController = function(MovieService, ReviewService, $stateParams, $cookies) {
   
   let vm = this;
@@ -14,6 +15,13 @@ let MovieSingleController = function(MovieService, ReviewService, $stateParams, 
   vm.showReviewForm    = showReviewForm;
   vm.addReview         = addReview;
   
+
+let MovieSingleController = function(MovieService, $stateParams, $cookies) {
+  
+  let vm = this;
+  let user = $cookies.get('movie-tracker-name');
+  vm.user =user;
+  console.log(user);
 
   activate();
 
@@ -59,6 +67,7 @@ let MovieSingleController = function(MovieService, ReviewService, $stateParams, 
   }
 
 };
+
 
 MovieSingleController.$inject = ['MovieService', 'ReviewService', '$stateParams', '$cookies'];
 

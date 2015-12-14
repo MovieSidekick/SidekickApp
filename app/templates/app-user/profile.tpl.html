@@ -9,8 +9,8 @@
   <section class="top-bar-section">
 
     <ul class="right">  
-      <li><a href="#/movies">My Movies/Reviews</a></li>
-      <li><a href="#/profile">My Profile(needs to be fixed)</a></li>    
+      <li><a href="#/movies">{{vm.user}}'s Movies/Reviews</a>
+      <li><a href="#/profile">{{vm.user}}'s Profile</a></li> 
       <li><a href="#/login">Back to Login Page</a></li>
       <li><a href="#/home">Home</a></li>
     </ul>
@@ -28,9 +28,9 @@
 <div class="profileDetails">
   <ul id#="profileList">
     <li id="profileName"><label>User Name:</label>{{vm.user}}</li>
-    <li id="profileEmail"><label>Email:</label> jdoe@movielover.com</li>
+    <li id="profileEmail"><label>Email:</label> {{vm.email}}</li>
   </ul>
 </div>
 </div>
 
-<review-item id="review-{{ $index }}" ng-repeat="r in vm.reviews" review="r"></review-item>
+<!-- <review-item id="review-{{ $index }}" ng-repeat="r in vm.reviews" review="r"></review-item> -->
