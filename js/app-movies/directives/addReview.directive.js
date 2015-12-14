@@ -1,30 +1,36 @@
-let addReview = function(ReviewService) {
+let addReview = function(MovieService, UploadService, $state) {
   
   return {
 
     restrict: 'E',
     replace: true,
     scope: {
-      review: '='
+      movie: '='
     },
-    templateUrl: 'templates/app-movies/movie-single.tpl.html',
+    templateUrl: 'templates/app-movies/upload.tpl.html',
     link: function (scope, element, attrs) {
-      element.on('submit', function () {
-
-        let file = element.find('input')[0].files[0];
-        UploadService.upload(file).then( (res) => {
-          MovieService.addImage(res.data.upload.file_url, scope.movie)
-            .then( (res) => {
-              
-            });
-        });
-
+    element.on('submit', function () {
+        $state.go('root.singlemovie', { id: movie.movie_id });
       });
     }
   };
 
-};
+};//       element.on('submit', function () {
 
-addImage.$inject = ['MovieService', 'UploadService'];
+//         let textarea = element.find('input')[0].review[0];
+//         UploadService.upload(textarea).then( (res) => {
+//           MovieService.addReview(res.data.upload.textarea, scope.movie)
+//             .then( (res) => {
+              
+//             });
+//         });
 
-export default addImage;
+//       });
+//     }
+//   };
+
+// };
+
+addReview.$inject = ['MovieService', 'UploadService', '$state'];
+
+export default addReview;

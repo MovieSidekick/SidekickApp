@@ -1,17 +1,17 @@
-let MoviesAddController = function(MovieService) {
+// let MoviesAddController = function(MovieService) {
   
-  let vm = this;
+//   let vm = this;
 
-  vm.addMovie = addMovie;
+//   vm.addMovie = addMovie;
 
-  function addMovie (MovieObj) {
-    MovieService.addMovie(MovieObj).then( (res) => {
-      console.log(res);
-    });
-  }
+//   function addMovie (MovieObj) {
+//     MovieService.addMovie(MovieObj).then( (res) => {
+//       console.log(res);
+//     });
+//   }
 
-};
+// };
 
-MoviesAddController.$inject = ['MovieService'];
+// MoviesAddController.$inject = ['MovieService'];
 
-export default MoviesAddController;
+// export default MoviesAddController;

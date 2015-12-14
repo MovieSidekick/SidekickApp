@@ -9,6 +9,8 @@ let UserService = function($http, SERVER, $cookies, $state) {
    $cookies.put('movie-tracker-auth', user.auth_token);
    $cookies.put('movie-tracker-user', user.id);
    $cookies.put('movie-tracker-name', user.user_name);
+   $cookies.put('movie-tracker-email', user.email);
+   //$cookies.put('movie-review', user.body );
    setHeaders(user.auth_Token);
    // THIS REALLY NEEDS TO BE BETTER!!!
    //alert('you are logged in');
@@ -21,7 +23,7 @@ let UserService = function($http, SERVER, $cookies, $state) {
      if (t) {
        setHeaders(t);
      } else {
-       $state.go('root.login');
+       $state.go('root.signup');
      }
   }
 

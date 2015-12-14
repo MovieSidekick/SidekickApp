@@ -1,6 +1,5 @@
 let MoviesController = function(MovieService, $cookies) {
  
-
  let vm = this;
  let user = $cookies.get('movie-tracker-name');
  vm.user =user;
@@ -45,4 +44,3 @@ export default MoviesController;
      console.log(query)
    })
  }
-

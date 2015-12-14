@@ -1,4 +1,4 @@
-let reviewItem = function($state, reviewService) {
+let reviewItem = function($state, ReviewService) {
   
   return {
     restrict: 'E',

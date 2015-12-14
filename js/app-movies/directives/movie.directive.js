@@ -21,6 +21,7 @@ let movieItem = function($state, MovieService) {
            <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>
            <li><span class="bold">Director:  </span>{{ movie.director }}</li>
            <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>
+           <li><span class="bold">Sidekick ID:  </span>{{ movie.id }}</li>
            
            
            
