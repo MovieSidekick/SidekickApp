@@ -8415,11 +8415,6 @@ body {
 form {
   font-family: "Source Code Pro"; }
 
-button {
-  background-color: #DC143C;
-  border: 2px solid black;
-  border-radius: 50pt; }
-
 h3, h4, p {
   font-family: "Source Code Pro"; }
 
@@ -8562,18 +8557,6 @@ hr {
   background: red;
   border: 0px solid #dbdbdb; }
 
-#searchButton {
-  position: relative;
-  padding: 6px 15px;
-  border: 2px solid black;
-  background-color: #DC143C;
-  color: white;
-  display: inline; }
-
-#searchButton:hover {
-  background-color: white;
-  color: #DC143C; }
-
 .form-inline {
   display: block; }
 
@@ -8697,6 +8680,13 @@ label.star:before {
   content: '\f006';
   font-family: FontAwesome; }
 
+.movieSearch {
+  margin-top: -30px; }
+
+.reviews {
+  margin-top: 30px;
+  margin-left: 30px; }
+
 .profile {
   margin-top: 30px; }
 
@@ -8715,5 +8705,26 @@ label.star:before {
 
 li {
   list-style: none; }
+
+button {
+  position: relative;
+  padding: -3px, -3px;
+  border: 2px solid black;
+  border-radius: 50pt;
+  background-color: #DC143C;
+  color: white;
+  display: inline; }
+
+button:hover, a:hover {
+  background-color: white;
+  color: #DC143C; }
+
+button:active, a:active {
+  background-color: black;
+  color: #DC143C; }
+
+button:visited, a:visited {
+  background-color: #DC143C;
+  color: white; }
 
 /*# sourceMappingURL=main.css.map */

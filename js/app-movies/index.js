@@ -29,7 +29,3 @@ angular
   .directive('moviesItem', moviesItem)
  // .directive('reviewItem', reviewItem)
   .directive('allmoviesItem', allmoviesItem)
-
-
-
-
