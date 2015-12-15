@@ -1,9 +1,9 @@
 
-let MovieSingleController = function(MovieService, ReviewService, $stateParams, $cookies) {
+let MovieSingleController = function(MovieService, ReviewService, ReviewsService, $stateParams, $cookies) {
   
   let vm = this;
    let user = $cookies.get('movie-tracker-name');
-   vm.user =user;
+   vm.user = user;
    
   // let user_id = $cookies.get('movie-tracker-id');
   // console.log(user);
@@ -15,16 +15,26 @@ let MovieSingleController = function(MovieService, ReviewService, $stateParams, 
   
   vm.showReviewForm    = showReviewForm;
   vm.addReview         = addReview;
+  vm.reviews        = [];
 
+  
   activate();
+  
 
   function activate () {
     MovieService.getMovie($stateParams.id).then( (res) => {
       vm.movies = [res.data.movie];
       vm.movie_id = (res.data.movie.id);
-      console.log(res.data.movie.id);
-      console.log(res.data.movie);
+      //console.log(res.data.movie.id);
+      //console.log(res.data.movie);
+      allreviews();
     });
+  }
+  function allreviews () {
+    ReviewsService.getAllReviews(vm.movie_id).then( (res) => {
+        vm.reviews = res.data.review;
+      });
+    
   }
 
   function addReview (ourReview) {
@@ -34,24 +44,7 @@ let MovieSingleController = function(MovieService, ReviewService, $stateParams, 
     });
   }
 
-  // function search (query) {
-  //   MovieService.getMovie(query).then( (res) => {
-  //       vm.movies = [res.data.movie];
-  //     console.log(res.data.movie);
-  //   })
-  // }
 
-//   this.attachReview = attachReview;
-
-// function attachReview (ourReview) {
-//   MovieService.getMovie($stateParams.id).then( (res) => {
-//    vm.review = [res.data.movie.body];
-//     console.log(ourReview);
-//   console.log(movie.id);
-// });
-   
-
-//   }
 
   
 
@@ -62,6 +55,6 @@ let MovieSingleController = function(MovieService, ReviewService, $stateParams, 
 };
 
 
-MovieSingleController.$inject = ['MovieService', 'ReviewService', '$stateParams', '$cookies'];
+MovieSingleController.$inject = ['MovieService', 'ReviewService', 'ReviewsService', '$stateParams', '$cookies'];
 
 export default MovieSingleController;

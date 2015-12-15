@@ -1,13 +1,14 @@
-let movieItem = function($state, MovieService) {
+let movieItem = function($state, MovieService, ReviewsService) {
   
   return {
     restrict: 'E',
     replace: true,
     scope: {
-      movie: '='
+      movie: '=',
+      review: '='
     },
     template: `
-      <div class="panelBig" ng-click="vm.clicked(movie)">
+      <div class="panelBig">
         <div class = "panelLeft"> 
           <h5>{{ movie.title }}</h5>
           <img ng-src = "{{ movie.poster }}">
@@ -21,8 +22,8 @@ let movieItem = function($state, MovieService) {
            <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>
            <li><span class="bold">Director:  </span>{{ movie.director }}</li>
            <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>
-           <li><span class="bold">Sidekick ID:  </span>{{ movie.id }}</li>
-           
+           <li><span class="bold">Sidekick ID:  </span><a href>{{ movie.id }}</a></li>
+           <li>Reviews: {{reviews.body}}</li>
            
            
            
@@ -35,7 +36,7 @@ let movieItem = function($state, MovieService) {
       </div>
 
     `,
-    controller: 'MoviesController as vm',
+    controller: 'MovieSingleController as vm',
     link: function (scope, element, attrs) {
       element.on('click', function () {
         $state.go('root.singleMovie', { id: scope.movie.title });
@@ -45,6 +46,6 @@ let movieItem = function($state, MovieService) {
 
 };
 
-movieItem.$inject = ['$state', 'MovieService'];
+movieItem.$inject = ['$state', 'MovieService', 'ReviewsService'];
 
 export default movieItem;

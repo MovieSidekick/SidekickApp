@@ -1,4 +1,4 @@
-let reviewItem = function($state, ReviewService) {
+//let reviewItem = function($state, MovieService, ReviewService) {
   
   return {
     restrict: 'E',
@@ -7,31 +7,41 @@ let reviewItem = function($state, ReviewService) {
       review: '='
     },
     template: `
-      <div class="panelBig" ng-click="vm.clicked(review)">
-        <div class = "panelLeft"> 
-          <h5>{{ movie.title }}</h5></li>
-        </div>
-        <div class="panelRight">
+      <div class="allr" ng-click="vm.clicked(review)">
+        
+        
+        
           <ul>
-          <li><span class="bold">Reviewer:  </span>{{ users.user_id }}</li><hr>
-          <li><span class="bold">Review:  </span>{{ reviews.body}}</li>
+          <li><span class="bold">Summary:  </span>{{ review.body }}</li><hr>
+          <li><span class="bold">Starring:  </span>{{ review.movie_id }}</li>
+          <li><span class="bold">Released:  </span>{{ movie.year }}</li>
+         
+           <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>
+           <li><span class="bold">Director:  </span>{{ movie.director }}</li>
+           <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>
+           <li><span class="bold">Sidekick ID:  </span><a href>{{ movie.id }}</a></li>
+           
+           
+           
+           
+           <li><span class="bold">Awards:  </span>{{ movie.awards }}</li>
+          
           </ul>
-          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>
-        </div>
+        
 
       </div>
 
     `,
-    controller: 'ReviewController as vm',
+    controller: 'MovieSingleController as vm',
     link: function (scope, element, attrs) {
       element.on('click', function () {
-        $state.go('root.singlemovie', { id: scope.movie.movie_id });
+        $state.go('root.singleMovie', { id: scope.review.body});
       });
     }
   };
 
 };
 
-reviewItem.$inject = ['$state', 'ReviewService'];
+reviewItem.$inject = ['$state', 'MovieService', 'ReviewService'];
 
 export default reviewItem;

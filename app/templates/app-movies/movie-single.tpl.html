@@ -10,7 +10,7 @@
 
     <ul class="right">  
 
-      <li><a href="#/movies">{{vm.user}}'s Movies/Reviews</a>
+      <li><a href="#/movies">{{vm.user}}'s Movies/Reviews</a></li>
       <li><a href="#/profile">{{vm.user}}'s Profile</a></li> 
 
       <li><a href="#/login">Back to Login Page</a></li>
@@ -48,6 +48,15 @@
 
 <!-- <ng-repeat></ng-repeat>
 <p>Sample Movie</p> -->
+
+<p>
+<!--<review-item id="review-{{ $index }}" ng-repeat="r in vm.movies" movie="r"></review-item>-->
+</p>
+
+
+
+
+
 <div class="ratingContainer">
 <div class="starRating">
 <h4>Rate Movie</h4>
@@ -72,17 +81,29 @@
 
 <a class="attachImage" ng-click="vm.showReviewForm()"><i class="fa fa-star"></i> Click to Add Your Own Movie Review</a>
   <form ng-show="vm.showReviewFormNow" ng-submit="vm.addReview(review)">
-  <input ng-model="review.body">
+  <input ng-model="review">
  
   <button>Add Review</button>
 </form>
+{{vm.allreviews}}
+<p ng-repeat="review in vm.reviews">{{ review.body }}</p><!--
+<li ng-model = "review.body">
+</div>
+-->
 
 
 
 
-<div class="movieReviews">
-  <review-item id="review-{{ $index }}" ng-repeat="r in vm.reviews" movie="r"></review-item>
-</div>  
+
+
+
+
+
+<!--<div class="movieDetails">
+<movie-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movie-item>
+</div>-->
+
+
 
 </div>
 </div>

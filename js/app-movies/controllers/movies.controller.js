@@ -3,10 +3,11 @@ let MoviesController = function(MovieService, $cookies) {
  let vm = this;
  let user = $cookies.get('movie-tracker-name');
  vm.user =user;
- console.log(user);
+// console.log(user);
  vm.allmovies = [];
  vm.movies = [];
  vm.search=search;
+ //vm.aReviews= [];
 
  
  
@@ -15,7 +16,7 @@ let MoviesController = function(MovieService, $cookies) {
     function activate () {
       MovieService.getAllMovies().then( (res) => {
         vm.allmovies = (res.data.movie);
-        console.log(res.data.movie);
+    //    console.log(res.data.movie);
       });
     }
   // function get (user) {
@@ -25,7 +26,11 @@ let MoviesController = function(MovieService, $cookies) {
   //    });
   //  }
 
-
+    // function review (align) {
+    //   MovieService.alignReview(align).then( (res) => {
+    //     vm.aReviews = [res.data.user.body];
+    //   });
+    // }
 
 
     function search (query) {
@@ -40,9 +45,4 @@ let MoviesController = function(MovieService, $cookies) {
 MoviesController.$inject = ['MovieService', '$cookies'];
 
 export default MoviesController;
-   function search (query) {
-   MovieService.getMovie(query).then( (res) => {
-       vm.movies = res.data.results;
-     console.log(query)
-   })
- }
+  

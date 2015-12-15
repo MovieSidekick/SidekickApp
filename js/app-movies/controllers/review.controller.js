@@ -1,25 +1,50 @@
-let ReviewController = function(ReviewService, $stateParams, $cookies) {
+let ReviewController = function(ReviewsService, $stateParams, $cookies) {
   
   let vm = this;
+   let user = $cookies.get('movie-tracker-name');
+   vm.user = user;
+   
+  // let user_id = $cookies.get('movie-tracker-id');
+  // console.log(user);
 
+
+  vm.showImageUpload = false;
+  vm.showReviewFormNow = false;
+  
+  
+  vm.showReviewForm    = showReviewForm;
+  vm.addReview         = addReview;
+  vm.allreviews        = allreviews;
   activate();
 
-    function activate () {
-    ReviewService.getReview($stateParams.id).then( (res) => {
-      vm.reviews = [res.data.review];
-      console.log(res.data.review);
+  function activate () {
+    MovieService.getMovie($stateParams.id).then( (res) => {
+      vm.movies = [res.data.movie];
+      vm.movie_id = (res.data.movie.id);
+      //console.log(res.data.movie.id);
+      //console.log(res.data.movie);
     });
   }
+  function allreviews () {
+    ReviewsService.getAllReviews($stateParams.id).then( (res) => {
+        vm.reviews = (res.data.review);
+        console.log(vm.reviews);
+      });
+    
+  }
 
-  function addReview () {
-   ReviewService.addReview(review).then( (res) => {
-     ReviewService.storeAuth(res.data);
-   });
- }
+
+
+  
+
+  function showReviewForm () {
+    vm.showReviewFormNow = (vm.showReviewFormNow) ? false : true;
+  }
 
 };
 
-ReviewController.$inject = ['ReviewService', '$stateParams', '$cookies'];
+
+ReviewController.$inject = ['ReviewsService', '$stateParams', '$cookies'];
 
 export default ReviewController;
 

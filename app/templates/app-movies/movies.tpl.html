@@ -26,7 +26,7 @@
 
 <movies-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movies-item>
 
-<allmovies-item id="movie-{{ $index }}" ng-repeat="c in vm.allmovies" movie="c"></movies-item>
+<allmovies-item id="movie-{{ $index }}" ng-repeat="c in vm.allmovies | limitTo: 20" movie="c"></movies-item>
 
 
 
