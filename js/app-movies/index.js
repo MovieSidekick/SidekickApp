@@ -7,7 +7,7 @@ import MovieSingleController from './controllers/movie-single.controller';
 import ReviewController from './controllers/review.controller';
 
 import MovieService from './services/movie.service';
-//import ReviewService from './services/review.service';
+import ReviewService from './services/review.service';
 import ReviewService from './services/maintenance.service';
 
 import moviesItem from './directives/movies.directive';

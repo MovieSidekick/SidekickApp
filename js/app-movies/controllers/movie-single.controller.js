@@ -1,12 +1,7 @@
 
 let MovieSingleController = function(MovieService, ReviewService, $stateParams, $cookies) {
-  
-  let vm = this;
-  // let user = $cookies.get('movie-tracker-name');
-   
-  // let user_id = $cookies.get('movie-tracker-id');
-  // console.log(user);
 
+  let vm = this;
 
   vm.showImageUpload = true;
   vm.showReviewFormNow = true;
@@ -14,11 +9,9 @@ let MovieSingleController = function(MovieService, ReviewService, $stateParams, 
   
   vm.showReviewForm    = showReviewForm;
   vm.addReview         = addReview;
+
   
 
-let MovieSingleController = function(MovieService, $stateParams, $cookies) {
-  
-  let vm = this;
   let user = $cookies.get('movie-tracker-name');
   vm.user =user;
   console.log(user);

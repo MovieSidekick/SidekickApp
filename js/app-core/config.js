@@ -1,6 +1,6 @@
 let config = function($stateProvider, $urlRouterProvider) {
   
-  $urlRouterProvider.otherwise('/signup');
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     
@@ -10,13 +10,12 @@ let config = function($stateProvider, $urlRouterProvider) {
     })
 
     // Home State
-    .state('root.home', {
-      url: '/',
-
+    // .state('root.home', {
+      // url: '/',
       // Use Controller as Syntax
-      controller: 'HomeController as vm',
-      templateUrl: 'templates/app-layout/home.tpl.html'
-    })
+      // controller: 'HomeController as vm',
+      // templateUrl: 'templates/app-layout/home.tpl.html'
+    // })
 
     // My Movies
     .state('root.movies', {
@@ -38,17 +37,17 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'MovieSingleController as vm',
       templateUrl: 'templates/app-movies/movie-single.tpl.html'
     })
-     .state('root.review', {
-      url: '/movies/:id/reviews',
-      controller: 'MovieSingleController as vm',
-      templateUrl: 'templates/app-movies/movie-single.tpl.html'
-    })
-    //     // My Reviews
-    // .state('root.myReviews', {
-    //   url: '/movies/:id',
-    //   controller: 'MyReviewsController as vm',
+    //  .state('root.review', {
+    //   url: '/movies/:id/reviews',
+    //   controller: 'MovieSingleController as vm',
     //   templateUrl: 'templates/app-movies/movie-single.tpl.html'
     // })
+    //     // My Reviews
+    .state('root.reviews', {
+      url: '/reviews',
+      controller: 'ReviewController as vm',
+      templateUrl: 'templates/app-reviews/reviews.tpl.html'
+    })
 
     // User Profile
     .state('root.profile', {
@@ -64,8 +63,6 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'SignupController as vm',
       templateUrl: 'templates/app-user/signup.tpl.html'
     })
-    // Review
-
     
     // Login
     .state('root.login', {
