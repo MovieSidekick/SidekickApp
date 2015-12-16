@@ -10,10 +10,10 @@ let allmoviesItem = function($state, MovieService) {
     template: `
       <div class="panelAll" ng-click="vm.clicked(movie)">
       
-        <h5>{{ movie.title }}  {{ movie.year }}</h5>
+        <h5>{{ movie.title }}</h5>
         <img ng-src = "{{ movie.poster }}">
-        <h5>Starring: {{ movie.actor }}</h5>
-        <h5>Review:  {{review.body}}</h5>
+        
+
 
       </div>
       

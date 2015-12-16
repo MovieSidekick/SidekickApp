@@ -363,7 +363,7 @@ var allmoviesItem = function allmoviesItem($state, MovieService) {
       movie: '=',
       review: '='
     },
-    template: '\n      <div class="panelAll" ng-click="vm.clicked(movie)">\n      \n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img ng-src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n        <h5>Review:  {{review.body}}</h5>\n\n      </div>\n      \n    ',
+    template: '\n      <div class="panelAll" ng-click="vm.clicked(movie)">\n      \n        <h5>{{ movie.title }}</h5>\n        <img ng-src = "{{ movie.poster }}">\n        \n\n\n      </div>\n      \n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {

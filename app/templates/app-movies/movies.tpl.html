@@ -17,7 +17,7 @@
     </ul>
   </section>
 </nav>
-
+<div class="moviesearch">
 <form ng-submit="vm.search(query)" id="searchForm">
 <p>Welcome {{vm.user}} {{vm.email}}!  You are now logged in.</p>
  <input type="text" placeholder="Movie or Series Title" ng-model="query" type="title" required/>
@@ -28,8 +28,11 @@
 
 <movies-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movies-item>
 </form>
-
+</div>
+<div class="allHeader">
+<h5>Previously Searched Movies<p>Click for detail and to read or write a review</p></h5>
 <allmovies-item id="movie-{{ $index }}" ng-repeat="c in vm.allmovies | limitTo: 20" movie="c"></allmovies-item>
+</div>
 
 
 
