@@ -11,7 +11,9 @@ let allmoviesItem = function($state, MovieService) {
       <div class="panelAll" ng-click="vm.clicked(movie)">
       
         <h5>{{ movie.title }}</h5>
-        <img ng-src = "{{ movie.poster }}">
+        
+    <img ng-if="movie.poster === 'N/A'" src="http://placehold.it/200x300?text=Sorry+this+image+is+not+available">
+        <img ng-if="movie.poster != 'N/A'" ng-src="{{ movie.poster }}">
         
 
 

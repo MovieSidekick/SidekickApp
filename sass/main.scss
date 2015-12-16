@@ -250,11 +250,12 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
   width: 10pt;
 }
 .allHeader {
-  margin-left: 50pt;
+  margin-left: 40pt;
   border: 2px solid $accent-color1;
   border-radius: 20pt;
   margin-right: 50pt;
   padding: 10pt;
+  background-color: $accent-color2; 
 }
 .panelAll {
   cursor: pointer;
@@ -262,27 +263,36 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
   height: auto;
   margin-left: 50px;
   display: inline-block;
+  margin-bottom: 50px;
+
   
+}
+.panelAll img{
+  height: 296px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 .panelAll h5{
   text-align: center;
   color: $accent-color1;
 }
 .panelBig {
-  display: inline-block;
-  width: 820px;
-  margin-left: auto;
-  margin-right: auto;
+ display: inline-block;
+ width: 820px;
+ margin-left: auto;
+ margin-right: auto;
 
 }
 .panelLeft {
-  float: left;
-  margin-left: 15pt;
-  max-width: 250pt;
-  .panelLeft img{
-    margin-left: auto;
-    margin-right: auto;
-  }
+ float: left;
+ margin-left: 25px;
+ max-width: 250px;
+ margin-right: 15px;
+ .panelLeft img{
+   // margin-left: auto;
+   // margin-right: auto;
+ }
 }
 .panelLeft h5{
   text-align: center;
@@ -292,10 +302,10 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
   color: $accent-color3;
 }
 .panelRight {
-  float: right;
-  max-width: 450px;
-  font-family: $font-fun;
-  margin-top: 40pt;
+ float: right;
+ max-width: 450px;
+ font-family: $font-fun;
+ margin-top: 40pt;
 }
 .panelRight li{
   list-style: none;
@@ -309,17 +319,25 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
   font-weight: 900;
 }
 .movieDetails {
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  float: left;
- }
+ margin-top: 20px;
+ margin-left: 15px;
+ margin-right: 30px;
+ float: left;
+}
 
 //Review form DIV
 #addReview {
   margin-left: auto;
   margin-right: auto;
   max-width: 450px;
+}
+.userReview {
+ margin-right: 15px;
+}
+
+​
+a {
+ color: #DC143C ;
 }
 
 //Review form
@@ -332,15 +350,18 @@ textarea {
 
  // Start Rating CSS
 .ratingContainer {
-  float: left;
-  margin-top: 70px;
-  margin-left: 25px;
-  border: 2px solid $accent-color3;
-  border-radius: 20pt;
-  padding: 10pt;
-  font-family: $font-content;
-  background-color: $accent-color2;
- // width: 300px;
+ float: left;
+ width: 370px;
+ margin-top: 50px;
+ margin-left: 20px;
+ margin-right: 20px;
+ margin-bottom: 20px;
+ border: 2px solid $accent-color3;
+ border-radius: 20pt;
+ padding: 10pt;
+ font-family: $font-content;
+ background-color: $accent-color2;
+// width: 300px;
 
 }
 .ratingContainer h4 {
@@ -350,15 +371,16 @@ textarea {
  .starRating {
   margin-left: auto;
   margin-right: auto;
-  max-width: 500px;
+  
 
  }
 
  .stars {
   width: 400px;
+
   display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: -30px;
+  margin-right: 20px;
 }
 
 input.star { display: none; }
@@ -436,17 +458,32 @@ li {
   display: inline;
 }
 
-button:hover, a:hover {
-  background-color: white;
-  color: #DC143C;
+a  {
+ color: #DC143C ;
 }
 
-button:active, a:active {
-  background-color: black;
-  color: #DC143C;
+button:hover {
+ background-color: white;
+ color: #DC143C ;
 }
 
-button:visited, a:visited {
-  background-color: #DC143C;
-  color: white;
+a:hover {
+ color: #DC143C ;
+}
+
+button:active {
+ background-color: black;
+ color: #DC143C ;
+}
+a:active {
+ color: #DC143C ;
+}
+
+button:visited {
+ background-color: #DC143C ;
+ color: white;
+}
+
+a:visited {
+ color: white;
 }

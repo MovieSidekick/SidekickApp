@@ -30,8 +30,10 @@
 </form>
 </div>
 <div class="allHeader">
-<h5>Previously Searched Movies<p>Click for detail and to read or write a review</p></h5>
-<allmovies-item id="movie-{{ $index }}" ng-repeat="c in vm.allmovies | limitTo: 20" movie="c"></allmovies-item>
+<h5>Recent Member Searches<p>Click for detail and to read or write a review</p></h5>
+<allmovies-item id="movie-{{ $index }}" ng-repeat="c in vm.allmovies.slice().reverse() | limitTo: 20" movie="c"></allmovies-item>
+ 
+
 </div>
 
 
