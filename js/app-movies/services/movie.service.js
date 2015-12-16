@@ -4,11 +4,15 @@ let MovieService = function($http, SERVER, $cookies) {
 
  this.getAllMovies   = getAllMovies;
  this.getMovie       = getMovie;
+ this.getUserReviews = getUserReviews;
 
  function getAllMovies (ourMovies) {
   //console.log(ourMovies);
    return $http.get(url + 'movies', SERVER);
    
+ }
+ function getUserReviews () {
+  return $http.get(SERVER.URL + 'reviews', SERVER.CONFIG);
  }
 
 function getMovie (ourTitle) {

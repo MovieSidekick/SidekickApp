@@ -85,31 +85,11 @@
  
   <button>Add Review</button>
 </form>
-{{vm.allreviews}}
-<p ng-repeat="review in vm.reviews">{{ review.body }}</p><!--
-<li ng-model = "review.body">
 </div>
--->
+<p ng-repeat="review in vm.reviews">{{ review.body }}  <a href="#/profile"> Sidekick{{review.user_id }}</a></p>
 
 
 
 
 
 
-
-
-
-<!--<div class="movieDetails">
-<movie-item id="movie-{{ $index }}" ng-repeat="c in vm.movies" movie="c"></movie-item>
-</div>-->
-
-
-
-</div>
-</div>
-
-<!-- <div class="movieReviews" ng-repeat="review in vm.reviews">
-  <ul>
-    <li> {{ vm.movie.imdbID }} {{ vm.reviews.review }} </li>
-  </ul>
-</div> -->

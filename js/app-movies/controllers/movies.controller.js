@@ -7,6 +7,7 @@ let MoviesController = function(MovieService, $cookies) {
  vm.allmovies = [];
  vm.movies = [];
  vm.search=search;
+ vm.userreviews=[];
  //vm.aReviews= [];
 
  
@@ -16,7 +17,14 @@ let MoviesController = function(MovieService, $cookies) {
     function activate () {
       MovieService.getAllMovies().then( (res) => {
         vm.allmovies = (res.data.movie);
+        userReviews();
     //    console.log(res.data.movie);
+      });
+    }
+
+    function userReviews () {
+      MovieService.getUserReviews().then( (res) => {
+        vm.userreviews = (res.data.review);
       });
     }
   // function get (user) {

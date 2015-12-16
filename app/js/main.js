@@ -216,6 +216,7 @@ var MovieSingleController = function MovieSingleController(MovieService, ReviewS
   function allreviews() {
     ReviewsService.getAllReviews(vm.movie_id).then(function (res) {
       vm.reviews = res.data.review;
+      console.log(res);
     });
   }
 
@@ -251,6 +252,7 @@ var MoviesController = function MoviesController(MovieService, $cookies) {
   vm.allmovies = [];
   vm.movies = [];
   vm.search = search;
+  vm.userreviews = [];
   //vm.aReviews= [];
 
   activate();
@@ -258,7 +260,14 @@ var MoviesController = function MoviesController(MovieService, $cookies) {
   function activate() {
     MovieService.getAllMovies().then(function (res) {
       vm.allmovies = res.data.movie;
+      userReviews();
       //    console.log(res.data.movie);
+    });
+  }
+
+  function userReviews() {
+    MovieService.getUserReviews().then(function (res) {
+      vm.userreviews = res.data.review;
     });
   }
   // function get (user) {
@@ -351,9 +360,10 @@ var allmoviesItem = function allmoviesItem($state, MovieService) {
     restrict: 'E',
     replace: true,
     scope: {
-      movie: '='
+      movie: '=',
+      review: '='
     },
-    template: '\n      <div class="panelAll" ng-click="vm.clicked(movie)">\n      \n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img ng-src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n\n      </div>\n      \n    ',
+    template: '\n      <div class="panelAll" ng-click="vm.clicked(movie)">\n      \n        <h5>{{ movie.title }}  {{ movie.year }}</h5>\n        <img ng-src = "{{ movie.poster }}">\n        <h5>Starring: {{ movie.actor }}</h5>\n        <h5>Review:  {{review.body}}</h5>\n\n      </div>\n      \n    ',
     controller: 'MoviesController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
@@ -527,10 +537,14 @@ var MovieService = function MovieService($http, SERVER, $cookies) {
 
   this.getAllMovies = getAllMovies;
   this.getMovie = getMovie;
+  this.getUserReviews = getUserReviews;
 
   function getAllMovies(ourMovies) {
     //console.log(ourMovies);
     return $http.get(url + 'movies', SERVER);
+  }
+  function getUserReviews() {
+    return $http.get(SERVER.URL + 'reviews', SERVER.CONFIG);
   }
 
   function getMovie(ourTitle) {

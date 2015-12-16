@@ -4,7 +4,8 @@ let allmoviesItem = function($state, MovieService) {
     restrict: 'E',
     replace: true,
     scope: {
-      movie: '='
+      movie: '=',
+      review: '='
     },
     template: `
       <div class="panelAll" ng-click="vm.clicked(movie)">
@@ -12,6 +13,7 @@ let allmoviesItem = function($state, MovieService) {
         <h5>{{ movie.title }}  {{ movie.year }}</h5>
         <img ng-src = "{{ movie.poster }}">
         <h5>Starring: {{ movie.actor }}</h5>
+        <h5>Review:  {{review.body}}</h5>
 
       </div>
       

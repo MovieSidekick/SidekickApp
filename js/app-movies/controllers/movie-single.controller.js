@@ -33,6 +33,7 @@ let MovieSingleController = function(MovieService, ReviewService, ReviewsService
   function allreviews () {
     ReviewsService.getAllReviews(vm.movie_id).then( (res) => {
         vm.reviews = res.data.review;
+        console.log(res);
       });
     
   }
