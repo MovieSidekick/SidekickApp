@@ -9,8 +9,8 @@ import './app-user/index';
 
 
 angular
- .module('app', ['app.core', 
-                 'app.layout', 
-                 'app.movies', 
-                 'app.user'])
+ .module('app', ['app.core', 
+                 'app.layout', 
+                 'app.movies', 
+                 'app.user'])
 ;

@@ -1,48 +1,48 @@
 let UserService = function($http, SERVER, $cookies, $state) {
- 
- this.signup    = signup;
- this.login     = login;
- this.storeAuth = storeAuth;
- this.checkAuth = checkAuth;
+ 
+ this.signup    = signup;
+ this.login     = login;
+ this.storeAuth = storeAuth;
+ this.checkAuth = checkAuth;
 
- function storeAuth (user) {
-   $cookies.put('movie-tracker-auth', user.auth_token);
+ function storeAuth (user) {
+   $cookies.put('movie-tracker-auth', user.auth_token);
    $cookies.put('movie-tracker-user', user.id);
    $cookies.put('movie-tracker-name', user.user_name);
    $cookies.put('movie-tracker-email', user.email);
 
    //$cookies.put('movie-review', user.body );
-   setHeaders(user.auth_Token);
+   setHeaders(user.auth_Token);
 
 
-   // THIS REALLY NEEDS TO BE BETTER!!!
-   //alert('you are logged in');
-   // SERIOUSLY
-   $state.go('root.movies');
- }
+   // THIS REALLY NEEDS TO BE BETTER!!!
+   //alert('you are logged in');
+   // SERIOUSLY
+   $state.go('root.movies');
+ }
 
-  function checkAuth () {
-   let t = $cookies.get('movie-tracker-auth');
-     if (t) {
-       setHeaders(t);
-     } else {
-       $state.go('root.signup');
-     }
-  }
+  function checkAuth () {
+   let t = $cookies.get('movie-tracker-auth');
+     if (t) {
+       setHeaders(t);
+     } else {
+       $state.go('root.signup');
+     }
+  }
 
- function setHeaders (token) {
-   SERVER.CONFIG.headers['auth_token'] = token;
- }
+ function setHeaders (token) {
+   SERVER.CONFIG.headers['auth_token'] = token;
+ }
 
- function signup (user) {
-   return $http.post(SERVER.URL + 'signup', user, SERVER.CONFIG);
- }
+ function signup (user) {
+   return $http.post(SERVER.URL + 'signup', user, SERVER.CONFIG);
+ }
 
- function login (user) {
-   return $http.post(SERVER.URL + 'login', user, SERVER.CONFIG);
+ function login (user) {
+   return $http.post(SERVER.URL + 'login', user, SERVER.CONFIG);
 console.log(user);
- }
- 
+ }
+ 
 
 };
 
