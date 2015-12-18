@@ -8607,6 +8607,19 @@ hr {
   text-align: center;
   color: #DC143C; }
 
+.banner {
+  background-color: #EEE8CD;
+  background-image: -webkit-linear-gradient(top, #EEE8CD, #EEE8CD, #EEE8CD, #DBDBDB);
+  background-image: linear-gradient(to bottom,#EEE8CD, #EEE8CD, #EEE8CD, #DBDBDB);
+  font-family: "Slabo", serif;
+  width: 950pt;
+  margin-left: none;
+  padding: 5px; }
+
+.banner a:visited {
+  color: #DC143C;
+  font-size: 24pt; }
+
 .panelBig {
   display: inline-block;
   width: 820px;
@@ -8617,7 +8630,9 @@ hr {
   float: left;
   margin-left: 25px;
   max-width: 250px;
-  margin-right: 15px; }
+  margin-right: 15px;
+  margin-top: 30px;
+  margin-bottom: 100px; }
 
 .panelLeft h5 {
   text-align: center;

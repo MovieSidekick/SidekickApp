@@ -277,6 +277,20 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
   text-align: center;
   color: $accent-color1;
 }
+.banner{
+    @include linear-gradient(to bottom ,$accent-color2, $accent-color2,$accent-color2, #DBDBDB );
+
+  
+  font-family: $font-content;
+  width: 950pt;
+  margin-left: none;
+  padding: 5px;
+  // border: 5px solid $accent-color2;
+   }
+   .banner a:visited {
+    color: $accent-color1;
+    font-size: 24pt;
+   }
 .panelBig {
  display: inline-block;
  width: 820px;
@@ -289,6 +303,8 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
  margin-left: 25px;
  max-width: 250px;
  margin-right: 15px;
+ margin-top: 30px;
+ margin-bottom: 100px;
  .panelLeft img{
    // margin-left: auto;
    // margin-right: auto;
@@ -333,6 +349,7 @@ input:-moz-placeholder::before  { font-family: fontAwesome; content:'\f002  '; c
 }
 .userReview {
  margin-right: 15px;
+
 }
 
 ​

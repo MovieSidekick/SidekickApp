@@ -26,7 +26,7 @@ let MovieSingleController = function(MovieService, ReviewService, ReviewsService
       vm.movies = [res.data.movie];
       vm.movie_id = (res.data.movie.id);
       //console.log(res.data.movie.id);
-      //console.log(res.data.movie);
+        console.log(res.data.movie);
       allreviews();
     });
   }

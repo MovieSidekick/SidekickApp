@@ -26,7 +26,7 @@ let UserService = function($http, SERVER, $cookies, $state) {
      if (t) {
        setHeaders(t);
      } else {
-       $state.go('root.signup');
+       $state.go('root.login');
      }
   }
 

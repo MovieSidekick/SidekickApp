@@ -209,7 +209,7 @@ var MovieSingleController = function MovieSingleController(MovieService, ReviewS
       vm.movies = [res.data.movie];
       vm.movie_id = res.data.movie.id;
       //console.log(res.data.movie.id);
-      //console.log(res.data.movie);
+      console.log(res.data.movie);
       allreviews();
     });
   }
@@ -393,7 +393,7 @@ var movieItem = function movieItem($state, MovieService, ReviewsService) {
       movie: '=',
       review: '='
     },
-    template: '\n      <div class="panelBig">\n        <div class = "panelLeft"> \n          <h5>{{ movie.title }}</h5>\n          <img ng-src = "{{ movie.poster }}">\n        </div>\n        <div class="panelRight">\n          <ul>\n          <li><span class="bold">Summary:  </span>{{ movie.plot }}</li><hr>\n          <li><span class="bold">Starring:  </span>{{ movie.actor }}</li>\n          <li><span class="bold">Released:  </span>{{ movie.year }}</li>\n         \n           <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>\n           <li><span class="bold">Director:  </span>{{ movie.director }}</li>\n           <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>\n           <li><span class="bold">Sidekick ID:  </span><a href>{{ movie.id }}</a></li>\n           <li>Reviews: {{reviews.body}}</li>\n           \n           \n           \n           <li><span class="bold">Awards:  </span>{{ movie.awards }}</li>\n          \n          </ul>\n          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>\n        </div>\n\n      </div>\n\n    ',
+    template: '\n      <div class="panelBig">\n        <div class="banner">\n        <a ng-if="movie.year === 2015" href="http://www.imdb.com/showtimes/title/{{movie.imdb_id}}?ref_=sh_ov_tt">Now Showing!!!  Click to purchase tickets</a>\n        <a ng-if="movie.year != 2015" href="http://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dinstant-video&field-keywords={{movie.title}}">This movie is currently available on <i class="fa fa-amazon"></i></a>\n</div>\n        <div class = "panelLeft"> \n          <h5>{{ movie.title }}</h5>\n          <img ng-src = "{{ movie.poster }}">\n        </div>\n        <div class="panelRight">\n          <ul>\n          <li><span class="bold">Summary:  </span>{{ movie.plot }}</li><hr>\n          <li><span class="bold">Starring:  </span>{{ movie.actor }}</li>\n          <li><span class="bold">Released:  </span>{{ movie.year }}</li>\n         \n           <li><span class="bold">Genre:  </span>{{ movie.genre }}</li>\n           <li><span class="bold">Director:  </span>{{ movie.director }}</li>\n           <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>\n           <li><span class="bold">Sidekick ID:  </span><a href>{{ movie.id }}</a></li>\n           \n           \n           \n           <li><span class="bold">Awards:  </span>{{ movie.awards }}</li>\n          \n          </ul>\n          <p><i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>   <i class="fa fa-film"></i>\n        </div>\n\n      </div>\n\n    ',
     controller: 'MovieSingleController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
@@ -800,7 +800,7 @@ var UserService = function UserService($http, SERVER, $cookies, $state) {
     if (t) {
       setHeaders(t);
     } else {
-      $state.go('root.signup');
+      $state.go('root.login');
     }
   }
 

@@ -9,6 +9,10 @@ let movieItem = function($state, MovieService, ReviewsService) {
     },
     template: `
       <div class="panelBig">
+        <div class="banner">
+        <a ng-if="movie.year === 2015" href="http://www.imdb.com/showtimes/title/{{movie.imdb_id}}?ref_=sh_ov_tt">Now Showing!!!  Click to purchase tickets</a>
+        <a ng-if="movie.year != 2015" href="http://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dinstant-video&field-keywords={{movie.title}}">This movie is currently available on <i class="fa fa-amazon"></i></a>
+</div>
         <div class = "panelLeft"> 
           <h5>{{ movie.title }}</h5>
           <img ng-src = "{{ movie.poster }}">
@@ -23,7 +27,6 @@ let movieItem = function($state, MovieService, ReviewsService) {
            <li><span class="bold">Director:  </span>{{ movie.director }}</li>
            <li><span class="bold">Writer:  </span>{{ movie.writer }}</li>
            <li><span class="bold">Sidekick ID:  </span><a href>{{ movie.id }}</a></li>
-           <li>Reviews: {{reviews.body}}</li>
            
            
            
