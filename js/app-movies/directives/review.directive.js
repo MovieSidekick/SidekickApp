@@ -1,4 +1,4 @@
-//let reviewItem = function($state, MovieService, ReviewService) {
+let reviewItem = function($state, MovieService, ReviewService) {
   
   return {
     restrict: 'E',

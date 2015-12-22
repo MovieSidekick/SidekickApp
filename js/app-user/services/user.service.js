@@ -25,8 +25,8 @@ let UserService = function($http, SERVER, $cookies, $state) {
    let t = $cookies.get('movie-tracker-auth');
      if (t) {
        setHeaders(t);
-     } else {
-       $state.go('root.login');
+     // } else {
+     //   $state.go('root.login');
      }
   }
 
