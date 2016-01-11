@@ -3,9 +3,6 @@ ReadMe for MovieSidekick
 
 Demo
 
-You can test a fully working live demo at: [INSERT DEMO LINK HERE].
-
-
 What is MovieSidekick?
 
 MovieSidekick is an app that allows users to rate movies, compare their ratings with other users, and see a list of the current top-rated movies.  Users can also see what movies are currently playing in local theaters and on Netflix, so they can experience immediate movie gratification.
